@@ -2,11 +2,11 @@ package dominio;
 
 public class Pessoa{
 
-	int matricula;
-	TipoPessoa tipoId;
-	String nome;
-	int telefone;
-	String email;
+	private int matricula;
+	private TipoPessoa tipoId;
+	private String nome;
+	private int telefone;
+	private String email;
 
 	public Pessoa(){
 	}

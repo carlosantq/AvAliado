@@ -2,18 +2,18 @@ package dominio;
 
 public class Professor extends Pessoa{
 
-	int didaticaLike;
-	int didaticaDislike;
-	int provasLike;
-	int provasDislike;
-	int personalidadeLike;
-	int personalidadeDislike;
+	private int didaticaLike;
+	private int didaticaDislike;
+	private int provasLike;
+	private int provasDislike;
+	private int personalidadeLike;
+	private int personalidadeDislike;
 
 	public Professor(){
 	}
 
 	public int getDidaticaLike(){
-		return didaticaLike;
+		return didaticaLike;                                               
 	}
 	
 	public void setDidaticaLike (int didaticaLike){
@@ -60,3 +60,4 @@ public class Professor extends Pessoa{
 		this.personalidadeDislike = personalidadeDislike;
 	}
 }
+
