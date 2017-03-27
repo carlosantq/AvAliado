@@ -1,9 +1,16 @@
 package Dominio;
 
 public class Pessoa {
+	private long id; 
 	private String nome;
 	private String email;
 	private String telefone;
+	private Comentario comentario;
+	
+	public Pessoa(){
+		
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -22,10 +29,10 @@ public class Pessoa {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
 	@Override
 	public String toString() {
-		return "Pessoa [nome=" + nome + ", email=" + email + ", telefone=" + telefone + "]";
+		return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", comentario="
+				+ comentario + "]";
 	}
-	
-	
 }

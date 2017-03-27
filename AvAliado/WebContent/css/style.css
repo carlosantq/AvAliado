@@ -1,0 +1,217 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/*Global CSS*/
+body, html {
+    background-color: #00cccc;
+    width: 100%;
+    height: 100%;
+    font-family: arial;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+button:focus{
+    outline: 0;
+}
+
+/*Header container*/
+#header-prof {
+    width: 80%;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#information-container {
+    width: 50%;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#evaluation-container {
+    width: 50%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Information container*/
+#photo-prof {
+    background-color: #b3ffff;
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 100%;
+}
+#text-container-prof {
+    margin: 1em;
+}
+#name-prof {
+    color: #e6ffff;
+    font-size: 2em;
+    margin-bottom: .2em;
+}
+#description-prof {
+    color: #e6ffff;
+    opacity: .5;
+    text-indent: 3em;
+}
+
+/*Objective evaluation container*/
+#objective-evaluation-container {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.objective-evaluation {
+    width: 10em;
+    height: 5em;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.objective-evaluation-text-container {
+    background-color: #b3ffff;
+    color: #004d4d;
+    font-weight: bold;
+    width: 100%;
+    height: 50%;
+    border-radius: 2em 2em 0 0;
+    text-align: center;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.objective-evaluation-button-container {
+    width: 100%;
+    height: 50%;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+}
+/*Like and dislike buttons' CSS*/
+.objective-evaluation-button-container button {
+    color: #004d4d;
+    height: 2em;
+    border: 0;
+    width: 50%;
+}
+.objective-evaluation-button-container button:hover {
+    background-color: #00e6e6;
+    cursor: pointer;
+}
+.left-button {
+    background-color: #b3ffff;
+    border-radius: 0 0 0 1em;
+}
+.right-button {
+    background-color: #b3ffff;
+    border-radius: 0 0 1em 0;
+}
+
+/*Subjective evaluation container*/
+#subjective-evaluation-container {
+    width: 80%;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+#input-text {
+    width: 30em;
+    height: 10em;
+    padding: 1em;
+    border-radius: 1em;
+    resize: none;
+}
+#subjective-evaluation-container button {
+    background: #b3ffff;
+    border: 0;
+    margin: 1em;
+    padding: .7em;
+    border-radius: 1em;
+    color: #004d4d;
+    font-size: 1.3em;
+}
+#subjective-evaluation-container button:hover {
+    background-color: #00e6e6;
+    cursor: pointer;
+}
+
+/*Evaluations made by other people*/
+#body-prof {
+    width: 80%;
+}
+.evaluation {
+    margin: 1em 2em;
+    padding: 1em;
+    border: 1px solid #b3ffff;
+    border-radius: 1em;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.evaluation-author {
+    font-weight: bold;
+}
+.evaluation-text {
+    margin: 1em;
+}
+.number-evaluation-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.evaluation-circle {
+    Background: #b3ffff;
+    width: 3em;
+    height: 3em;
+    border-radius: 100%;
+    text-align: center;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.circle-text {
+    margin-left: 2em;
+    margin-right: .7em;
+}

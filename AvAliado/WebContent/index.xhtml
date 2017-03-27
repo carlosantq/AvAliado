@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="">
+	</ui:composition>
+	<head>
+        <title> AvAliado </title>
+        
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script src="javascript.js"></script>
+    </head>
+    
+    <body>
+        
+        <div id="header-prof">
+            
+            <div id="information-container">
+                <div id="photo-prof">  </div>
+            
+                <div id="text-container-prof">
+                    <p id="name-prof"> Name Of The Professor </p>
+
+                    <div id="description-container-prof">
+                        <p id="description-prof"> A brief description of the professor containing data such as the university where he/she curently works, the places where he/she has taught before, the disciplines he/she has previously taught and the ones he/she is currently teaching. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="evaluation-container">
+                <div id="objective-evaluation-container">
+                    <div id="objective-evaluation1" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Didatica </p>
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                            <button class="left-button"> Like </button>
+                            <button class="right-button"> Dislike </button>
+                        </div>
+                    </div>
+                    
+                    <div id="objective-evaluation2" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Provas </p>
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                            <button class="left-button"> Like </button>
+                            <button class="right-button"> Dislike </button>
+                        </div>
+                    </div>
+                    
+                    <div id="objective-evaluation3" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Personalidade </p>
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                            <button class="left-button"> Like </button>
+                            <button class="right-button"> Dislike </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div id="subjective-evaluation-container">
+            <textarea id="input-text"></textarea>
+            
+            <button> Escrever<br/>comentario </button>
+        </div>
+        
+        <div id="body-prof">
+            
+            <div class="evaluation">
+                <div class="text-evaluation-container">
+                    <p class="evaluation-author"> Avaliacao feita por Nome da Pessoa há XX dias.</p>
+                    <p class="evaluation-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo fermentum, viverra nisi vitae, egestas sapien. Nunc dictum efficitur lorem, nec pellentesque est accumsan id. Donec lectus risus, tempus sit amet dui viverra, placerat condimentum enim. </p>
+                </div>
+                
+                <div class="number-evaluation-container">
+                    <p class="circle-text"> Didatica </p>
+                    <div class="evaluation-circle">
+                        <p> Like </p>
+                    </div>
+                    
+                    <p class="circle-text"> Provas </p>
+                    <div class="evaluation-circle">
+                        <p> Like </p>
+                    </div>
+                    
+                    <p class="circle-text"> Personalidade </p>
+                    <div class="evaluation-circle">
+                        <p> Like </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+</html>
