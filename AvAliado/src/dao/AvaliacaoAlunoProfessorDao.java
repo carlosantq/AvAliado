@@ -1,9 +1,10 @@
 package dao;
 
-import dominio.AvaliacaoAlunoProfessor;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import dominio.AvaliacaoAlunoProfessor;
 
 public class AvaliacaoAlunoProfessorDao {
 	

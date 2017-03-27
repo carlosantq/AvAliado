@@ -4,16 +4,14 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:composition template="">
-	</ui:composition>
-	<head>
+	<h:head>
         <title> AvAliado </title>
         
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
         <script src="javascript.js"></script>
-    </head>
+    </h:head>
     
-    <body>
+    <h:body>
         
         <div id="header-prof">
             
@@ -33,11 +31,12 @@
                 <div id="objective-evaluation-container">
                     <div id="objective-evaluation1" class="objective-evaluation">
                         <div class="objective-evaluation-text-container">
-                            <p> Didatica </p>
+                            <p> Didatica </p>                            
                         </div>
                         <div class="objective-evaluation-button-container">
-                            <button class="left-button">Like<h:commandButton value="Like" action="#{AvaliacaoAlunoProfessorMBean.avaliarDidatica}" /></button>
-                            <button class="right-button"> Dislike </button>
+                            <button class="left-button" id="btnLikeDidatica">Like  </button>
+                        
+                            <button class="right-button" id="btnDislikeDidatica"> Dislike </button>
                         </div>
                     </div>
                     
@@ -46,8 +45,8 @@
                             <p> Provas </p>
                         </div>
                         <div class="objective-evaluation-button-container">
-                            <button class="left-button"> Like </button>
-                            <button class="right-button"> Dislike </button>
+                            <button class="left-button" id="btnLikeProva"> Like </button>
+                            <button class="right-button" id="btnDislikeProva"> Dislike </button>
                         </div>
                     </div>
                     
@@ -56,8 +55,8 @@
                             <p> Personalidade </p>
                         </div>
                         <div class="objective-evaluation-button-container">
-                            <button class="left-button"> Like </button>
-                            <button class="right-button"> Dislike </button>
+                            <button class="left-button" id="btnLikePersonalidade"> Like </button>
+                            <button class="right-button" id="btnDislikePersonalidade"> Dislike </button>
                         </div>
                     </div>
                 </div>
@@ -95,8 +94,7 @@
                         <p> Like </p>
                     </div>
                 </div>
-            </div>
-            
+            </div>            
         </div>
-    </body>
+    </h:body>
 </html>
