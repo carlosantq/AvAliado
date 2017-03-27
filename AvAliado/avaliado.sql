@@ -39,12 +39,13 @@ CREATE TABLE Aluno(
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula)
 );
 
-CREATE TABLE NotaAlunoProfessor(
+CREATE TABLE AvaliacaoAlunoProfessor(
 	matriculaAluno INT NOT NULL,
 	matriculaProfessor INT NOT NULL,
 	didatica BOOLEAN,
 	provas BOOLEAN,
 	personalidade BOOLEAN,
+	data DATE NOT NULL,
 	PRIMARY KEY(matriculaAluno, matriculaProfessor),
 	FOREIGN KEY(matriculaAluno) REFERENCES Aluno(matricula),
 	FOREIGN KEY(matriculaProfessor) REFERENCES Professor(matricula)
@@ -72,12 +73,12 @@ INSERT INTO Pessoa VALUES(2015044005, 2, "Jonathan Rocha", "996222783", "jonatha
 INSERT INTO Aluno VALUES(2015044005, 5);
 
 -- Inserir notas dos alunos para o professor 111111111
-INSERT INTO NotaAlunoProfessor VALUES (2014044145, 1111111111, true, false, false);
-INSERT INTO NotaAlunoProfessor VALUES (2013019596, 1111111111, true, false, true);
-INSERT INTO NotaAlunoProfessor VALUES (2015044005, 1111111111, true, true, true);
+INSERT INTO AvaliacaoAlunoProfessor VALUES (2014044145, 1111111111, true, false, false, NOW());
+INSERT INTO AvaliacaoAlunoProfessor VALUES (2013019596, 1111111111, true, false, true, NOW());
+INSERT INTO AvaliacaoAlunoProfessor VALUES (2015044005, 1111111111, true, true, true, NOW());
 
 -- Inserir notas dos alunos para o professor 111111112
-INSERT INTO NotaAlunoProfessor VALUES (2014044145, 1111111112, true, true, true);
+INSERT INTO AvaliacaoAlunoProfessor VALUES (2014044145, 1111111112, true, true, true, NOW());
 
 -- Exibir todos os alunos
 SELECT * FROM Pessoa JOIN Aluno USING(matricula);
@@ -91,12 +92,12 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS atualizar_notas $$
 CREATE PROCEDURE atualizar_notas(IN m INT)
 	BEGIN
-		UPDATE Professor SET didatica_like = (SELECT COUNT(*) FROM NotaAlunoProfessor WHERE didatica=true AND matriculaProfessor=m) WHERE matricula=m;
-		UPDATE Professor SET didatica_dislike = (SELECT COUNT(*) FROM NotaAlunoProfessor WHERE didatica=false AND matriculaProfessor=m) WHERE matricula=m;
-		UPDATE Professor SET provas_like = (SELECT COUNT(*) FROM NotaAlunoProfessor WHERE provas=true AND matriculaProfessor=m) WHERE matricula=m;
-		UPDATE Professor SET provas_dislike = (SELECT COUNT(*) FROM NotaAlunoProfessor WHERE provas=false AND matriculaProfessor=m) WHERE matricula=m;
-		UPDATE Professor SET personalidade_like = (SELECT COUNT(*) FROM NotaAlunoProfessor WHERE personalidade=true AND matriculaProfessor=m) WHERE matricula=m;
-		UPDATE Professor SET personalidade_dislike = (SELECT COUNT(*) FROM NotaAlunoProfessor WHERE personalidade=false AND matriculaProfessor=m) WHERE matricula=m;
+		UPDATE Professor SET didatica_like = (SELECT COUNT(*) FROM AvaliacaoAlunoProfessor WHERE didatica=true AND matriculaProfessor=m) WHERE matricula=m;
+		UPDATE Professor SET didatica_dislike = (SELECT COUNT(*) FROM AvaliacaoAlunoProfessor WHERE didatica=false AND matriculaProfessor=m) WHERE matricula=m;
+		UPDATE Professor SET provas_like = (SELECT COUNT(*) FROM AvaliacaoAlunoProfessor WHERE provas=true AND matriculaProfessor=m) WHERE matricula=m;
+		UPDATE Professor SET provas_dislike = (SELECT COUNT(*) FROM AvaliacaoAlunoProfessor WHERE provas=false AND matriculaProfessor=m) WHERE matricula=m;
+		UPDATE Professor SET personalidade_like = (SELECT COUNT(*) FROM AvaliacaoAlunoProfessor WHERE personalidade=true AND matriculaProfessor=m) WHERE matricula=m;
+		UPDATE Professor SET personalidade_dislike = (SELECT COUNT(*) FROM AvaliacaoAlunoProfessor WHERE personalidade=false AND matriculaProfessor=m) WHERE matricula=m;
 		END $$
 DELIMITER ;
 

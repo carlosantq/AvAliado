@@ -1,4 +1,4 @@
-package Dominio;
+package dominio;
 
 public enum TipoAvaliacao {
 	like,

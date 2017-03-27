@@ -1,47 +1,62 @@
-package Dominio;
+package dominio;
 
-import java.util.ArrayList;
+public class Professor extends Pessoa{
 
-public class Professor extends Pessoa {
-	private ArrayList<Avaliacao> prova;
-	private ArrayList<Avaliacao> didatica;
-	private ArrayList<Avaliacao> personalidade;
-	private String descricao;
-	private ArrayList<Comentario> comentarios;
-	public ArrayList<Avaliacao> getProva() {
-		return prova;
+	int didaticaLike;
+	int didaticaDislike;
+	int provasLike;
+	int provasDislike;
+	int personalidadeLike;
+	int personalidadeDislike;
+
+	public Professor(){
 	}
-	public void setProva(ArrayList<Avaliacao> prova) {
-		this.prova = prova;
-	}
-	public ArrayList<Avaliacao> getDidatica() {
-		return didatica;
-	}
-	public void setDidatica(ArrayList<Avaliacao> didatica) {
-		this.didatica = didatica;
-	}
-	public ArrayList<Avaliacao> getPersonalidade() {
-		return personalidade;
-	}
-	public void setPersonalidade(ArrayList<Avaliacao> personalidade) {
-		this.personalidade = personalidade;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	public ArrayList<Comentario> getComentarios() {
-		return comentarios;
-	}
-	public void setComentarios(ArrayList<Comentario> comentarios) {
-		this.comentarios = comentarios;
-	}
-	@Override
-	public String toString() {
-		return "Professor [prova=" + prova + ", didatica=" + didatica + ", personalidade=" + personalidade
-				+ ", descricao=" + descricao + ", comentarios=" + comentarios + "]";
+
+	public int getDidaticaLike(){
+		return didaticaLike;
 	}
 	
+	public void setDidaticaLike (int didaticaLike){
+		this.didaticaLike = didaticaLike;
+	}
+
+	public int getDidaticaDislike(){
+		return didaticaDislike;
+	}
+	
+	public void setDidaticaDislike (int didaticaDislike){
+		this.didaticaDislike = didaticaDislike;
+	}
+
+	public int getProvasLike(){
+		return provasLike;
+	}
+	
+	public void setProvasLike (int provasLike){
+		this.provasLike = provasLike;
+	}
+
+	public int getProvasDislike(){
+		return provasDislike;
+	}
+	
+	public void setProvasDislike (int provasDislike){
+		this.provasDislike = provasDislike;
+	}
+
+	public int getPersonalidadeLike(){
+		return personalidadeLike;
+	}
+	
+	public void setPersonalidadeLike (int personalidadeLike){
+		this.personalidadeLike = personalidadeLike;
+	}
+
+	public int getPersonalidadeDislike(){
+		return personalidadeDislike;
+	}
+
+	public void setPersonalidadeDislike (int personalidadeDislike){
+		this.personalidadeDislike = personalidadeDislike;
+	}
 }

@@ -1,38 +1,58 @@
-package Dominio;
+package dominio;
 
-public class Pessoa {
-	private long id; 
-	private String nome;
-	private String email;
-	private String telefone;
-	private Comentario comentario;
-	
+public class Pessoa{
+
+	int matricula;
+	TipoPessoa tipoId;
+	String nome;
+	int telefone;
+	String email;
+
 	public Pessoa(){
-		
+	}
+
+	public int getMatricula(){
+		return matricula;
 	}
 	
-	public String getNome() {
+	public void setMatricula (int matricula){
+		this.matricula = matricula;
+	}
+
+	public TipoPessoa getTipoid(){
+		return tipoId;
+	}
+	
+	public void setTipoid (TipoPessoa tipoId){
+		this.tipoId = tipoId;
+	}
+
+	public String getNome(){
 		return nome;
 	}
-	public void setNome(String nome) {
+	
+	public void setNome (String nome){
 		this.nome = nome;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getTelefone() {
+
+	public int getTelefone(){
 		return telefone;
 	}
-	public void setTelefone(String telefone) {
+	
+	public void setTelefone (int telefone){
 		this.telefone = telefone;
 	}
 
+	public String getEmail(){
+		return email;
+	}
+
+	public void setEmail (String email){
+		this.email = email;
+	}
+
 	@Override
-	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", comentario="
-				+ comentario + "]";
+	public String toString(){
+		return "matricula = " + matricula + "tipoid = " + tipoId + "nome = " + nome + "telefone = " + telefone + "email = " + email;
 	}
 }
