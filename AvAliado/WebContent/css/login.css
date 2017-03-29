@@ -86,15 +86,19 @@ body, html {
     background: #e6f9ff;
     outline: 0;
     box-shadow: 0px 0px 30px #007399;
-    
     transition: .2s;
+}
+
+a{
+	text-decoration: none;
 }
 
 #login-button {
     background: transparent;
     color: #ccf2ff;
     font-size: 1.4em;
-    width: 50%;
+    text-align: center;
+    width: 150%;
     height: 2em;
     margin: .3em;
     border: 1px solid #e6f9ff;

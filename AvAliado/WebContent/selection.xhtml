@@ -12,16 +12,18 @@
     
     <h:body>
         
-        <h:div id="login-text-container">
+        <div id="login-text-container">
             <p> Logado como nome-do-usuario </p>
-        </h:div>
+        </div>
         
-        <h:div id="professor-container">
-            
-            <div class="professor">
+        <div id="professor-container">
+        
+        	<div class="professor">
                 <div class="professor-photo"></div>
                 <div class="professor-text-container">
-                    <p class="professor-name"> Professor's Name</p>
+                <h:form>
+                   <p class="professor-name"><h:commandLink action="#{professorMBean.avaliar}">Professor's Name</h:commandLink></p>
+                </h:form>
                     <p class="professor-details"> Professor's detailed details details details details. </p>
                 </div>
             </div>
@@ -29,7 +31,9 @@
             <div class="professor">
                 <div class="professor-photo"></div>
                 <div class="professor-text-container">
-                    <p class="professor-name"> Professor's Name</p>
+                <h:form>
+                   <p class="professor-name"><h:commandLink action="#{professorMBean.avaliar}">Professor's Name</h:commandLink></p>
+                </h:form>
                     <p class="professor-details"> Professor's detailed details details details details. </p>
                 </div>
             </div>
@@ -37,12 +41,63 @@
             <div class="professor">
                 <div class="professor-photo"></div>
                 <div class="professor-text-container">
-                    <p class="professor-name"> Professor's Name</p>
+                <h:form>
+                   <p class="professor-name"><h:commandLink action="#{professorMBean.avaliar}">Professor's Name</h:commandLink></p>
+                </h:form>
                     <p class="professor-details"> Professor's detailed details details details details. </p>
                 </div>
             </div>
             
-        </h:div>
+        </div>
+        
+        <!-- Data from database
+        	<h1>Professores</h1>
+        	<h:form>
+        	<h:dataTable value="#{professorMBean.listaProfessores}" var="prof" border="1">
+        		
+				<h:column>
+				<f:facet name="header">Matrícula</f:facet>
+					#{prof.matricula}
+				</h:column>
+				<h:column>
+				<f:facet name="header">Nome</f:facet>
+					#{prof.nome}
+				</h:column>
+				<h:column>
+				<f:facet name="header">E-mail</f:facet>
+					#{prof.email}
+				</h:column>
+				<h:column>
+				<f:facet name="header">Telefone</f:facet>
+					#{prof.telefone}
+				</h:column>
+				<h:column>
+				<f:facet name="header">Didática Like</f:facet>
+					#{prof.didaticaLike}
+				</h:column>
+				<h:column>
+				<f:facet name="header">Didátia Dislike</f:facet>
+					#{prof.didaticaDislike}
+				</h:column>
+				<h:column>
+				<f:facet name="header">Provas Like</f:facet>
+					#{prof.provasLike}
+				</h:column>
+				<h:column>
+				<f:facet name="header">Provas Dislike</f:facet>
+					#{prof.provasDislike}
+				</h:column>
+				<h:column>
+				<f:facet name="header">Personalidade Like</f:facet>
+					#{prof.personalidadeLike}
+				</h:column>
+				<h:column>
+				<f:facet name="header">Personalidade Dislike</f:facet>
+					#{prof.personalidadeDislike}
+				</h:column>
+			</h:dataTable>
+			</h:form>
+         -->
         
     </h:body>
 </html>

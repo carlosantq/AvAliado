@@ -1,8 +1,8 @@
 package controle;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 import dao.AvaliacaoAlunoProfessorDao;
@@ -15,14 +15,12 @@ public class AvaliacaoAlunoProfessorMBean {
 	private List<AvaliacaoAlunoProfessor> avaliacoes;
 	
 	public AvaliacaoAlunoProfessorMBean(){
+		avaliacao = new AvaliacaoAlunoProfessor();
+		avaliacoes = new ArrayList<AvaliacaoAlunoProfessor>();
 	}
 	
 	public String voltar(){
 		return "/index.jsf";
-	}
-	
-	public String avaliar(){
-		return "avaliar";
 	}
 	
 	public AvaliacaoAlunoProfessor getAvaliacao(){

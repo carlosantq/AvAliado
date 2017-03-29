@@ -19,7 +19,7 @@
 		</dependency>
 
 	</dependencies>
-	<build>
+	<build>	
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>

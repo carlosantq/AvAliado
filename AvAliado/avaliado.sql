@@ -4,20 +4,20 @@ USE avaliado;
 
 -- Criação das tabelas
 
-CREATE TABLE TipoPessoa(
+/*CREATE TABLE TipoPessoa(
 	id CHAR(1) NOT NULL,
 	tipo VARCHAR(20) NOT NULL,
 	PRIMARY KEY(id) 
-);
+);*/
 
 CREATE TABLE Pessoa(
 	matricula INT NOT NULL,
-	tipoid CHAR(1) NOT NULL,
+	/*tipoid CHAR(1) NOT NULL,*/
 	nome VARCHAR(50) NOT NULL,
 	telefone INT,
 	email VARCHAR(50) NOT NULL,
-	PRIMARY KEY(matricula),
-	FOREIGN KEY(tipoid) REFERENCES TipoPessoa(id)
+	PRIMARY KEY(matricula)/*,
+	FOREIGN KEY(tipoid) REFERENCES TipoPessoa(id)*/
 );
 
 CREATE TABLE Professor(
@@ -52,24 +52,24 @@ CREATE TABLE AvaliacaoAlunoProfessor(
 );
 
 -- Inserir subtipos de pessoas no sistema
-INSERT INTO TipoPessoa VALUES (1, "Professor");
-INSERT INTO TipoPessoa VALUES (2, "Aluno");
+-- INSERT INTO TipoPessoa VALUES (1, "Professor");
+-- INSERT INTO TipoPessoa VALUES (2, "Aluno");
 
 -- Inserir professor
-INSERT INTO Pessoa VALUES(1111111111, 1, "Uirá Kulesza", NULL, "uirakulesza@gmail.com");
+INSERT INTO Pessoa VALUES(1111111111, /*1,*/ "Joao", NULL, "joao@email.com");
 INSERT INTO Professor VALUES (1111111111, NULL, NULL, NULL, NULL, NULL, NULL);
 
-INSERT INTO Pessoa VALUES(1111111112, 1, "Roberta de Souza Coelho", NULL, "roberta@dimap.ufrn.br");
+INSERT INTO Pessoa VALUES(1111111112, /*1,*/ "Maria", NULL, "maria@email.com");
 INSERT INTO Professor VALUES (1111111112, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- Inserir alunos
-INSERT INTO Pessoa VALUES(2014044145, 2, "Carlos Antonio", "999436881", "carlosantonio.o.n@outlook.com");
+INSERT INTO Pessoa VALUES(2014044145, /*2,*/ "Carlos Antonio", "999436881", "carlosantonio.o.n@outlook.com");
 INSERT INTO Aluno VALUES(2014044145, 5);
 
-INSERT INTO Pessoa VALUES(2013019596, 2, "Francleide Peixoto", "981538006", "francleidepsimao@gmail.com");
+INSERT INTO Pessoa VALUES(2013019596, /*2,*/ "Francleide Peixoto", "981538006", "francleidepsimao@gmail.com");
 INSERT INTO Aluno VALUES(2013019596, 8);
 
-INSERT INTO Pessoa VALUES(2015044005, 2, "Jonathan Rocha", "996222783", "jonathan.rocha@msn.com");
+INSERT INTO Pessoa VALUES(2015044005, /*2,*/ "Jonathan Rocha", "996222783", "jonathan.rocha@msn.com");
 INSERT INTO Aluno VALUES(2015044005, 5);
 
 -- Inserir notas dos alunos para o professor 111111111

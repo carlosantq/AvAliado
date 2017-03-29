@@ -19,13 +19,13 @@ public class Pessoa{
 		this.matricula = matricula;
 	}
 
-	public TipoPessoa getTipoid(){
-		return tipoId;
-	}
-	
-	public void setTipoid (TipoPessoa tipoId){
-		this.tipoId = tipoId;
-	}
+//	public TipoPessoa getTipoid(){
+//		return tipoId;
+//	}
+//	
+//	public void setTipoid (TipoPessoa tipoId){
+//		this.tipoId = tipoId;
+//	}
 
 	public String getNome(){
 		return nome;

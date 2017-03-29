@@ -33,6 +33,10 @@ body, html {
     justify-content: center;
 }
 
+a{
+	text-decoration: none;
+}
+
 #login-text-container {
     background: transparent;
     color: #e6f9ff;

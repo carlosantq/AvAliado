@@ -12,21 +12,25 @@
     
     <h:body>
         
-        <h:div id="left-side">
-            <h:h1> AvAliado </h:h1>
-        </h:div>
+        <div id="left-side">
+            <h1> AvAliado </h1>
+        </div>
         
         <div id="right-side">
-            <h:div id="form-background">
-            </h:div>
+            <div id="form-background">
+            </div>
             
-            <h:div id="form-container">
+            <div id="form-container">
                 <h:form id="login-form">
                     <input class="fields" placeholder="Usuario" type="text" name="login" value="" />
                     <input class="fields" placeholder="Senha" type="password" name="password" value="" />
-                    <input id="login-button" type="submit" value="Logar" />
+                    <h:commandLink action="#{pessoaMBean.logar}">
+                    	<div id="login-button">
+                    	Logar
+                    	</div>
+                    </h:commandLink>
                 </h:form>
-            </h:div>
+            </div>
         </div>
         
     </h:body>
