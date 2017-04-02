@@ -12,7 +12,6 @@ import dominio.Professor;
 
 public class ProfessorDao implements IDAO<Professor> {
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Professor> buscarTodos() {
 		//System.out.println("Fui chamado!!");
@@ -51,7 +50,6 @@ public class ProfessorDao implements IDAO<Professor> {
 
 	}
 
-	@SuppressWarnings("hiding")
 	@Override
 	public void inserir(Professor novo) {
 		Connection con = GerenciarConexao.getConexao();
