@@ -35,7 +35,8 @@ public class ProfessorService implements IServico<Professor>{
 			atualizar(novo); 
 		}
 	}
-
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void remover(Professor elemento) {
 		Professor p = professorDao.buscar(elemento);
@@ -44,7 +45,8 @@ public class ProfessorService implements IServico<Professor>{
 		}
 		
 	}
-
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void atualizar(Professor elemento) {
 		// TODO Auto-generated method stub
