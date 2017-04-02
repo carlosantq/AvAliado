@@ -41,7 +41,7 @@ public class ProfessorService implements IServico<Professor>{
 	public void remover(Professor elemento) {
 		Professor p = professorDao.buscar(elemento);
 		if(p!=null){
-			professorDao.remover(p);//ainda não existe 
+			professorDao.remover(p);//ainda nï¿½o existe 
 		}
 		
 	}
@@ -50,7 +50,7 @@ public class ProfessorService implements IServico<Professor>{
 	@Override
 	public void atualizar(Professor elemento) {
 		// TODO Auto-generated method stub
-		//ainda não existe
+		//ainda nao existe
 	}
 
 

@@ -2,62 +2,34 @@ package dominio;
 
 public class Professor extends Pessoa{
 
-	private int didaticaLike;
-	private int didaticaDislike;
-	private int provasLike;
-	private int provasDislike;
-	private int personalidadeLike;
-	private int personalidadeDislike;
+	private int notaDidatica;
+	private int notaProvas;
+	private int notaPersonalidade;
 
 	public Professor(){
 	}
 
-	public int getDidaticaLike(){
-		return didaticaLike;                                               
+	public int getNotaDidatica(){
+		return notaDidatica;                                               
 	}
 	
-	public void setDidaticaLike (int didaticaLike){
-		this.didaticaLike = didaticaLike;
+	public void setNotaDidatica (int notaDidatica){
+		this.notaDidatica = notaDidatica;
 	}
-
-	public int getDidaticaDislike(){
-		return didaticaDislike;
-	}
-	
-	public void setDidaticaDislike (int didaticaDislike){
-		this.didaticaDislike = didaticaDislike;
-	}
-
-	public int getProvasLike(){
-		return provasLike;
+	public int getNotaProvas(){
+		return notaProvas;
 	}
 	
-	public void setProvasLike (int provasLike){
-		this.provasLike = provasLike;
+	public void setNotaProvas (int notaProvas){
+		this.notaProvas = notaProvas;
 	}
 
-	public int getProvasDislike(){
-		return provasDislike;
+	public int getNotaPersonalidade(){
+		return notaPersonalidade;
 	}
 	
-	public void setProvasDislike (int provasDislike){
-		this.provasDislike = provasDislike;
-	}
-
-	public int getPersonalidadeLike(){
-		return personalidadeLike;
-	}
-	
-	public void setPersonalidadeLike (int personalidadeLike){
-		this.personalidadeLike = personalidadeLike;
-	}
-
-	public int getPersonalidadeDislike(){
-		return personalidadeDislike;
-	}
-
-	public void setPersonalidadeDislike (int personalidadeDislike){
-		this.personalidadeDislike = personalidadeDislike;
+	public void setNotaPersonalidade (int notaPersonalidade){
+		this.notaPersonalidade = notaPersonalidade;
 	}
 }
 

@@ -7,5 +7,5 @@ public interface IDAO <T>{
 	public T buscar(T elemento);
 	public void inserir(T novo);
 	public void atualizar();
-
+	public void remover(T elemento);
 }

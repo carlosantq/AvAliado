@@ -14,7 +14,6 @@ public class AlunoMBean {
 	private Aluno aluno;
 	private List<Aluno> listaAlunos;
 	
-	
 	public AlunoMBean(){
 		aluno = new Aluno();
 		listaAlunos = new ArrayList<Aluno>();

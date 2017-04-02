@@ -6,28 +6,27 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import dominio.Pessoa;
+import servico.PessoaService;
 
 @ManagedBean
 @SessionScoped
 public class PessoaMBean {
 	private Pessoa pessoa;
-	private List<Pessoa> pessoas;
+	private List<Pessoa> listaPessoas;
+	private PessoaService pessoaService;
 	
 	public PessoaMBean(){
 		pessoa = new Pessoa();
-		pessoas = new ArrayList<Pessoa>();
+		listaPessoas = new ArrayList<Pessoa>();
+		pessoaService = new PessoaService();
 	}
-	
+
 	public String logar(){
 		return "/selection.jsf";
 	}
 	
 	public String voltar(){
-		return "/index.jsf";
-	}
-	
-	public String avaliar(){
-		return "avaliar";
+		return "/selection.jsf";
 	}
 	
 	public Pessoa getPessoa(){
@@ -38,14 +37,12 @@ public class PessoaMBean {
 		this.pessoa = pessoa;
 	}
 	
-	public List<Pessoa> getAvaliacoes(){
-		//PessoaDao pessoaDao = new PessoaDao();
-		//pessoas = pessoaDao.buscarTodasAvaliacoes();
-		return pessoas;
+	public List<Pessoa> getPessoas(){
+		return listaPessoas;
 	}
 	
-	public void setAvaliacoes(List<Pessoa> pessoas){
-		this.pessoas = pessoas;
+	public void setListaPessoas(List<Pessoa> listaPessoas){
+		this.listaPessoas = listaPessoas;
 	}
 	
 	
