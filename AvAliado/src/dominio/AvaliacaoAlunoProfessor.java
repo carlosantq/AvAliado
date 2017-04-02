@@ -5,9 +5,9 @@ import java.util.Date;
 public class AvaliacaoAlunoProfessor {
 	int matriculaAluno;
 	int matriculaProfessor;
-	int didatica;
-	int provas;
-	int personalidade;
+	boolean didatica;
+	boolean provas;
+	boolean personalidade;
 	Date data;
 
 	public AvaliacaoAlunoProfessor(){
@@ -29,27 +29,27 @@ public class AvaliacaoAlunoProfessor {
 		this.matriculaProfessor = matriculaProfessor;
 	}
 
-	public int getDidatica(){
+	public boolean getDidatica(){
 		return didatica;
 	}
 	
-	public void setDidatica (int didatica){
+	public void setDidatica (boolean didatica){
 		this.didatica = didatica;
 	}
 
-	public int getProvas(){
+	public boolean getProvas(){
 		return provas;
 	}
 	
-	public void setProvas (int provas){
+	public void setProvas (boolean provas){
 		this.provas = provas;
 	}
 
-	public int getPersonalidade(){
+	public boolean getPersonalidade(){
 		return personalidade;
 	}
 	
-	public void setPersonalidade (int personalidade){
+	public void setPersonalidade (boolean personalidade){
 		this.personalidade = personalidade;
 	}
 

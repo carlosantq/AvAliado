@@ -10,6 +10,10 @@ public class PessoaService implements IServico<Pessoa>{
 	
 	@Inject
 	private PessoaDao pessoaDao;
+	
+	public PessoaService(){
+		pessoaDao = new PessoaDao();
+	}
 
 	@Override
 	public List<Pessoa> buscarTodos() {

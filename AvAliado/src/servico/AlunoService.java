@@ -10,6 +10,10 @@ public class AlunoService implements IServico<Aluno>{
 	
 	@Inject
 	AlunoDao alunoDao = new AlunoDao();
+	
+	public AlunoService(){
+		alunoDao = new AlunoDao();
+	}
 
 	@Override
 	public List<Aluno> buscarTodos() {

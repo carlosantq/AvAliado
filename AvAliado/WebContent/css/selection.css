@@ -55,7 +55,7 @@ a{
     justify-content: center;
 }
 
-#professor-container {
+tr {
     height: 100%;
     width: 50%;
     position: absolute;

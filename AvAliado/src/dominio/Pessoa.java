@@ -3,7 +3,7 @@ package dominio;
 public class Pessoa{
 
 	private int matricula;
-	private TipoPessoa tipoId;
+	//private TipoPessoa tipoId;
 	private String nome;
 	private int telefone;
 	private String email;
@@ -62,6 +62,6 @@ public class Pessoa{
 
 	@Override
 	public String toString(){
-		return "matricula = " + matricula + "tipoid = " + tipoId + "nome = " + nome + "telefone = " + telefone + "email = " + email;
+		return "matricula = " + matricula + /*"tipoid = " + tipoId +*/ "nome = " + nome + "telefone = " + telefone + "email = " + email;
 	}
 }

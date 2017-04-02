@@ -15,8 +15,13 @@ public class ProfessorService implements IServico<Professor>{
 	@Inject
 	private ProfessorDao professorDao;
 	
+	public ProfessorService(){
+		professorDao = new ProfessorDao();
+	}
+	
 	@Override
 	public List<Professor> buscarTodos() {
+		
 		return professorDao.buscarTodos();
 	}
 
