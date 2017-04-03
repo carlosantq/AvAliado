@@ -25,7 +25,7 @@
                 <div class="professor-photo"></div>
                 <div class="professor-text-container">
                 <h:form>
-                   <p class="professor-name"><h:commandLink action="#{professorMBean.avaliar}">#{prof.nome}</h:commandLink></p>
+                   <p class="professor-name"><h:commandLink action="#{professorMBean.paginaProfessor(prof)}">#{prof.nome}</h:commandLink></p>
                 </h:form>
                     <p class="professor-details"> Matrícula: #{prof.matricula}</p>
                     <p class="professor-details"> E-mail: #{prof.email}</p>

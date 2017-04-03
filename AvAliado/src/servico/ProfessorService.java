@@ -21,7 +21,6 @@ public class ProfessorService implements IServico<Professor>{
 	
 	@Override
 	public List<Professor> buscarTodos() {
-		
 		return professorDao.buscarTodos();
 	}
 

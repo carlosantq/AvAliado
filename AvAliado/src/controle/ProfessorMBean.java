@@ -47,6 +47,12 @@ public class ProfessorMBean {
 
 	}
 	
+	public String paginaProfessor(Professor selecionado){
+		professor = selecionado;
+		professor = professorService.buscar(professor);
+		return "/professor.jsf";
+	}
+	
 	public String avaliar(){
 		return "/professor.jsf";
 	}
