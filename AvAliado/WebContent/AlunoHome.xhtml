@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head>
+        <title> AvAliado </title>
+        
+        <link rel="stylesheet" type="text/css" href="css/AlunoHome.css"/>
+    </h:head>
+    
+    <h:body>
+        
+        <div class="user-information-container outter-container">
+	        <table>
+	        <ui:repeat>
+	        	<tr>
+	        		<td class="user-information-inner-container flexbox-row">
+	        		
+	        			<div id="name-container">
+	        				<p id="user-name"> Name of The Student </p>
+	        			</div>
+	        			
+	        			<div id="info-container">
+	        				<p id="user-course"> Student's course </p>
+	        				<p id="user-period"> Student's period </p>
+	        			</div>
+	        		
+	        		</td>
+	        	</tr>
+	        </ui:repeat>
+	        </table>
+        </div>
+        
+        <div class="search-box-container outter-container">
+        	<h:form>
+        		<h:inputText class="search-box" name="search" value="lala"></h:inputText>
+        		
+        		<h:commandButton class="search-button" value="Procurar"/>
+        	</h:form>
+        </div>
+        
+        <div class="past-evaluations-container outter-container">
+        	<table>
+	        <ui:repeat>
+	        	<tr>
+	        		<td>
+	        		
+	        			<div class="comment-outter-container flexbox-row">
+	        				<div class="comment-inner-container flexbox-row">
+	        					<div class="comment-text-container">
+	        						<p class="about-comment"> Comentário sobre XXXXXXXXX </p>
+	        						<p class="comment"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec nisl quis nulla consectetur imperdiet. Vivamus efficitur orci sed eleifend aliquet. Suspendisse et aliquam nulla. Sed pretium feugiat ligula ut volutpat. Ut condimentum feugiat porttitor. Duis ullamcorper nulla risus, in cursus elit aliquet vel. Mauris efficitur ligula sodales faucibus eleifend. Nullam nec consequat lacus. Proin eget risus at nisl suscipit aliquet ut non enim. Nullam iaculis maximus massa. Mauris imperdiet posuere tortor id hendrerit. </p>
+	        					</div>
+	        					
+	        					<div class="comment-likes-container flexbox-column">
+	        						<div class="evaluation like">
+	        							<p> Personalidade </p>
+	        						</div>
+	        						<div class="evaluation dislike">
+	        							<p> Provas </p>
+	        						</div>
+	        						<div class="evaluation like">
+	        							<p> Didatica </p>
+	        						</div>
+	        					</div>
+	        				</div>
+	        			</div>
+	        		
+	        		</td>
+	        	</tr>
+	        </ui:repeat>
+	        </table>
+        </div>
+        
+    </h:body>
+</html>
