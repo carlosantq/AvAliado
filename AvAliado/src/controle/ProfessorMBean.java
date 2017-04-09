@@ -14,6 +14,7 @@ import servico.ProfessorService;
 @ManagedBean
 @RequestScoped
 public class ProfessorMBean {
+	
 	private Professor professor;
 	private List<Professor> listaProfessores;
 	private ProfessorService professorService;

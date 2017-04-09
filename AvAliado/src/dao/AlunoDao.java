@@ -26,7 +26,6 @@ public class AlunoDao implements IDAO<Aluno>{
 				aluno.setNome(rs.getString("nome"));
 				aluno.setTelefone(rs.getInt("telefone"));
 				aluno.setEmail(rs.getString("email"));
-				aluno.setSenha(rs.getString("senha"));
 				aluno.setPeriodo(rs.getInt("periodo"));
 				resultado.add(aluno);
 			}
@@ -51,7 +50,6 @@ public class AlunoDao implements IDAO<Aluno>{
 				resultado.setNome(rs.getString("nome"));
 				resultado.setTelefone(rs.getInt("telefone"));
 				resultado.setEmail(rs.getString("email"));
-				resultado.setSenha(rs.getString("senha"));
 				resultado.setPeriodo(rs.getInt("periodo"));
 			}
 		} catch (SQLException e) {
@@ -72,7 +70,6 @@ public class AlunoDao implements IDAO<Aluno>{
 			ps.setString(2, novo.getNome());
 			ps.setInt(3, novo.getTelefone());
 			ps.setString(4, novo.getEmail());
-			ps.setString(5, novo.getSenha());
 			ps.setInt(6, novo.getPeriodo());
 			
 			ps.executeUpdate();

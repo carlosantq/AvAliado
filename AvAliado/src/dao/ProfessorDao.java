@@ -9,6 +9,7 @@ import java.util.List;
 
 import dao.GerenciarConexao;
 import dominio.Professor;
+import dominio.TipoPessoa;
 
 public class ProfessorDao implements IDAO<Professor> {
 
@@ -23,11 +24,10 @@ public class ProfessorDao implements IDAO<Professor> {
 			while (rs.next()) {
 				Professor professor = new Professor();
 				professor.setMatricula(rs.getInt("matricula"));
-				// Professor.setTipoid(rs.getCharacterStream("tipoid"));
+				professor.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				professor.setNome(rs.getString("nome"));
 				professor.setTelefone(rs.getInt("telefone"));
 				professor.setEmail(rs.getString("email"));
-				professor.setSenha(rs.getString("senha"));
 				professor.setNotaDidatica(rs.getInt("notaDidatica"));
 				professor.setNotaProvas(rs.getInt("notaProvas"));
 				professor.setNotaPersonalidade(rs.getInt("notaPersonalidade"));
@@ -50,11 +50,10 @@ public class ProfessorDao implements IDAO<Professor> {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				resultado.setMatricula(rs.getInt("matricula"));
-				// resultado.setTipoid(rs.getCharacterStream("tipoid"));
+				resultado.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				resultado.setNome(rs.getString("nome"));
 				resultado.setTelefone(rs.getInt("telefone"));
 				resultado.setEmail(rs.getString("email"));
-				resultado.setSenha(rs.getString("senha"));
 				resultado.setNotaDidatica(rs.getInt("notaDidatica"));
 				resultado.setNotaProvas(rs.getInt("notaProvas"));
 				resultado.setNotaPersonalidade(rs.getInt("notaPersonalidade"));
@@ -74,11 +73,10 @@ public class ProfessorDao implements IDAO<Professor> {
 			
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, novo.getMatricula());
-			// Professor.setTipoid(rs.getCharacterStream("tipoid"));
-			ps.setString(2, novo.getNome());
-			ps.setInt(3, novo.getTelefone());
-			ps.setString(4, novo.getEmail());
-			ps.setString(5, novo.getSenha());
+			ps.setInt(2, novo.getTipoid().ordinal());
+			ps.setString(3, novo.getNome());
+			ps.setInt(4, novo.getTelefone());
+			ps.setString(5, novo.getEmail());
 			ps.setInt(6, novo.getNotaDidatica());
 			ps.setInt(7, novo.getNotaProvas());
 			ps.setInt(8, novo.getNotaPersonalidade());

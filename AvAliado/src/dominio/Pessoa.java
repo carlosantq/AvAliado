@@ -3,11 +3,10 @@ package dominio;
 public class Pessoa{
 
 	private int matricula;
-	//private TipoPessoa tipoId;
+	private TipoPessoa tipoId;
 	private String nome;
 	private int telefone;
 	private String email;
-	private String senha;
 
 	public Pessoa(){
 	}
@@ -20,13 +19,13 @@ public class Pessoa{
 		this.matricula = matricula;
 	}
 
-//	public TipoPessoa getTipoid(){
-//		return tipoId;
-//	}
-//	
-//	public void setTipoid (TipoPessoa tipoId){
-//		this.tipoId = tipoId;
-//	}
+	public TipoPessoa getTipoid(){
+		return tipoId;
+	}
+	
+	public void setTipoid (TipoPessoa tipoId){
+		this.tipoId = tipoId;
+	}
 
 	public String getNome(){
 		return nome;
@@ -51,17 +50,9 @@ public class Pessoa{
 	public void setEmail (String email){
 		this.email = email;
 	}
-	
-	public String getSenha(){
-		return senha;
-	}
-	
-	public void setSenha(String senha){
-		this.senha = senha;
-	}
 
 	@Override
 	public String toString(){
-		return "matricula = " + matricula + /*"tipoid = " + tipoId +*/ "nome = " + nome + "telefone = " + telefone + "email = " + email;
+		return "matricula = " + matricula + "tipoid = " + tipoId + "nome = " + nome + "telefone = " + telefone + "email = " + email;
 	}
 }

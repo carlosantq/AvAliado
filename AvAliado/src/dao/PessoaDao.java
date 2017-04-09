@@ -9,6 +9,7 @@ import java.util.List;
 
 import dao.GerenciarConexao;
 import dominio.Pessoa;
+import dominio.TipoPessoa;
 
 public class PessoaDao implements IDAO<Pessoa>{
 
@@ -23,11 +24,10 @@ public class PessoaDao implements IDAO<Pessoa>{
 			while (rs.next()) {
 				Pessoa pessoa = new Pessoa();
 				pessoa.setMatricula(rs.getInt("matricula"));
-				// pessoa.setTipoid(rs.getCharacterStream("tipoid"));
+				pessoa.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				pessoa.setNome(rs.getString("nome"));
 				pessoa.setTelefone(rs.getInt("telefone"));
 				pessoa.setEmail(rs.getString("email"));
-				pessoa.setSenha(rs.getString("senha"));
 				resultado.add(pessoa);
 			}
 		} catch (SQLException e) {
@@ -47,11 +47,10 @@ public class PessoaDao implements IDAO<Pessoa>{
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				resultado.setMatricula(rs.getInt("matricula"));
-				// resultado.setTipoid(rs.getCharacterStream("tipoid"));
+				resultado.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				resultado.setNome(rs.getString("nome"));
 				resultado.setTelefone(rs.getInt("telefone"));
 				resultado.setEmail(rs.getString("email"));
-				resultado.setSenha(rs.getString("senha"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -67,11 +66,10 @@ public class PessoaDao implements IDAO<Pessoa>{
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, novo.getMatricula());
-			//tipoid faltando
-			ps.setString(2, novo.getNome());
-			ps.setInt(3, novo.getTelefone());
-			ps.setString(4, novo.getEmail());
-			ps.setString(5, novo.getSenha());
+			ps.setInt(2, novo.getTipoid().ordinal());
+			ps.setString(3, novo.getNome());
+			ps.setInt(4, novo.getTelefone());
+			ps.setString(5, novo.getEmail());
 			
 			ps.executeUpdate();
 		} catch (SQLException e) {

@@ -21,10 +21,13 @@
             </div>
             
             <div id="form-container">
+            
+            	<h:messages/>
+            
                 <h:form id="login-form">
-                    <input class="fields" placeholder="Usuario" type="text" name="login" value="" />
-                    <input class="fields" placeholder="Senha" type="password" name="password" value="" />
-                    <h:commandLink action="#{pessoaMBean.logar}">
+                    <h:inputText class="fields" value="#{usuarioMBean.usuario.matricula}" />
+                    <h:inputSecret class="fields" value="#{usuarioMBean.usuario.senha}" />
+                    <h:commandLink action="#{usuarioMBean.login}">
                     	<div id="login-button">
                     	Logar
                     	</div>
