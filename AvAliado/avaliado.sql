@@ -16,9 +16,15 @@ CREATE TABLE Pessoa(
 	nome VARCHAR(50) NOT NULL,
 	telefone INT,
 	email VARCHAR(50) NOT NULL,
-	senha VARCHAR(50) NOT NULL,
 	PRIMARY KEY(matricula)/*,
 	FOREIGN KEY(tipoid) REFERENCES TipoPessoa(id)*/
+);
+
+CREATE TABLE Usuario(
+	matricula INT NOT NULL,
+	senha VARCHAR(50) NOT NULL,
+	PRIMARY KEY(matricula),
+	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula)
 );
 
 CREATE TABLE Professor(
@@ -54,20 +60,25 @@ CREATE TABLE AvaliacaoAlunoProfessor(
 -- INSERT INTO TipoPessoa VALUES (2, "Aluno");
 
 -- Inserir professor
-INSERT INTO Pessoa VALUES(1111111111, /*1,*/ "Joao", NULL, "joao@email.com", "123456");
+INSERT INTO Pessoa VALUES(1111111111, /*1,*/ "Joao", NULL, "joao@email.com");
+INSERT INTO Usuario VALUES (1111111111, "123");
 INSERT INTO Professor VALUES (1111111111, NULL, NULL, NULL);
 
-INSERT INTO Pessoa VALUES(1111111112, /*1,*/ "Maria", NULL, "maria@email.com", "123");
+INSERT INTO Pessoa VALUES(1111111112, /*1,*/ "Maria", NULL, "maria@email.com");
+INSERT INTO Usuario VALUES (1111111112, "123");
 INSERT INTO Professor VALUES (1111111112, NULL, NULL, NULL);
 
 -- Inserir alunos
-INSERT INTO Pessoa VALUES(2014044145, /*2,*/ "Carlos Antonio", "999436881", "carlosantonio.o.n@outlook.com", "123");
+INSERT INTO Pessoa VALUES(2014044145, /*2,*/ "Carlos Antonio", "999436881", "carlosantonio.o.n@outlook.com");
+INSERT INTO Usuario VALUES (2014044145, "123");
 INSERT INTO Aluno VALUES(2014044145, 5);
 
-INSERT INTO Pessoa VALUES(2013019596, /*2,*/ "Francleide Peixoto", "981538006", "francleidepsimao@gmail.com", "123");
+INSERT INTO Pessoa VALUES(2013019596, /*2,*/ "Francleide Peixoto", "981538006", "francleidepsimao@gmail.com");
+INSERT INTO Usuario VALUES (2013019596, "123");
 INSERT INTO Aluno VALUES(2013019596, 8);
 
-INSERT INTO Pessoa VALUES(2015044005, /*2,*/ "Jonathan Rocha", "996222783", "jonathan.rocha@msn.com", "123");
+INSERT INTO Pessoa VALUES(2015044005, /*2,*/ "Jonathan Rocha", "996222783", "jonathan.rocha@msn.com");
+INSERT INTO Usuario VALUES (2015044005, "123");
 INSERT INTO Aluno VALUES(2015044005, 5);
 
 -- Inserir notas dos alunos para o professor 111111111
