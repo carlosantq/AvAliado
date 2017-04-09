@@ -32,16 +32,15 @@
 	        </ui:repeat>
 	        </table>
         </div>
-        
-        <div class="search-box-container outter-container">
-        	<h:form>
-        		<h:inputText class="search-box" name="search" value="lala"></h:inputText>
-        		
-        		<h:commandButton class="search-button" value="Procurar"/>
-        	</h:form>
-        </div>
-        
-        <div class="past-evaluations-container outter-container">
+
+	<div class="search-box-container outter-container flexbox-row">
+		<form class="search-form flexbox-row" action="">
+			<input class="search-box" type="text" placeholder="Pesquise" />
+			<input class="search-button" type="submit" value="Buscar" />
+		</form>
+	</div>
+
+	<div class="past-evaluations-container outter-container">
         	<table>
 	        <ui:repeat>
 	        	<tr>

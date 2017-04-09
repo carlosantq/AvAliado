@@ -51,7 +51,6 @@ html, body {
 	background: #b3b3b3;
 	box-shadow: 0 0 1em #808080;
 }
-
 #name-container {
 	margin: 1em;
 	margin-left: 2em;
@@ -92,31 +91,48 @@ html, body {
 	border: 1px solid transparent;
 }
 
+
+
 .search-box-container {
 	background: #cccccc;
-	height: 3em;
 }
-
+.search-form {
+	background: #bfbfbf;
+	height: 100%;
+	width: 100%;
+}
 .search-box {
-	background: white;
+	background: #e6e6e6;
+	height: 2.5em;
+	width: 80%;
+	font-size: 1.1em;
 	color: #404040;
-	padding: .3em;
+	margin: .9em;
+	border: none;
+	border-radius: 100em;
+	padding: 0 1.5em;
+}
+.search-button {
+	background: #d9d9d9;
+	height: 2.5em;
+	font-size: 1.1em;
+	color: #404040;
+	border: none;
+	border-radius: 100em;
+	padding: 0 1.5em;
+}
+.search-button:hover {
+	background: #e6e6e6;
+	cursor: pointer;
 }
 
-.search-button {
-	background: #999999;
-	height: 2em;
-	width: 2em;
-}
 
 .past-evaluations-container {
 	text-align: center;
 }
-
 .comments-column-container {
 	width: 50%;
 }
-
 .comments-column-header-container {
 	background: #bfbfbf;
 	width: 97%;
@@ -130,7 +146,6 @@ html, body {
 	color: #d9d9d9;
 	font-size: 1.5em;
 }
-
 .comment-outter-container {
 	background: #bfbfbf;
 	width: 95%;
@@ -147,12 +162,12 @@ html, body {
 	margin: 1em;
 }
 .comment-text-container {
-	width: 75%;
+	width: 70%;
 	padding: 1em;
 	text-align: left;
 }
 .about-comment {
-	text-indent: 5em;
+	text-indent: 1em;
 	margin-bottom: 1em;
 	font-size: 1.2em;
 	font-weight: bold;
@@ -163,11 +178,11 @@ html, body {
 	color: #a6a6a6;
 }
 .comment-likes-container {
-	width: 25%;
+	width: 30%;
 }
 .evaluation {
 	height: 2.2em;
-	width: 10em;
+	width: 9em;
 	border-radius: 100em;
 	margin: .3em;
 	

@@ -59,7 +59,6 @@ html, body {
 	font-size: 3em;
 	color: #d9d9d9;
 }
-
 #info-container {
 	margin-left: 1em;
 	font-size: 1.1em;
@@ -72,27 +71,43 @@ html, body {
 	color: #bfbfbf;
 }
 
+
 .search-box-container {
 	background: #cccccc;
-	height: 3em;
 }
-
+.search-form {
+	background: #bfbfbf;
+	height: 100%;
+	width: 100%;
+}
 .search-box {
-	background: white;
+	background: #e6e6e6;
+	height: 2.5em;
+	width: 80%;
+	font-size: 1.1em;
 	color: #404040;
-	padding: .3em;
+	margin: .9em;
+	border: none;
+	border-radius: 100em;
+	padding: 0 1.5em;
 }
-
 .search-button {
-	background: #999999;
-	height: 2em;
-	width: 2em;
+	background: #d9d9d9;
+	height: 2.5em;
+	font-size: 1.1em;
+	color: #404040;
+	border: none;
+	border-radius: 100em;
+	padding: 0 1.5em;
+}
+.search-button:hover {
+	background: #e6e6e6;
+	cursor: pointer;
 }
 
 .past-evaluations-container {
 	text-align: center;
 }
-
 .comment-outter-container {
 	background: #bfbfbf;
 	width: 95%;
@@ -104,9 +119,9 @@ html, body {
 }
 .comment-inner-container {
 	background: #d9d9d9;
-	width: 95%;
-	height: 95%;
-	margin: 1em;
+	width: 100%;
+	height: 100%;
+	margin: .9em;
 }
 .comment-text-container {
 	width: 75%;
