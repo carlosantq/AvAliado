@@ -7,16 +7,20 @@ import javax.faces.bean.SessionScoped;
 
 import dao.AvaliacaoAlunoProfessorDao;
 import dominio.AvaliacaoAlunoProfessor;
+import servico.AvaliacaoAlunoProfessorService;
 
 @ManagedBean
 @SessionScoped
 public class AvaliacaoAlunoProfessorMBean {
+	
 	private AvaliacaoAlunoProfessor avaliacao;
 	private List<AvaliacaoAlunoProfessor> avaliacoes;
+	private AvaliacaoAlunoProfessorService avaliacaoAPService;
 	
 	public AvaliacaoAlunoProfessorMBean(){
 		avaliacao = new AvaliacaoAlunoProfessor();
 		avaliacoes = new ArrayList<AvaliacaoAlunoProfessor>();
+		avaliacaoAPService = new AvaliacaoAlunoProfessorService();
 	}
 	
 	public String voltar(){
@@ -32,13 +36,19 @@ public class AvaliacaoAlunoProfessorMBean {
 	}
 	
 	public List<AvaliacaoAlunoProfessor> getAvaliacoes(){
-		AvaliacaoAlunoProfessorDao avaliacaoDao = new AvaliacaoAlunoProfessorDao();
-		avaliacoes = avaliacaoDao.buscarTodasAvaliacoes();
-		return avaliacoes;
+		return avaliacaoAPService.buscarTodos();
 	}
 	
 	public void setAvaliacoes(List<AvaliacaoAlunoProfessor> avaliacoes){
 		this.avaliacoes = avaliacoes;
+	}
+	
+	public List<AvaliacaoAlunoProfessor> buscarPorMatricula(int matricula){
+		return avaliacaoAPService.buscarPorMatricula(matricula);
+	}
+	
+	public List<AvaliacaoAlunoProfessor> buscarRecentes(int matricula){
+		return avaliacaoAPService.buscarRecentes(matricula);
 	}
 	
 	
