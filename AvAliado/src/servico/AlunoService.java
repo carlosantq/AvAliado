@@ -25,6 +25,10 @@ public class AlunoService implements IServico<Aluno>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public Aluno buscar(int matricula){
+		return alunoDao.buscar(matricula);
+	}
 
 	@Override
 	public void inserir(Aluno novo) {

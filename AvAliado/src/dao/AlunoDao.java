@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dominio.Aluno;
+import dominio.TipoPessoa;
 
 public class AlunoDao implements IDAO<Aluno>{
 
@@ -22,7 +23,7 @@ public class AlunoDao implements IDAO<Aluno>{
 			while (rs.next()) {
 				Aluno aluno = new Aluno();
 				aluno.setMatricula(rs.getInt("matricula"));
-				// aluno.setTipoid(rs.getCharacterStream("tipoid"));
+				aluno.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				aluno.setNome(rs.getString("nome"));
 				aluno.setTelefone(rs.getInt("telefone"));
 				aluno.setEmail(rs.getString("email"));
@@ -35,18 +36,40 @@ public class AlunoDao implements IDAO<Aluno>{
 
 		return resultado;
 	}
-
-	@Override
-	public Aluno buscar(Aluno elemento) {
+	
+	public Aluno buscar(int matricula) {
 		Aluno resultado = new Aluno();
 		Connection con = GerenciarConexao.getConexao();
-		String sql = "SELECT * FROM Pessoa JOIN Aluno WHERE matricula='"+elemento.getMatricula()+"';";
+		String sql = "SELECT * FROM Pessoa JOIN Aluno USING(matricula) WHERE matricula='"+matricula+"';";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				resultado.setMatricula(rs.getInt("matricula"));
-				// resultado.setTipoid(rs.getCharacterStream("tipoid"));
+				resultado.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
+				resultado.setNome(rs.getString("nome"));
+				resultado.setTelefone(rs.getInt("telefone"));
+				resultado.setEmail(rs.getString("email"));
+				resultado.setPeriodo(rs.getInt("periodo"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return resultado;
+	}
+
+	@Override
+	public Aluno buscar(Aluno elemento) {
+		Aluno resultado = new Aluno();
+		Connection con = GerenciarConexao.getConexao();
+		String sql = "SELECT * FROM Aluno JOIN Pessoa WHERE Aluno.matricula='"+elemento.getMatricula()+"' AND Aluno.matricula=Pessoa.matricula;";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				resultado.setMatricula(rs.getInt("matricula"));
+				resultado.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				resultado.setNome(rs.getString("nome"));
 				resultado.setTelefone(rs.getInt("telefone"));
 				resultado.setEmail(rs.getString("email"));
@@ -66,10 +89,10 @@ public class AlunoDao implements IDAO<Aluno>{
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, novo.getMatricula());
-			//tipoid faltando
-			ps.setString(2, novo.getNome());
-			ps.setInt(3, novo.getTelefone());
-			ps.setString(4, novo.getEmail());
+			ps.setInt(2, novo.getTipoid().ordinal());
+			ps.setString(3, novo.getNome());
+			ps.setInt(4, novo.getTelefone());
+			ps.setString(5, novo.getEmail());
 			ps.setInt(6, novo.getPeriodo());
 			
 			ps.executeUpdate();

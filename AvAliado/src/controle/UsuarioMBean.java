@@ -7,9 +7,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
+import dominio.Aluno;
 import dominio.TipoPessoa;
 import dominio.Usuario;
+import servico.AlunoService;
 import servico.UsuarioService;
 
 @ManagedBean
@@ -20,6 +23,10 @@ public class UsuarioMBean {
 	private List<Usuario> listaUsuarios;
 	private UsuarioService usuarioService;
 	private Usuario usuarioLogado;
+	private Aluno aluno;
+	@Inject
+	private AlunoService alunoService;
+	
 	
 	public UsuarioMBean(){
 		usuario = new Usuario();
@@ -33,6 +40,14 @@ public class UsuarioMBean {
 	
 	public void setUsuario(Usuario usuario){
 		this.usuario = usuario;
+	}
+	
+	public Aluno getAluno(){
+		return aluno;
+	}
+	
+	public void setAluno(Aluno aluno){
+		this.aluno = aluno;
 	}
 	
 	public List<Usuario> getListaUsuarios(){
@@ -66,6 +81,10 @@ public class UsuarioMBean {
 				usuarioLogado = usuarioBd;
 				
 				if (usuarioLogado.getTipoid() == TipoPessoa.aluno){
+					
+					alunoService = new AlunoService();
+					aluno = alunoService.buscar(usuarioLogado.getMatricula());
+					
 					return "/alunoHome.jsf";
 				}else{
 					return "/professorHome.jsf";

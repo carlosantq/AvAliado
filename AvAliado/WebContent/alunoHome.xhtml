@@ -7,29 +7,29 @@
 	<h:head>
         <title> AvAliado </title>
         
-        <link rel="stylesheet" type="text/css" href="css/alunoHome.css"/>
+        <link rel="stylesheet" type="text/css" href="css/alunohome.css"/>
     </h:head>
     
     <h:body>
         
         <div class="user-information-container outter-container">
 	        <table>
-	        <!-- uirepeat -->
+	        	<ui:repeat var="aluno" value="#{usuarioMBean.aluno}">
 	        	<tr>
 	        		<td class="user-information-inner-container flexbox-row">
 	        		
 	        			<div id="name-container">
-	        				<p id="user-name"> Name of The Student </p>
+	        				<p id="user-name"> #{aluno.nome} </p>
 	        			</div>
 	        			
 	        			<div id="info-container">
 	        				<p id="user-course"> Student's course </p>
-	        				<p id="user-period"> Student's period </p>
+	        				<p id="user-period"> #{aluno.periodo} </p>
 	        			</div>
 	        		
 	        		</td>
 	        	</tr>
-	        <!-- uirepeat -->
+	        	</ui:repeat>
 	        </table>
         </div>
 
