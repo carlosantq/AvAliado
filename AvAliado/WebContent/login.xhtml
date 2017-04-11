@@ -14,6 +14,8 @@
         
         <div id="left-side">
             <h1> AvAliado </h1>
+            
+            <button class="no-login-button"> Acessar sem logar </button>
         </div>
         
         <div id="right-side">
@@ -28,7 +30,7 @@
                     <h:inputText class="fields" value="#{usuarioMBean.usuario.matricula}" />
                     <h:inputSecret class="fields" value="#{usuarioMBean.usuario.senha}" />
                     <h:commandLink action="#{usuarioMBean.login}">
-                    	<div id="login-button">
+                    	<div class="login-button">
                     	Logar
                     	</div>
                     </h:commandLink>
