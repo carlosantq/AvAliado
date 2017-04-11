@@ -42,6 +42,10 @@ public class ProfessorMBean {
 		this.listaProfessores = listaProfessores;
 	}
 	
+	public Professor buscarNotas(int matricula){
+		return professorService.buscarNotas(matricula);
+	}
+	
 	public String cadastrar() {
 		professorService.inserir(professor);
 		return "/index.jsf";

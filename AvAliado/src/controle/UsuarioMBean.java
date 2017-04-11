@@ -10,9 +10,11 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import dominio.Aluno;
+import dominio.Professor;
 import dominio.TipoPessoa;
 import dominio.Usuario;
 import servico.AlunoService;
+import servico.ProfessorService;
 import servico.UsuarioService;
 
 @ManagedBean
@@ -24,8 +26,11 @@ public class UsuarioMBean {
 	private UsuarioService usuarioService;
 	private Usuario usuarioLogado;
 	private Aluno aluno;
+	private Professor professor;
 	@Inject
 	private AlunoService alunoService;
+	@Inject
+	private ProfessorService professorService;
 	
 	
 	public UsuarioMBean(){
@@ -48,6 +53,14 @@ public class UsuarioMBean {
 	
 	public void setAluno(Aluno aluno){
 		this.aluno = aluno;
+	}
+	
+	public Professor getProfessor(){
+		return professor;
+	}
+	
+	public void setProfessor(Professor professor){
+		this.professor = professor;
 	}
 	
 	public List<Usuario> getListaUsuarios(){
@@ -87,6 +100,10 @@ public class UsuarioMBean {
 					
 					return "/alunoHome.jsf";
 				}else{
+					
+					professorService = new ProfessorService();
+					professor = professorService.buscar(usuarioLogado.getMatricula());
+					
 					return "/professorHome.jsf";
 				}
 			}else{

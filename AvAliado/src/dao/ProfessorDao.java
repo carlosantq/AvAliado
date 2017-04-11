@@ -64,6 +64,53 @@ public class ProfessorDao implements IDAO<Professor> {
 
 		return resultado;
 	}
+	
+	public Professor buscar(int matricula) {
+		Professor resultado = new Professor();
+		Connection con = GerenciarConexao.getConexao();
+		String sql = "SELECT * FROM Pessoa JOIN Professor USING(matricula) WHERE matricula='"+matricula+"';";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				resultado.setMatricula(rs.getInt("matricula"));
+				resultado.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
+				resultado.setNome(rs.getString("nome"));
+				resultado.setTelefone(rs.getInt("telefone"));
+				resultado.setEmail(rs.getString("email"));
+				resultado.setNotaDidatica(rs.getInt("notaDidatica"));
+				resultado.setNotaProvas(rs.getInt("notaProvas"));
+				resultado.setNotaPersonalidade(rs.getInt("notaPersonalidade"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return resultado;
+	}
+	
+	public Professor buscarNotas(int matricula){
+		Professor resultado = new Professor();
+		Connection con = GerenciarConexao.getConexao();
+		String sql = "SELECT CAST(((SELECT COUNT(provas) FROM AvaliacaoAlunoProfessor WHERE matriculaProfessor='"+matricula+"' and "
+				+ "provas=true)/notaProvas)*100 AS decimal(10, 2)) AS notaProvas, CAST(((SELECT COUNT(didatica) FROM AvaliacaoAlunoProfessor "
+				+ "WHERE matriculaProfessor='"+matricula+"' and didatica=true)/notaDidatica)*100 AS decimal(10, 2)) AS notaDidatica, "
+				+ "CAST(((SELECT COUNT(personalidade) FROM AvaliacaoAlunoProfessor WHERE matriculaProfessor='"+matricula+"' and "
+				+ "personalidade=true)/notaPersonalidade)*100 AS decimal(10, 2)) AS notaPersonalidade FROM Professor WHERE matricula='"+matricula+"';";
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()){
+				resultado.setMatricula(matricula);
+				resultado.setNotaDidatica(rs.getInt("notaDidatica"));
+				resultado.setNotaProvas(rs.getInt("notaProvas"));
+				resultado.setNotaPersonalidade(rs.getInt("notaPersonalidade"));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return resultado;
+	}
 
 	@Override
 	public void inserir(Professor novo) {

@@ -29,6 +29,14 @@ public class ProfessorService implements IServico<Professor>{
 		return professorDao.buscar(elemento); //retorna o professor buscado
 	}
 	
+	public Professor buscar(int matricula){
+		return professorDao.buscar(matricula);
+	}
+	
+	public Professor buscarNotas(int matricula){
+		return professorDao.buscarNotas(matricula);
+	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void inserir(Professor novo) {

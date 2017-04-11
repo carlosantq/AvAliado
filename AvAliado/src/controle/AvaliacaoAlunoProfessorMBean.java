@@ -5,7 +5,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import dao.AvaliacaoAlunoProfessorDao;
 import dominio.AvaliacaoAlunoProfessor;
 import servico.AvaliacaoAlunoProfessorService;
 
@@ -50,6 +49,5 @@ public class AvaliacaoAlunoProfessorMBean {
 	public List<AvaliacaoAlunoProfessor> buscarRecentes(int matricula){
 		return avaliacaoAPService.buscarRecentes(matricula);
 	}
-	
 	
 }

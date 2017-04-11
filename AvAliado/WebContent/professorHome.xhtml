@@ -18,29 +18,30 @@
         
         <div class="user-information-container outter-container">
 	        <table>
-	        <ui:repeat>
+	        <ui:repeat var="professor" value="#{usuarioMBean.professor}">
 	        	<tr>
 	        		<td class="user-information-inner-container flexbox-row">
 	        		
 	        			<div id="name-container">
-	        				<p id="user-name"> Name of The Professor </p>
+	        				<p id="user-name"> #{professor.nome} </p>
 	        			</div>
 	        			
+	        			<ui:repeat var="avaliacao" value="#{professorMBean.buscarNotas(usuarioMBean.professor.matricula)}">
 	        			<div class="evaluation-results-container">
 	        				<p class="evaluation-text"> Personalidade </p>
-	        				<p class="evaluation-grade"> XX% </p>
+	        				<p class="evaluation-grade"> #{avaliacao.notaPersonalidade}%</p>
 	        			</div>
 	        			
 	        			<div class="evaluation-results-container">
 	        				<p class="evaluation-text"> Provas </p>
-	        				<p class="evaluation-grade"> XX% </p>
+	        				<p class="evaluation-grade"> #{avaliacao.notaProvas}%</p>
 	        			</div>
 	        			
 	        			<div class="evaluation-results-container">
 	        				<p class="evaluation-text"> Didática </p>
-	        				<p class="evaluation-grade"> XX% </p>
+	        				<p class="evaluation-grade"> #{avaliacao.notaDidatica}%</p>
 	        			</div>
-	        		
+	        			</ui:repeat>
 	        		</td>
 	        	</tr>
 	        </ui:repeat>
@@ -56,7 +57,7 @@
         
         <div class="past-evaluations-container outter-container">
         	<table>
-	        <ui:repeat>
+	        <!-- uirepeat -->
 	        	<tr>
 	        		<td class="comments-column-container">
 	        		
@@ -91,52 +92,36 @@
 	        				<p class="comments-column-header"> Comentários recebidos </p>
 	        			</div>
 	        			
+	        			<ui:repeat var="professor" value="#{usuarioMBean.professor}">
+	        			<ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.buscarRecentes(usuarioMBean.professor.matricula)}">
 	        			<div class="comment-outter-container flexbox-row">
 	        				<div class="comment-inner-container flexbox-row">
 	        					<div class="comment-text-container">
-	        						<p class="about-comment"> Comentário feito por XXXXXXXXXXXXXX </p>
+	        						<p class="about-comment"> Comentário feito por #{avaliacao.matriculaAluno} </p>
 	        						<p class="comment"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec nisl quis nulla consectetur imperdiet. Vivamus efficitur orci sed eleifend aliquet. Suspendisse et aliquam nulla. Sed pretium feugiat ligula ut volutpat. Ut condimentum feugiat porttitor. Duis ullamcorper nulla risus, in cursus elit aliquet vel. Mauris efficitur ligula sodales faucibus eleifend. Nullam nec consequat lacus. Proin eget risus at nisl suscipit aliquet ut non enim. Nullam iaculis maximus massa. Mauris imperdiet posuere tortor id hendrerit. </p>
 	        					</div>
 	        					
 	        					<div class="comment-likes-container flexbox-column">
-	        						<div class="evaluation like">
-	        							<p> Personalidade </p>
-	        						</div>
-	        						<div class="evaluation dislike">
-	        							<p> Provas </p>
-	        						</div>
-	        						<div class="evaluation like">
-	        							<p> Didatica </p>
-	        						</div>
+	        						<span>
+	        						<h:outputText value="Personalidade" styleClass="#{avaliacao.personalidade ? 'evaluation like' : 'evaluation dislike'}" /> 
+	        						</span>
+	        						<span>
+	        						<h:outputText value="Provas" styleClass="#{avaliacao.provas ? 'evaluation like' : 'evaluation dislike'}" /> 
+	        						</span>
+	        						<span>
+	        						<h:outputText value="Didática" styleClass="#{avaliacao.didatica ? 'evaluation like' : 'evaluation dislike'}" /> 
+	        						</span>
 	        					</div>
 	        				</div>
 	        			</div>
 	        			
-	        			<div class="comment-outter-container flexbox-row">
-	        				<div class="comment-inner-container flexbox-row">
-	        					<div class="comment-text-container">
-	        						<p class="about-comment"> Comentário anônimo </p>
-	        						<p class="comment"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec nisl quis nulla consectetur imperdiet. Vivamus efficitur orci sed eleifend aliquet. Suspendisse et aliquam nulla. Sed pretium feugiat ligula ut volutpat. Ut condimentum feugiat porttitor. Duis ullamcorper nulla risus, in cursus elit aliquet vel. Mauris efficitur ligula sodales faucibus eleifend. Nullam nec consequat lacus. Proin eget risus at nisl suscipit aliquet ut non enim. Nullam iaculis maximus massa. Mauris imperdiet posuere tortor id hendrerit. </p>
-	        					</div>
-	        					
-	        					<div class="comment-likes-container flexbox-column">
-	        						<div class="evaluation dislike">
-	        							<p> Personalidade </p>
-	        						</div>
-	        						<div class="evaluation dislike">
-	        							<p> Provas </p>
-	        						</div>
-	        						<div class="evaluation like">
-	        							<p> Didatica </p>
-	        						</div>
-	        					</div>
-	        				</div>
-	        			</div>
+	        			</ui:repeat>
+	        			</ui:repeat>
 	        		</td>
 	        		
 	        		
 	        	</tr>
-	        </ui:repeat>
+	        <!-- uirepeat -->
 	        </table>
         </div>
         
