@@ -1,3 +1,5 @@
+@CHARSET "ISO-8859-1";
+
 /*CSS Reset*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -43,7 +45,7 @@ body, html {
 }
 #left-side h1 {
     color: #99e6ff;
-    font-size: 3em;
+    font-size: 5em;
     font-weight: bold;
 }
 
@@ -93,19 +95,23 @@ a{
 	text-decoration: none;
 }
 
-#login-button {
+.login-button {
     background: transparent;
-    color: #ccf2ff;
-    font-size: 1.4em;
-    text-align: center;
-    width: 150%;
-    height: 2em;
-    margin: .3em;
     border: 1px solid #e6f9ff;
     border-radius: .2em;
+    color: #ccf2ff;
+    font-size: 1.4em;
+    width: 5em;
+    height: 2em;
+    margin: .3em;
     align-self: flex-end;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-#login-button:hover {
+.login-button:hover {
     background: #ccf2ff;
     color: #0086b3;
     border: 1px solid #ccf2ff;
@@ -113,7 +119,7 @@ a{
     
     transition: .1s;
 }
-#login-button:focus {
+.login-button:focus {
     outline: 0;
 }
 
@@ -127,7 +133,29 @@ a{
     z-index: 5;
 }
 
-
+.no-login-button {
+	background: transparent;
+    color: #ccf2ff;
+    font-size: 1.4em;
+    text-align: center;
+    width: 10em;
+    height: 2em;
+    margin: .3em;
+    margin-top: 2em;
+    border: 1px solid #e6f9ff;
+    border-radius: .2em;
+}
+.no-login-button:hover {
+    background: #ccf2ff;
+    color: #0086b3;
+    border: 1px solid #ccf2ff;
+    cursor: pointer;
+    
+    transition: .1s;
+}
+.no-login-button:focus {
+    outline: 0;
+}
 
 
 
