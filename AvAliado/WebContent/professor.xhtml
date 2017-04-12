@@ -19,9 +19,7 @@
             
                 <div id="text-container-prof">
                 	<table><tr><td>
-                    <ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.avaliacao}">
-                    <p id="name-prof"> #{avaliacao.matriculaProfessor} </p>
-                    </ui:repeat>
+                    <p id="name-prof"> #{avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor} - #{professorMBean.buscar(avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor).nome}</p>
                     </td></tr></table>
 
 	
@@ -31,6 +29,7 @@
                 </div>
             </div>
 
+			<h:form>
             <div id="evaluation-container">
                 <div id="objective-evaluation-container">
                     <div id="objective-evaluation1" class="objective-evaluation">
@@ -38,9 +37,11 @@
                             <p> Didatica </p>                            
                         </div>
                         <div class="objective-evaluation-button-container">
-                            <button class="left-button" id="btnLikeDidatica">Like  </button>
-                        
-                            <button class="right-button" id="btnDislikeDidatica"> Dislike </button>
+                        	
+                        	<h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoAlunoProfessorMBean.avaliacao.didatica}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
+							</h:selectOneMenu>
                         </div>
                     </div>
                     
@@ -49,8 +50,10 @@
                             <p> Provas </p>
                         </div>
                         <div class="objective-evaluation-button-container">
-                            <button class="left-button" id="btnLikeProva"> Like </button>
-                            <button class="right-button" id="btnDislikeProva"> Dislike </button>
+                            <h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoAlunoProfessorMBean.avaliacao.provas}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
+							</h:selectOneMenu>
                         </div>
                     </div>
                     
@@ -59,23 +62,24 @@
                             <p> Personalidade </p>
                         </div>
                         <div class="objective-evaluation-button-container">
-                            <button class="left-button" id="btnLikePersonalidade"> Like </button>
-                            <button class="right-button" id="btnDislikePersonalidade"> Dislike </button>
+                            <h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoAlunoProfessorMBean.avaliacao.personalidade}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
+							</h:selectOneMenu>
                         </div>
                     </div>
                 </div>
             </div>
             
-        </div>
-        
-        <div id="subjective-evaluation-container">
-            <!-- TO DO: Comentário <textarea id="input-text"></textarea> -->
-            
-            <h:form>
             	<h:commandLink action="#{avaliacaoAlunoProfessorMBean.avaliar}">
                 	<button> Enviar avaliação </button>
                 </h:commandLink>
             </h:form>
+            
+        </div>
+        
+        <div id="subjective-evaluation-container">
+            <!-- TO DO: Comentário <textarea id="input-text"></textarea> -->
         </div>
     </h:body>
 </html>

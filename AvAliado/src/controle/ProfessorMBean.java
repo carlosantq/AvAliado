@@ -42,6 +42,10 @@ public class ProfessorMBean {
 		this.listaProfessores = listaProfessores;
 	}
 	
+	public Professor buscar(int matricula){
+		return professorService.buscar(matricula);
+	}
+	
 	public Professor buscarNotas(int matricula){
 		return professorService.buscarNotas(matricula);
 	}
@@ -65,17 +69,10 @@ public class ProfessorMBean {
 	}
 	
 	public String exibirNotas(int professor){
-		
-		System.out.println(professor);
-		
 		return "/verTodosProfessor.jsf";
 	}
 	
 	public String exibirNotasPublic(Professor professor){
-		
-		this.professor = professor;
-		System.out.println(professor);
-		
 		return "/verTodosProfessorPublic.jsf";
 	}
 	

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
@@ -27,6 +29,7 @@ public class AvaliacaoAlunoProfessorMBean {
 		avaliacoes = new ArrayList<AvaliacaoAlunoProfessor>();
 		avaliacaoAPService = new AvaliacaoAlunoProfessorService();
 		professorService = new ProfessorService();
+		
 	}
 	
 	public AvaliacaoAlunoProfessor getAvaliacao(){
@@ -69,7 +72,9 @@ public class AvaliacaoAlunoProfessorMBean {
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
 		}else{
+			
 			avaliacao.setMatriculaAluno(2014044145);
+			
 			return "/professor.jsf";
 		}
 	}

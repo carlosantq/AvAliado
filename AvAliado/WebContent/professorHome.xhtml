@@ -48,12 +48,12 @@
 	        </table>
         </div>
         
-        <div class="search-box-container outter-container">
+        <!-- <div class="search-box-container outter-container">
         	<form class="search-form flexbox-row" action="">
 				<input class="search-box" type="text" placeholder="Pesquise" />
 				<input class="search-button" type="submit" value="Buscar" />
 			</form>
-        </div>
+        </div> -->
         
         <div class="past-evaluations-container outter-container">
         	<table>
@@ -95,11 +95,11 @@
 	        				<p class="comments-column-header"> Comentários recebidos </p>
 	        			</div>
 	        			
-	        			<ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.buscarRecentes(usuarioMBean.professor.matricula)}">
+	        			<ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.buscarPorMatricula(usuarioMBean.professor.matricula)}">
 	        			<div class="comment-outter-container flexbox-row">
 	        				<div class="comment-inner-container flexbox-row">
 	        					<div class="comment-text-container">
-	        						<p class="about-comment"> Comentário feito por #{avaliacao.matriculaAluno} </p>
+	        						<p class="about-comment"> Avaliação feita por #{avaliacao.matriculaAluno} </p>
 	        						<p class="comment"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec nisl quis nulla consectetur imperdiet. Vivamus efficitur orci sed eleifend aliquet. Suspendisse et aliquam nulla. Sed pretium feugiat ligula ut volutpat. Ut condimentum feugiat porttitor. Duis ullamcorper nulla risus, in cursus elit aliquet vel. Mauris efficitur ligula sodales faucibus eleifend. Nullam nec consequat lacus. Proin eget risus at nisl suscipit aliquet ut non enim. Nullam iaculis maximus massa. Mauris imperdiet posuere tortor id hendrerit. </p>
 	        					</div>
 	        					
@@ -120,9 +120,9 @@
 	        			
 	        			
 	        			<!-- PROBLEMA AQUI -->
-	        			<h:form>
+	        			<!-- <h:form>
 	        				<h:commandLink action="#{professorMBean.exibirNotas(usuarioMBean.professor.matricula)}" value="Ver Todos"></h:commandLink>
-	        			</h:form>
+	        			</h:form> -->
 	        			
 	        			
 	        		</td>
