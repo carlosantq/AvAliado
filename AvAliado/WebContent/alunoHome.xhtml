@@ -36,8 +36,8 @@
         
         <h:form class="search-form flexbox-row">
             <h:inputText class="search-box" value="#{avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor}" />
-			<!-- <input type="hidden" name="matriculaAluno" value="#{usuarioMBean.aluno.matricula}" /> -->
             <h:commandLink action="#{avaliacaoAlunoProfessorMBean.paginaAvaliar}">
+            	<f:param name="matriculaAluno" value="#{usuarioMBean.aluno.matricula}"/>
             	<div class="search-button">
             	Buscar
             	</div>

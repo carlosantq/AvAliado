@@ -124,6 +124,10 @@ public class AvaliacaoAlunoProfessorDao implements IDAO<AvaliacaoAlunoProfessor>
             ps.setBoolean(5, novo.getPersonalidade());
             ps.setDate(6, new java.sql.Date(System.currentTimeMillis()));
             ps.executeUpdate();
+            
+            CallableStatement cs = con.prepareCall("{call atualizar_notas(?)}");
+            cs.setInt(1, novo.getMatriculaProfessor());
+            cs.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
         }

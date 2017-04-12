@@ -8,10 +8,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import dominio.Aluno;
 import dominio.AvaliacaoAlunoProfessor;
 import dominio.Professor;
+import servico.AlunoService;
 import servico.AvaliacaoAlunoProfessorService;
 import servico.ProfessorService;
 
@@ -29,7 +32,6 @@ public class AvaliacaoAlunoProfessorMBean {
 		avaliacoes = new ArrayList<AvaliacaoAlunoProfessor>();
 		avaliacaoAPService = new AvaliacaoAlunoProfessorService();
 		professorService = new ProfessorService();
-		
 	}
 	
 	public AvaliacaoAlunoProfessor getAvaliacao(){
@@ -58,7 +60,9 @@ public class AvaliacaoAlunoProfessorMBean {
 	
 	public String paginaAvaliar(){
 		
-		//TO DO: Pegar matrícula do aluno!
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		int matriculaAluno = Integer.parseInt(ec.getRequestParameterMap().get("matriculaAluno"));
+		
 		Professor professorBuscado = professorService.buscar(avaliacao.getMatriculaProfessor());
 		
 		if (professorBuscado.getMatricula() == 0){
@@ -66,14 +70,14 @@ public class AvaliacaoAlunoProfessorMBean {
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
-		}else if (avaliacaoAPService.buscarPorAlunoEProfessor(professorBuscado.getMatricula(), 2014044145).getMatriculaProfessor() != 0){
+		}else if (avaliacaoAPService.buscarPorAlunoEProfessor(professorBuscado.getMatricula(), matriculaAluno).getMatriculaProfessor() != 0){
 			FacesMessage msg = new FacesMessage("Já existe uma avaliação feita.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
 		}else{
 			
-			avaliacao.setMatriculaAluno(2014044145);
+			avaliacao.setMatriculaAluno(matriculaAluno);
 			
 			return "/professor.jsf";
 		}
