@@ -115,7 +115,7 @@ public class ProfessorDao implements IDAO<Professor> {
 	@Override
 	public void inserir(Professor novo) {
 		Connection con = GerenciarConexao.getConexao();
-		String sql = "INSERT INTO Professor VALUES (?, ?)";
+		String sql = "INSERT INTO Professor VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			
 			PreparedStatement ps = con.prepareStatement(sql);

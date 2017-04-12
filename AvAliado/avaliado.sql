@@ -70,6 +70,10 @@ INSERT INTO Pessoa VALUES(1111111112, 0, "Maria", NULL, "maria@email.com");
 INSERT INTO Usuario VALUES (1111111112, "123", 0);
 INSERT INTO Professor VALUES (1111111112, NULL, NULL, NULL);
 
+INSERT INTO Pessoa VALUES(1111111113, 0, "Paulo", NULL, "paulo@email.com");
+INSERT INTO Usuario VALUES (1111111113, "123", 0);
+INSERT INTO Professor VALUES (1111111113, NULL, NULL, NULL);
+
 -- Inserir alunos
 INSERT INTO Pessoa VALUES(2014044145, 1, "Carlos Antonio", "999436881", "carlosantonio.o.n@outlook.com");
 INSERT INTO Usuario VALUES (2014044145, "123", 1);

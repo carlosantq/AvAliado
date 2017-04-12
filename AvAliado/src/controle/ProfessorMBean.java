@@ -52,6 +52,21 @@ public class ProfessorMBean {
 
 	}
 	
+	public String voltar(){
+		return "/professorHome.jsf";
+	}
+	
+	public String exibirNotas(int professor){
+		
+		System.out.println(professor);
+		
+		return "/verTodosProfessor.jsf";
+	}
+	
+	public String exibirNotas2(){
+		return "/verTodosProfessor.jsf";
+	}
+	
 	public String paginaProfessor(Professor selecionado){
 		professor = selecionado;
 		professor = professorService.buscar(professor);

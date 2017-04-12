@@ -34,10 +34,18 @@
         </div>
 
 	<div class="search-box-container outter-container flexbox-row">
-		<form class="search-form flexbox-row" action="">
-			<input class="search-box" type="text" placeholder="Pesquise" />
-			<input class="search-button" type="submit" value="Buscar" />
-		</form>
+		<h:messages/>
+        
+        <h:form class="search-form flexbox-row">
+            <h:inputText class="search-box" value="#{avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor}" />
+			
+            <h:commandLink action="#{avaliacaoAlunoProfessorMBean.paginaAvaliar}">
+            	<div class="search-button">
+            	Buscar
+            	</div>
+            </h:commandLink>
+        </h:form>
+		
 	</div>
 
 	<div class="past-evaluations-container outter-container">

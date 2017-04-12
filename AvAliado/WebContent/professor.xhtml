@@ -19,7 +19,9 @@
             
                 <div id="text-container-prof">
                 	<table><tr><td>
-                    <p id="name-prof"> #{prof.nome} </p>
+                    <ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.avaliacao}">
+                    <p id="name-prof"> #{avaliacao.matriculaProfessor} </p>
+                    </ui:repeat>
                     </td></tr></table>
 
 	
@@ -67,36 +69,13 @@
         </div>
         
         <div id="subjective-evaluation-container">
-            <textarea id="input-text"></textarea>
+            <!-- TO DO: Comentário <textarea id="input-text"></textarea> -->
             
-            <button> Escrever<br/>comentario </button>
-        </div>
-        
-        <div id="body-prof">
-            
-            <div class="evaluation">
-                <div class="text-evaluation-container">
-                    <p class="evaluation-author"> Avaliacao feita por Nome da Pessoa há XX dias.</p>
-                    <p class="evaluation-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis justo fermentum, viverra nisi vitae, egestas sapien. Nunc dictum efficitur lorem, nec pellentesque est accumsan id. Donec lectus risus, tempus sit amet dui viverra, placerat condimentum enim. </p>
-                </div>
-                
-                <div class="number-evaluation-container">
-                    <p class="circle-text"> Didatica </p>
-                    <div class="evaluation-circle">
-                        <p> Like </p>
-                    </div>
-                    
-                    <p class="circle-text"> Provas </p>
-                    <div class="evaluation-circle">
-                        <p> Like </p>
-                    </div>
-                    
-                    <p class="circle-text"> Personalidade </p>
-                    <div class="evaluation-circle">
-                        <p> Like </p>
-                    </div>
-                </div>
-            </div>            
+            <h:form>
+            	<h:commandLink action="#{avaliacaoAlunoProfessorMBean.avaliar}">
+                	<button> Enviar avaliação </button>
+                </h:commandLink>
+            </h:form>
         </div>
     </h:body>
 </html>

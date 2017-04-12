@@ -95,7 +95,6 @@
 	        				<p class="comments-column-header"> Comentários recebidos </p>
 	        			</div>
 	        			
-	        			<ui:repeat var="professor" value="#{usuarioMBean.professor}">
 	        			<ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.buscarRecentes(usuarioMBean.professor.matricula)}">
 	        			<div class="comment-outter-container flexbox-row">
 	        				<div class="comment-inner-container flexbox-row">
@@ -117,15 +116,20 @@
 	        					</div>
 	        				</div>
 	        			</div>
+	        			</ui:repeat>
 	        			
-	        			</ui:repeat>
-	        			</ui:repeat>
+	        			
+	        			<!-- PROBLEMA AQUI -->
+	        			<h:form>
+	        				<h:commandLink action="#{professorMBean.exibirNotas(usuarioMBean.professor.matricula)}" value="Ver Todos"></h:commandLink>
+	        			</h:form>
+	        			
+	        			
 	        		</td>
-	        		
-	        		
 	        	</tr>
 	        <!-- uirepeat -->
 	        </table>
+	        
         </div>
         
     </h:body>

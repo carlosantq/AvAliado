@@ -14,21 +14,25 @@
         
         <div class="user-information-container outter-container">
 	        <table>
-	        	<ui:repeat var="aluno" value="#{usuarioMBean.aluno}">
+	        	<!-- <ui:repeat var="professor" value="#{professorMBean.professor}"> -->
 	        	<tr>
 	        		<td class="user-information-inner-container flexbox-row">
 	        		
 	        			<div id="name-container">
-	        				<p id="user-name"> Todas as avaliações feitas sobre #{prof.nome} </p>
+	        				<p id="user-name"> Todas as avaliações feitas sobre #{professor.nome} </p>
 	        			</div>
-	        			
+                    	
 	        			<div id="back-button-container">
-	        				<button class="search-button back-button"> Voltar </button>		
+	        			<h:form>
+	        				<h:commandLink action="#{professorMBean.voltar}">
+                    			<button class="search-button back-button"> Voltar </button>	
+                    		</h:commandLink>
+                    	</h:form>
 	        			</div>
 	        		
 	        		</td>
 	        	</tr>
-	        	</ui:repeat>
+	        	<!-- </ui:repeat> -->
 	        </table>
         </div>
 
@@ -41,7 +45,7 @@
 
 	<div class="past-evaluations-container outter-container">
         	<table>
-	        <ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
+	        <!-- uirepeat -->
 	        	<tr>
 	        		<td>
 	        		
@@ -68,7 +72,7 @@
 	        		
 	        		</td>
 	        	</tr>
-	        </ui:repeat>
+	        <!-- uirepeat -->
 	        </table>
         </div>
         

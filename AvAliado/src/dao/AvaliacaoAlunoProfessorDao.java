@@ -39,6 +39,29 @@ public class AvaliacaoAlunoProfessorDao implements IDAO<AvaliacaoAlunoProfessor>
 		return null;
 	}
 	
+	public AvaliacaoAlunoProfessor buscarPorAlunoEProfessor(int matriculaProfessor, int matriculaAluno){
+		
+		AvaliacaoAlunoProfessor resultado = new AvaliacaoAlunoProfessor();
+		Connection con = GerenciarConexao.getConexao();
+        String sql = "SELECT * FROM AvaliacaoAlunoProfessor WHERE matriculaProfessor='"+matriculaProfessor+"' AND matriculaAluno='"+matriculaAluno+"'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                resultado.setMatriculaAluno(rs.getInt("matriculaAluno"));
+                resultado.setMatriculaProfessor(rs.getInt("matriculaProfessor"));
+                resultado.setDidatica(rs.getBoolean("didatica"));
+                resultado.setProvas(rs.getBoolean("provas"));
+                resultado.setPersonalidade(rs.getBoolean("personalidade"));
+                resultado.setData(rs.getDate("data"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		
+		return resultado;
+	}
+	
 	public List<AvaliacaoAlunoProfessor> buscarPorMatricula(int matricula){
 		
 		List<AvaliacaoAlunoProfessor> resultado = new ArrayList<AvaliacaoAlunoProfessor>();
@@ -90,8 +113,20 @@ public class AvaliacaoAlunoProfessorDao implements IDAO<AvaliacaoAlunoProfessor>
 
 	@Override
 	public void inserir(AvaliacaoAlunoProfessor novo) {
-		// TODO Auto-generated method stub
-		
+		Connection con = GerenciarConexao.getConexao();
+        String sql = "INSERT INTO AvaliacaoAlunoProfessor VALUES (?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, novo.getMatriculaAluno());
+            ps.setInt(2, novo.getMatriculaProfessor());
+            ps.setBoolean(3, novo.getDidatica());
+            ps.setBoolean(4, novo.getProvas());
+            ps.setBoolean(5, novo.getPersonalidade());
+            ps.setDate(6, new java.sql.Date(System.currentTimeMillis()));
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 	}
 
 	@Override

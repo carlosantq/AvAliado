@@ -122,7 +122,7 @@ public class UsuarioMBean {
 	
 	public String logoff(){
 		this.usuarioLogado = null;
-		return "/index.jsf";
+		return "/login.jsf";
 	}
 	
 	
