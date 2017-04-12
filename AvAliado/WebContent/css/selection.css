@@ -55,9 +55,9 @@ a{
     justify-content: center;
 }
 
-tr {
+#professor-container {
     height: 100%;
-    width: 50%;
+    width: 80%;
     position: absolute;
     right: 0;
     
@@ -103,18 +103,3 @@ tr {
     font-size: .9em;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

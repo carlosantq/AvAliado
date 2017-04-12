@@ -13,27 +13,26 @@
     <h:body>
         
         <div id="login-text-container">
-            <p> Logado como nome-do-usuario </p>
+            <p> Selecione o Professor desejado </p>
         </div>
         
-        <table>
-        <ui:repeat var="prof" value="#{professorMBean.listaProfessores}">
-        
-        	<tr>
-        	<td>
+        <div id="professor-container">
+        	<ui:repeat value="#{professorMBean.listaProfessores}" var="prof">
         	<div class="professor">
                 <div class="professor-photo"></div>
                 <div class="professor-text-container">
                 <h:form>
-                   <p class="professor-name"><h:commandLink action="#{professorMBean.paginaProfessor(prof)}">#{prof.nome}</h:commandLink></p>
+                   <p class="professor-name"><h:commandLink action="#{professorMBean.exibirNotasPublic(prof)}">#{prof.nome}</h:commandLink></p>
                 </h:form>
                     <p class="professor-details"> Matrícula: #{prof.matricula}</p>
-                    <p class="professor-details"> E-mail: #{prof.email}</p>
+                    <p class="professor-details">E-mail:  #{prof.email}</p>
+                    <p class="professor-details">Didática: #{professorMBean.buscarNotas(prof.matricula).notaDidatica}%</p>
+                    <p class="professor-details">Provas: #{professorMBean.buscarNotas(prof.matricula).notaProvas}%</p>
+                    <p class="professor-details">Personalidade: #{professorMBean.buscarNotas(prof.matricula).notaPersonalidade}%</p>
                 </div>
             </div>
-            </td>
-            </tr>
-        </ui:repeat>
-        </table>
+            </ui:repeat>
+        </div>
+        
     </h:body>
 </html>

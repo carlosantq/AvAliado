@@ -15,7 +15,14 @@
         <div id="left-side">
             <h1> AvAliado </h1>
             
-            <button class="no-login-button"> Acessar sem logar </button>
+            <h:form>
+	            <h:commandLink action="#{professorMBean.verProfessores}">
+	            	<div class="no-login-button">
+	                	Acessar sem Logar
+	              	</div>
+	         	</h:commandLink>
+         	</h:form>
+            
         </div>
         
         <div id="right-side">

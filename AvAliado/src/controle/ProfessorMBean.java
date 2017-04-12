@@ -46,6 +46,10 @@ public class ProfessorMBean {
 		return professorService.buscarNotas(matricula);
 	}
 	
+	public String verProfessores(){
+		return "/selection.jsf";
+	}
+	
 	public String cadastrar() {
 		professorService.inserir(professor);
 		return "/index.jsf";
@@ -56,6 +60,10 @@ public class ProfessorMBean {
 		return "/professorHome.jsf";
 	}
 	
+	public String voltarPublic(){
+		return "/selection.jsf";
+	}
+	
 	public String exibirNotas(int professor){
 		
 		System.out.println(professor);
@@ -63,8 +71,12 @@ public class ProfessorMBean {
 		return "/verTodosProfessor.jsf";
 	}
 	
-	public String exibirNotas2(){
-		return "/verTodosProfessor.jsf";
+	public String exibirNotasPublic(Professor professor){
+		
+		this.professor = professor;
+		System.out.println(professor);
+		
+		return "/verTodosProfessorPublic.jsf";
 	}
 	
 	public String paginaProfessor(Professor selecionado){

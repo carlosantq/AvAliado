@@ -14,22 +14,20 @@
         
         <div class="user-information-container outter-container">
 	        <table>
-	        	<ui:repeat var="aluno" value="#{usuarioMBean.aluno}">
 	        	<tr>
 	        		<td class="user-information-inner-container flexbox-row">
 	        		
 	        			<div id="name-container">
-	        				<p id="user-name"> #{aluno.nome} </p>
+	        				<p id="user-name"> #{usuarioMBean.aluno.nome} </p>
 	        			</div>
 	        			
 	        			<div id="info-container">
 	        				<p id="user-course"> Student's course </p>
-	        				<p id="user-period"> Período: #{aluno.periodo} </p>
+	        				<p id="user-period"> Período: #{usuarioMBean.aluno.periodo} </p>
 	        			</div>
-	        		
 	        		</td>
 	        	</tr>
-	        	</ui:repeat>
+	        	
 	        </table>
         </div>
 
@@ -53,7 +51,6 @@
 	        <ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
 	        	<tr>
 	        		<td>
-	        		
 	        			<div class="comment-outter-container flexbox-row">
 	        				<div class="comment-inner-container flexbox-row">
 	        					<div class="comment-text-container">
@@ -74,7 +71,6 @@
 	        					</div>
 	        				</div>
 	        			</div>
-	        		
 	        		</td>
 	        	</tr>
 	        </ui:repeat>
