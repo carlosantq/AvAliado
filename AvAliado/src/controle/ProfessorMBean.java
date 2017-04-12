@@ -73,6 +73,9 @@ public class ProfessorMBean {
 	}
 	
 	public String exibirNotasPublic(Professor professor){
+		
+		this.professor = professor;
+		
 		return "/verTodosProfessorPublic.jsf";
 	}
 	
