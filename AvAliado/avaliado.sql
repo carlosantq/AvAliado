@@ -141,6 +141,7 @@ CREATE TABLE AvaliacaoAlunoProfessor(
 	provas BOOLEAN,
 	personalidade BOOLEAN,
 	data DATE NOT NULL,
+	comentario TEXT,
 	PRIMARY KEY(matriculaAluno, matriculaProfessor),
 	FOREIGN KEY(matriculaAluno) REFERENCES Aluno(matricula),
 	FOREIGN KEY(matriculaProfessor) REFERENCES Professor(matricula)
@@ -153,6 +154,7 @@ CREATE TABLE AvaliacaoAlunoUniversidade(
 	vidaCultural BOOLEAN,
 	auxilios BOOLEAN,
 	data DATE NOT NULL,
+	comentario TEXT,
 	PRIMARY KEY(matriculaAluno, universidadeID),
 	FOREIGN KEY(matriculaAluno) REFERENCES Aluno(matricula),
 	FOREIGN KEY(universidadeID) REFERENCES Universidade(id)
@@ -165,6 +167,7 @@ CREATE TABLE AvaliacaoProfessorUniversidade(
 	vidaCultural BOOLEAN,
 	auxilios BOOLEAN,
 	data DATE NOT NULL,
+	comentario TEXT,
 	PRIMARY KEY(matriculaProfessor, universidadeID),
 	FOREIGN KEY(matriculaProfessor) REFERENCES Professor(matricula),
 	FOREIGN KEY(universidadeID) REFERENCES Universidade(id)
@@ -177,6 +180,7 @@ CREATE TABLE AvaliacaoAlunoCurso(
 	flexibilidade BOOLEAN,
 	mercadoDeTrabalho BOOLEAN,
 	data DATE NOT NULL,
+	comentario TEXT,
 	PRIMARY KEY(matriculaAluno, cursoID),
 	FOREIGN KEY(matriculaAluno) REFERENCES Aluno(matricula),
 	FOREIGN KEY(cursoID) REFERENCES Curso(id)
@@ -189,6 +193,7 @@ CREATE TABLE AvaliacaoProfessorCurso(
 	flexibilidade BOOLEAN,
 	mercadoDeTrabalho BOOLEAN,
 	data DATE NOT NULL,
+	comentario TEXT,
 	PRIMARY KEY(matriculaProfessor, cursoID),
 	FOREIGN KEY(matriculaProfessor) REFERENCES Professor(matricula),
 	FOREIGN KEY(cursoID) REFERENCES Curso(id)
@@ -217,6 +222,7 @@ CREATE TABLE AvaliacaoAlunoDisciplinaOferta(
 	recomendacao BOOLEAN,
 	cobranca BOOLEAN,
 	data DATE NOT NULL,
+	comentario TEXT,
 	PRIMARY KEY(matriculaAluno, disciplinaID, professorID, ano, semestre),
 	FOREIGN KEY(matriculaAluno) REFERENCES Aluno(matricula),
 	FOREIGN KEY(disciplinaID) REFERENCES Disciplina(id),
@@ -295,23 +301,23 @@ INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0507", 1111111112, 2017, 1, 
 INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0507", 1111111112, 2017, 1, 2015044005);
 
 -- Inserir notas dos alunos para o professor 111111111
-INSERT INTO AvaliacaoAlunoProfessor VALUES (2014044145, 1111111111, true, false, false, NOW());
-INSERT INTO AvaliacaoAlunoProfessor VALUES (2013019596, 1111111111, true, false, true, NOW());
-INSERT INTO AvaliacaoAlunoProfessor VALUES (2015044005, 1111111111, true, true, true, NOW());
+INSERT INTO AvaliacaoAlunoProfessor VALUES (2014044145, 1111111111, true, false, false, NOW(), NULL);
+INSERT INTO AvaliacaoAlunoProfessor VALUES (2013019596, 1111111111, true, false, true, NOW(), NULL);
+INSERT INTO AvaliacaoAlunoProfessor VALUES (2015044005, 1111111111, true, true, true, NOW(), NULL);
 
 -- Inserir notas dos alunos para o professor 111111112
-INSERT INTO AvaliacaoAlunoProfessor VALUES (2014044145, 1111111112, true, true, true, NOW());
+INSERT INTO AvaliacaoAlunoProfessor VALUES (2014044145, 1111111112, true, true, true, NOW(), NULL);
 
 -- Inserir notas para a universidade 1
-INSERT INTO AvaliacaoAlunoUniversidade VALUES (2014044145, 1, true, true, true, NOW());
-INSERT INTO AvaliacaoProfessorUniversidade VALUES (1111111111, 1, false, false, false, NOW());
+INSERT INTO AvaliacaoAlunoUniversidade VALUES (2014044145, 1, true, true, true, NOW(), NULL);
+INSERT INTO AvaliacaoProfessorUniversidade VALUES (1111111111, 1, false, false, false, NOW(), NULL);
 
 -- Inserir notas para o curso 1
-INSERT INTO AvaliacaoAlunoCurso VALUES (2014044145, 1, true, true, true, NOW());
-INSERT INTO AvaliacaoProfessorCurso VALUES (1111111111, 1, false, false, false, NOW());
+INSERT INTO AvaliacaoAlunoCurso VALUES (2014044145, 1, true, true, true, NOW(), NULL);
+INSERT INTO AvaliacaoProfessorCurso VALUES (1111111111, 1, false, false, false, NOW(), NULL);
 
 -- Inserir notas para a disciplina teste de software
-INSERT INTO AvaliacaoAlunoDisciplinaOferta VALUES (2014044145, "DIM0507", 1111111112, 2017, 1, true, true, true, true, NOW());
+INSERT INTO AvaliacaoAlunoDisciplinaOferta VALUES (2014044145, "DIM0507", 1111111112, 2017, 1, true, true, true, true, NOW(), NULL);
 
 -- Exibir todos os alunos
 SELECT * FROM Pessoa JOIN Aluno USING(matricula);
