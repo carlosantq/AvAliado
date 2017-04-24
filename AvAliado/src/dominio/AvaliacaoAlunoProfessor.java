@@ -9,6 +9,7 @@ public class AvaliacaoAlunoProfessor {
 	boolean provas;
 	boolean personalidade;
 	Date data;
+	String comentario;
 
 	public AvaliacaoAlunoProfessor(){
 	}
@@ -60,8 +61,16 @@ public class AvaliacaoAlunoProfessor {
 	public void setData (Date data){
 		this.data = data;
 	}
-
+	
+	public String getComentario(){
+		return comentario;
+	}
+	
+	public void setComentario (String comentario){
+		this.comentario = comentario;
+	}
+	
 	public String toString(){
-		return "matriculaAluno = " + matriculaAluno + "matriculaProfessor = " + matriculaProfessor + "didatica = " + didatica + "provas = " + provas + "personalidade = " + personalidade + "data = " + data;
+		return "matriculaAluno = " + matriculaAluno + "matriculaProfessor = " + matriculaProfessor + "didatica = " + didatica + "provas = " + provas + "personalidade = " + personalidade + "data = " + data + "comentário = " + comentario;
 	}
 }

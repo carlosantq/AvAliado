@@ -26,7 +26,7 @@ public class PessoaDao implements IDAO<Pessoa>{
 				pessoa.setMatricula(rs.getInt("matricula"));
 				pessoa.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				pessoa.setNome(rs.getString("nome"));
-				pessoa.setTelefone(rs.getInt("telefone"));
+				pessoa.setTelefone(rs.getString("telefone"));
 				pessoa.setEmail(rs.getString("email"));
 				resultado.add(pessoa);
 			}
@@ -49,7 +49,7 @@ public class PessoaDao implements IDAO<Pessoa>{
 				resultado.setMatricula(rs.getInt("matricula"));
 				resultado.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				resultado.setNome(rs.getString("nome"));
-				resultado.setTelefone(rs.getInt("telefone"));
+				resultado.setTelefone(rs.getString("telefone"));
 				resultado.setEmail(rs.getString("email"));
 			}
 		} catch (SQLException e) {
@@ -68,7 +68,7 @@ public class PessoaDao implements IDAO<Pessoa>{
 			ps.setInt(1, novo.getMatricula());
 			ps.setInt(2, novo.getTipoid().ordinal());
 			ps.setString(3, novo.getNome());
-			ps.setInt(4, novo.getTelefone());
+			ps.setString(4, novo.getTelefone());
 			ps.setString(5, novo.getEmail());
 			
 			ps.executeUpdate();

@@ -25,7 +25,7 @@ public class AlunoDao implements IDAO<Aluno>{
 				aluno.setMatricula(rs.getInt("matricula"));
 				aluno.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				aluno.setNome(rs.getString("nome"));
-				aluno.setTelefone(rs.getInt("telefone"));
+				aluno.setTelefone(rs.getString("telefone"));
 				aluno.setEmail(rs.getString("email"));
 				aluno.setPeriodo(rs.getInt("periodo"));
 				resultado.add(aluno);
@@ -48,7 +48,7 @@ public class AlunoDao implements IDAO<Aluno>{
 				resultado.setMatricula(rs.getInt("matricula"));
 				resultado.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				resultado.setNome(rs.getString("nome"));
-				resultado.setTelefone(rs.getInt("telefone"));
+				resultado.setTelefone(rs.getString("telefone"));
 				resultado.setEmail(rs.getString("email"));
 				resultado.setPeriodo(rs.getInt("periodo"));
 			}
@@ -71,7 +71,7 @@ public class AlunoDao implements IDAO<Aluno>{
 				resultado.setMatricula(rs.getInt("matricula"));
 				resultado.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				resultado.setNome(rs.getString("nome"));
-				resultado.setTelefone(rs.getInt("telefone"));
+				resultado.setTelefone(rs.getString("telefone"));
 				resultado.setEmail(rs.getString("email"));
 				resultado.setPeriodo(rs.getInt("periodo"));
 			}
@@ -91,7 +91,7 @@ public class AlunoDao implements IDAO<Aluno>{
 			ps.setInt(1, novo.getMatricula());
 			ps.setInt(2, novo.getTipoid().ordinal());
 			ps.setString(3, novo.getNome());
-			ps.setInt(4, novo.getTelefone());
+			ps.setString(4, novo.getTelefone());
 			ps.setString(5, novo.getEmail());
 			ps.setInt(6, novo.getPeriodo());
 			

@@ -5,7 +5,7 @@ public class Pessoa{
 	private int matricula;
 	private TipoPessoa tipoId;
 	private String nome;
-	private int telefone;
+	private String telefone;
 	private String email;
 
 	public Pessoa(){
@@ -35,11 +35,11 @@ public class Pessoa{
 		this.nome = nome;
 	}
 
-	public int getTelefone(){
+	public String getTelefone(){
 		return telefone;
 	}
 	
-	public void setTelefone (int telefone){
+	public void setTelefone (String telefone){
 		this.telefone = telefone;
 	}
 

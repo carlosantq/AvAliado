@@ -71,15 +71,17 @@
                 </div>
             </div>
             
+            	<div id="subjective-evaluation-container">
+            		<h:inputTextarea id="input-text" value="#{avaliacaoAlunoProfessorMBean.avaliacao.comentario}"/>
+        		</div>
+            
             	<h:commandLink action="#{avaliacaoAlunoProfessorMBean.avaliar}">
                 	<button> Enviar avaliação </button>
                 </h:commandLink>
-            </h:form>
+        	</h:form>
             
         </div>
         
-        <div id="subjective-evaluation-container">
-            <!-- TO DO: Comentário <textarea id="input-text"></textarea> -->
-        </div>
+        
     </h:body>
 </html>

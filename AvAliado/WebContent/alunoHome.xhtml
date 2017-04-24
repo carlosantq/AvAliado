@@ -50,13 +50,11 @@
         	<table>
 	        <ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
 	        <ui:repeat var="professor" value="#{professorMBean.buscar(avaliacao.matriculaProfessor)}">
-	        	<tr>
-	        		<td>
 	        			<div class="comment-outter-container flexbox-row">
 	        				<div class="comment-inner-container flexbox-row">
 	        					<div class="comment-text-container">
 	        						<p class="about-comment"> Avaliação sobre #{avaliacao.matriculaProfessor} - #{professor.nome}</p>
-	        						<p class="comment"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec nisl quis nulla consectetur imperdiet. Vivamus efficitur orci sed eleifend aliquet. Suspendisse et aliquam nulla. Sed pretium feugiat ligula ut volutpat. Ut condimentum feugiat porttitor. Duis ullamcorper nulla risus, in cursus elit aliquet vel. Mauris efficitur ligula sodales faucibus eleifend. Nullam nec consequat lacus. Proin eget risus at nisl suscipit aliquet ut non enim. Nullam iaculis maximus massa. Mauris imperdiet posuere tortor id hendrerit. </p>
+	        						<p class="comment"> #{avaliacao.comentario} </p>
 	        					</div>
 	        					
 	        					<div class="comment-likes-container flexbox-column">
@@ -72,8 +70,6 @@
 	        					</div>
 	        				</div>
 	        			</div>
-	        		</td>
-	        	</tr>
 	        </ui:repeat>
 	        </ui:repeat>
 	        </table>

@@ -151,7 +151,7 @@ button:focus{
     align-items: center;
     justify-content: flex-start;
 }
-#input-text {
+textarea {
     width: 30em;
     height: 10em;
     padding: 1em;

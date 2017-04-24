@@ -26,7 +26,7 @@ public class ProfessorDao implements IDAO<Professor> {
 				professor.setMatricula(rs.getInt("matricula"));
 				professor.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				professor.setNome(rs.getString("nome"));
-				professor.setTelefone(rs.getInt("telefone"));
+				professor.setTelefone(rs.getString("telefone"));
 				professor.setEmail(rs.getString("email"));
 				professor.setNotaDidatica(rs.getInt("notaDidatica"));
 				professor.setNotaProvas(rs.getInt("notaProvas"));
@@ -52,7 +52,7 @@ public class ProfessorDao implements IDAO<Professor> {
 				resultado.setMatricula(rs.getInt("matricula"));
 				resultado.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				resultado.setNome(rs.getString("nome"));
-				resultado.setTelefone(rs.getInt("telefone"));
+				resultado.setTelefone(rs.getString("telefone"));
 				resultado.setEmail(rs.getString("email"));
 				resultado.setNotaDidatica(rs.getInt("notaDidatica"));
 				resultado.setNotaProvas(rs.getInt("notaProvas"));
@@ -76,7 +76,7 @@ public class ProfessorDao implements IDAO<Professor> {
 				resultado.setMatricula(rs.getInt("matricula"));
 				resultado.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoid")));
 				resultado.setNome(rs.getString("nome"));
-				resultado.setTelefone(rs.getInt("telefone"));
+				resultado.setTelefone(rs.getString("telefone"));
 				resultado.setEmail(rs.getString("email"));
 				resultado.setNotaDidatica(rs.getInt("notaDidatica"));
 				resultado.setNotaProvas(rs.getInt("notaProvas"));
@@ -122,7 +122,7 @@ public class ProfessorDao implements IDAO<Professor> {
 			ps.setInt(1, novo.getMatricula());
 			ps.setInt(2, novo.getTipoid().ordinal());
 			ps.setString(3, novo.getNome());
-			ps.setInt(4, novo.getTelefone());
+			ps.setString(4, novo.getTelefone());
 			ps.setString(5, novo.getEmail());
 			ps.setInt(6, novo.getNotaDidatica());
 			ps.setInt(7, novo.getNotaProvas());

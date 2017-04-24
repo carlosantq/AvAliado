@@ -24,6 +24,7 @@ public class AvaliacaoAlunoProfessorDao implements IDAO<AvaliacaoAlunoProfessor>
 				avaliacao.setProvas(rs.getBoolean("provas"));
 				avaliacao.setPersonalidade(rs.getBoolean("personalidade"));
 				avaliacao.setData(rs.getDate("data"));
+				avaliacao.setComentario((rs.getString("comentario") == null || rs.getString("comentario") == "") ? "Não há comentário para esta avaliação." : rs.getString("comentario"));
 				resultado.add(avaliacao);
 			}
 		} catch (SQLException e) {
@@ -54,6 +55,7 @@ public class AvaliacaoAlunoProfessorDao implements IDAO<AvaliacaoAlunoProfessor>
                 resultado.setProvas(rs.getBoolean("provas"));
                 resultado.setPersonalidade(rs.getBoolean("personalidade"));
                 resultado.setData(rs.getDate("data"));
+				resultado.setComentario((rs.getString("comentario") == null || rs.getString("comentario") == "") ? "Não há comentário para esta avaliação." : rs.getString("comentario"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,6 +80,7 @@ public class AvaliacaoAlunoProfessorDao implements IDAO<AvaliacaoAlunoProfessor>
 				avaliacao.setProvas(rs.getBoolean("provas"));
 				avaliacao.setPersonalidade(rs.getBoolean("personalidade"));
 				avaliacao.setData(rs.getDate("data"));
+				avaliacao.setComentario((rs.getString("comentario") == null || rs.getString("comentario") == "") ? "Não há comentário para esta avaliação." : rs.getString("comentario"));
 				resultado.add(avaliacao);
 			}
 		} catch (SQLException e) {
@@ -102,6 +105,7 @@ public class AvaliacaoAlunoProfessorDao implements IDAO<AvaliacaoAlunoProfessor>
 				avaliacao.setProvas(rs.getBoolean("provas"));
 				avaliacao.setPersonalidade(rs.getBoolean("personalidade"));
 				avaliacao.setData(rs.getDate("data"));
+				avaliacao.setComentario((rs.getString("comentario") == null || rs.getString("comentario") == "") ? "Não há comentário para esta avaliação." : rs.getString("comentario"));
 				resultado.add(avaliacao);
 			}
 		} catch (SQLException e) {
@@ -114,7 +118,7 @@ public class AvaliacaoAlunoProfessorDao implements IDAO<AvaliacaoAlunoProfessor>
 	@Override
 	public void inserir(AvaliacaoAlunoProfessor novo) {
 		Connection con = GerenciarConexao.getConexao();
-        String sql = "INSERT INTO AvaliacaoAlunoProfessor VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO AvaliacaoAlunoProfessor VALUES (?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, novo.getMatriculaAluno());
@@ -123,6 +127,8 @@ public class AvaliacaoAlunoProfessorDao implements IDAO<AvaliacaoAlunoProfessor>
             ps.setBoolean(4, novo.getProvas());
             ps.setBoolean(5, novo.getPersonalidade());
             ps.setDate(6, new java.sql.Date(System.currentTimeMillis()));
+            System.out.println("Isso veio: " + novo.getComentario());
+            ps.setString(7, novo.getComentario());
             ps.executeUpdate();
             
             CallableStatement cs = con.prepareCall("{call atualizar_notas(?)}");
