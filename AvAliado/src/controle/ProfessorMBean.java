@@ -89,6 +89,8 @@ public class ProfessorMBean {
 		return "/professor.jsf";
 	}
 
-	
+	public String logoff(){
+		return "/login.jsf";
+	}
 	
 }

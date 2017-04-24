@@ -71,6 +71,15 @@ html, body {
 	color: #bfbfbf;
 }
 
+.logout-button {
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding: 1em;
+	border-radius: 100em;
+	margin: 1em;
+}
+
 .search-box-container {
 	background: #cccccc;
 }
@@ -143,6 +152,7 @@ a{
 }
 .comment-likes-container {
 	width: 25%;
+	padding: 1em;
 }
 .evaluation {
 	height: 2.2em;

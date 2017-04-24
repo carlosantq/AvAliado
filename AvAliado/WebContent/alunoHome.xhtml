@@ -11,7 +11,15 @@
     </h:head>
     
     <h:body>
-        
+    	
+    	<h:form>
+            <h:commandLink action="#{usuarioMBean.logoff}">
+            	<div class="logout-button search-button">
+    				<p>Log out</p>
+    			</div>
+            </h:commandLink>
+        </h:form>
+    	
         <div class="user-information-container outter-container">
 	        <table>
 	        	<tr>

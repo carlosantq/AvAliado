@@ -1,71 +1,65 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-	<h:head>
-        <title> AvAliado </title>
-        
-        <link rel="stylesheet" type="text/css" href="css/professorhome.css"/>
-    </h:head>
-    
-    <h:body>
-        
-        <div class="notifications-container no-notification">
-	        <p class="notifications"> Notificações </p>
-	    </div>
-        
-        <div class="user-information-container outter-container">
-	        <table>
-	        <ui:repeat var="professor" value="#{usuarioMBean.professor}">
-	        	<tr>
-	        		<td class="user-information-inner-container flexbox-row">
-	        		
-	        			<div id="name-container">
-	        				<p id="user-name"> #{professor.nome} </p>
-	        			</div>
-	        			
-	        			<ui:repeat var="avaliacao" value="#{professorMBean.buscarNotas(usuarioMBean.professor.matricula)}">
-	        			<div class="evaluation-results-container">
-	        				<p class="evaluation-text"> Personalidade </p>
-	        				<p class="evaluation-grade"> #{avaliacao.notaPersonalidade}%</p>
-	        			</div>
-	        			
-	        			<div class="evaluation-results-container">
-	        				<p class="evaluation-text"> Provas </p>
-	        				<p class="evaluation-grade"> #{avaliacao.notaProvas}%</p>
-	        			</div>
-	        			
-	        			<div class="evaluation-results-container">
-	        				<p class="evaluation-text"> Didática </p>
-	        				<p class="evaluation-grade"> #{avaliacao.notaDidatica}%</p>
-	        			</div>
-	        			</ui:repeat>
-	        		</td>
-	        	</tr>
-	        </ui:repeat>
-	        </table>
-        </div>
-        
-        <!-- <div class="search-box-container outter-container">
-        	<form class="search-form flexbox-row" action="">
-				<input class="search-box" type="text" placeholder="Pesquise" />
-				<input class="search-button" type="submit" value="Buscar" />
-			</form>
-        </div> -->
-        
-        <div class="past-evaluations-container outter-container">
-        	<table>
-	        <!-- uirepeat -->
-	        	<tr>
-	        		<td class="comments-column-container">
-	        		
-	        			<div class="comments-column-header-container">
-	        				<p class="comments-column-header"> Comentários realizados </p>
-	        			</div>
-	        		
-	        			<!-- TO DO 
+<h:head>
+	<title>AvAliado</title>
+
+	<link rel="stylesheet" type="text/css" href="css/professorhome.css" />
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<h:commandLink action="#{usuarioMBean.logoff}">
+			<div class="logout-button search-button flexbox-row">
+				<p>Log out</p>
+			</div>
+		</h:commandLink>
+	</h:form>
+
+	<div class="user-information-container outter-container">
+		<table>
+			<ui:repeat var="professor" value="#{usuarioMBean.professor}">
+				<tr>
+					<td class="user-information-inner-container flexbox-row">
+
+						<div id="name-container">
+							<p id="user-name">#{professor.nome}</p>
+						</div> <ui:repeat var="avaliacao"
+							value="#{professorMBean.buscarNotas(usuarioMBean.professor.matricula)}">
+							<div class="evaluation-results-container">
+								<p class="evaluation-text">Personalidade</p>
+								<p class="evaluation-grade">#{avaliacao.notaPersonalidade}%</p>
+							</div>
+
+							<div class="evaluation-results-container">
+								<p class="evaluation-text">Provas</p>
+								<p class="evaluation-grade">#{avaliacao.notaProvas}%</p>
+							</div>
+
+							<div class="evaluation-results-container">
+								<p class="evaluation-text">Didática</p>
+								<p class="evaluation-grade">#{avaliacao.notaDidatica}%</p>
+							</div>
+						</ui:repeat>
+					</td>
+				</tr>
+			</ui:repeat>
+		</table>
+	</div>
+
+	<div class="past-evaluations-container outter-container">
+		<table class="outter-container">
+			<!-- uirepeat -->
+			<tr>
+				<td class="comments-column-container">
+
+					<div class="comments-column-header-container">
+						<p class="comments-column-header">Comentários realizados</p>
+					</div> <!-- TO DO 
 	        			<div class="comment-outter-container flexbox-row">
 	        				<div class="comment-inner-container flexbox-row">
 	        					<div class="comment-text-container">
@@ -87,50 +81,46 @@
 	        				</div>
 	        			</div>
 	        			-->
-	        		</td>
-	        		
-	        		
-	        		<td class="comments-column-container">
-	        			<div class="comments-column-header-container">
-	        				<p class="comments-column-header"> Comentários recebidos </p>
-	        			</div>
-	        			
-	        			<ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.buscarPorMatricula(usuarioMBean.professor.matricula)}">
-	        			<div class="comment-outter-container flexbox-row">
-	        				<div class="comment-inner-container flexbox-row">
-	        					<div class="comment-text-container">
-	        						<p class="about-comment"> Avaliação feita por #{avaliacao.matriculaAluno} </p>
-	        						<p class="comment"> #{avaliacao.comentario} </p>	
-	        					</div>
-	        					
-	        					<div class="comment-likes-container flexbox-column">
-	        						<span>
-	        						<h:outputText value="Personalidade" styleClass="#{avaliacao.personalidade ? 'evaluation like' : 'evaluation dislike'}" /> 
-	        						</span>
-	        						<span>
-	        						<h:outputText value="Provas" styleClass="#{avaliacao.provas ? 'evaluation like' : 'evaluation dislike'}" /> 
-	        						</span>
-	        						<span>
-	        						<h:outputText value="Didática" styleClass="#{avaliacao.didatica ? 'evaluation like' : 'evaluation dislike'}" /> 
-	        						</span>
-	        					</div>
-	        				</div>
-	        			</div>
-	        			</ui:repeat>
-	        			
-	        			
-	        			<!-- PROBLEMA AQUI -->
-	        			<!-- <h:form>
+				</td>
+
+
+				<td class="comments-column-container">
+					<div class="comments-column-header-container">
+						<p class="comments-column-header">Comentários recebidos</p>
+					</div>
+					
+					<ui:repeat var="avaliacao"
+						value="#{avaliacaoAlunoProfessorMBean.buscarPorMatricula(usuarioMBean.professor.matricula)}">
+						<div class="comment-outter-container flexbox-row">
+							<div class="comment-inner-container flexbox-row">
+								<div class="comment-text-container">
+									<p class="about-comment">Avaliação feita por
+										#{avaliacao.matriculaAluno}</p>
+									<p class="comment">#{avaliacao.comentario}</p>
+								</div>
+
+								<div class="comment-likes-container flexbox-column">
+									<span> <h:outputText value="Personalidade"
+											styleClass="#{avaliacao.personalidade ? 'evaluation like' : 'evaluation dislike'}" />
+									</span> <span> <h:outputText value="Provas"
+											styleClass="#{avaliacao.provas ? 'evaluation like' : 'evaluation dislike'}" />
+									</span> <span> <h:outputText value="Didática"
+											styleClass="#{avaliacao.didatica ? 'evaluation like' : 'evaluation dislike'}" />
+									</span>
+								</div>
+							</div>
+						</div>
+					</ui:repeat> <!-- PROBLEMA AQUI --> <!-- <h:form>
 	        				<h:commandLink action="#{professorMBean.exibirNotas(usuarioMBean.professor.matricula)}" value="Ver Todos"></h:commandLink>
 	        			</h:form> -->
-	        			
-	        			
-	        		</td>
-	        	</tr>
-	        <!-- uirepeat -->
-	        </table>
-	        
-        </div>
-        
-    </h:body>
+
+
+				</td>
+			</tr>
+			<!-- uirepeat -->
+		</table>
+
+	</div>
+
+</h:body>
 </html>

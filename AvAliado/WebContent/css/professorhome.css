@@ -72,26 +72,14 @@ html, body {
 	color: #bfbfbf;
 }
 
-.notifications-container {
+.logout-button {
 	position: fixed;
 	top: 0;
 	right: 0;
 	padding: 1em;
-	margin: 1.5em;
 	border-radius: 100em;
+	margin: 1em;
 }
-.no-notification {
-	background: transparent;
-	color: #d9d9d9;
-	border: 1px solid #d9d9d9;
-}
-.yes-notification {
-	background: #d9d9d9;
-	color: white;
-	border: 1px solid transparent;
-}
-
-
 
 .search-box-container {
 	background: #cccccc;
@@ -179,6 +167,7 @@ html, body {
 }
 .comment-likes-container {
 	width: 30%;
+	padding: 1em;
 }
 .evaluation {
 	height: 2.2em;
