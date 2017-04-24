@@ -11,6 +11,7 @@ import servico.PessoaService;
 @ManagedBean
 @SessionScoped
 public class PessoaMBean {
+	
 	private Pessoa pessoa;
 	private List<Pessoa> listaPessoas;
 	private PessoaService pessoaService;
