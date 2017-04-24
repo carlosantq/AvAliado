@@ -3,13 +3,14 @@ package dominio;
 import java.util.Date;
 
 public class AvaliacaoAlunoProfessor {
-	int matriculaAluno;
-	int matriculaProfessor;
-	boolean didatica;
-	boolean provas;
-	boolean personalidade;
-	Date data;
-	String comentario;
+	
+	private int matriculaAluno;
+	private int matriculaProfessor;
+	private boolean didatica;
+	private boolean provas;
+	private boolean personalidade;
+	private Date data;
+	private String comentario;
 
 	public AvaliacaoAlunoProfessor(){
 	}
