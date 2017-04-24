@@ -2,9 +2,9 @@ package dominio;
 
 public class Usuario{
 	
-	int matricula;
-	String senha;
-	TipoPessoa tipoId;
+	private int matricula;
+	private String senha;
+	private TipoPessoa tipoId;
 	
 	public Usuario(){
 	}

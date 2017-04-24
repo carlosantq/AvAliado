@@ -2,7 +2,7 @@ package dominio;
 
 public class Aluno extends Pessoa{
 
-	int periodo;
+	private int periodo;
 
 	public Aluno(){
 	}
