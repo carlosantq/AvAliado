@@ -1,38 +1,53 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-	<h:head>
-        <title> AvAliado </title>
-        
-        <link rel="stylesheet" type="text/css" href="css/selection.css"/>
-    </h:head>
-    
-    <h:body>
-        
-        <div id="login-text-container">
-            <p> Selecione o Professor desejado </p>
-        </div>
-        
-        <div id="professor-container">
-        	<ui:repeat value="#{professorMBean.listaProfessores}" var="prof">
-        	<div class="professor">
-                <div class="professor-photo"></div>
-                <div class="professor-text-container">
-                <h:form>
-                   <p class="professor-name"><h:commandLink action="#{professorMBean.exibirNotasPublic(prof)}">#{prof.nome}</h:commandLink></p>
-                </h:form>
-                    <p class="professor-details"> Matrícula: #{prof.matricula}</p>
-                    <p class="professor-details">E-mail:  #{prof.email}</p>
-                    <p class="professor-details">Didática: #{professorMBean.buscarNotas(prof.matricula).notaDidatica}%</p>
-                    <p class="professor-details">Provas: #{professorMBean.buscarNotas(prof.matricula).notaProvas}%</p>
-                    <p class="professor-details">Personalidade: #{professorMBean.buscarNotas(prof.matricula).notaPersonalidade}%</p>
-                </div>
-            </div>
-            </ui:repeat>
-        </div>
-        
-    </h:body>
+<h:head>
+	<title>AvAliado</title>
+
+	<link rel="stylesheet" type="text/css" href="css/selection.css" />
+</h:head>
+
+<h:body class="flexbox-column">
+
+	<h:form>
+		<h:commandLink action="#{professorMBean.logoff}">
+			<div class="logout-button">
+				<p>Voltar</p>
+			</div>
+		</h:commandLink>
+	</h:form>
+
+	<div id="header-container">
+		<p>Selecione o Professor desejado</p>
+	</div>
+
+	<div id="professor-container" class="flexbox-row">
+		<ui:repeat value="#{professorMBean.listaProfessores}" var="prof">
+			<h:form>
+				<h:commandLink action="#{professorMBean.exibirNotasPublic(prof)}">
+					<div class="professor flexbox-column">
+						<div class="professor-photo-container flexbox-row">
+							<h:graphicImage class="professor-photo" value="img/avatar.png" />
+						</div>
+						<div class="professor-text-container flexbox-column">
+							<p class="professor-name">#{prof.nome}</p>
+							<p class="professor-details">Matrícula: #{prof.matricula}</p>
+							<p class="professor-details">E-mail: #{prof.email}</p>
+							<p class="professor-details">Didática:
+								#{professorMBean.buscarNotas(prof.matricula).notaDidatica}%</p>
+							<p class="professor-details">Provas:
+								#{professorMBean.buscarNotas(prof.matricula).notaProvas}%</p>
+							<p class="professor-details">Personalidade:
+								#{professorMBean.buscarNotas(prof.matricula).notaPersonalidade}%</p>
+						</div>
+					</div>
+				</h:commandLink>
+			</h:form>
+		</ui:repeat>
+	</div>
+
+</h:body>
 </html>
