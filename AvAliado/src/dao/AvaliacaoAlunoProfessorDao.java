@@ -127,7 +127,6 @@ public class AvaliacaoAlunoProfessorDao implements IDAO<AvaliacaoAlunoProfessor>
             ps.setBoolean(4, novo.getProvas());
             ps.setBoolean(5, novo.getPersonalidade());
             ps.setDate(6, new java.sql.Date(System.currentTimeMillis()));
-            System.out.println("Isso veio: " + novo.getComentario());
             ps.setString(7, novo.getComentario());
             ps.executeUpdate();
             
