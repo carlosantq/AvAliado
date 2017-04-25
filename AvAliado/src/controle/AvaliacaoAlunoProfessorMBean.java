@@ -16,6 +16,7 @@ import dominio.AvaliacaoAlunoProfessor;
 import dominio.Professor;
 import servico.AlunoService;
 import servico.AvaliacaoAlunoProfessorService;
+import servico.DisciplinaService;
 import servico.ProfessorService;
 
 @ManagedBean
@@ -26,12 +27,14 @@ public class AvaliacaoAlunoProfessorMBean {
 	private List<AvaliacaoAlunoProfessor> avaliacoes;
 	private AvaliacaoAlunoProfessorService avaliacaoAPService;
 	private ProfessorService professorService;
+	private DisciplinaService disciplinaService;
 	
 	public AvaliacaoAlunoProfessorMBean(){
 		avaliacao = new AvaliacaoAlunoProfessor();
 		avaliacoes = new ArrayList<AvaliacaoAlunoProfessor>();
 		avaliacaoAPService = new AvaliacaoAlunoProfessorService();
 		professorService = new ProfessorService();
+		disciplinaService = new DisciplinaService();
 	}
 	
 	public AvaliacaoAlunoProfessor getAvaliacao(){
@@ -70,13 +73,17 @@ public class AvaliacaoAlunoProfessorMBean {
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
+		}else if (disciplinaService.buscarVinculo(matriculaAluno, professorBuscado.getMatricula()) == false){
+			FacesMessage msg = new FacesMessage("Você não esteve em nenhuma disciplina ministrada por este professor. A avaliação não poderá ser feita.");
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+			return null;
 		}else if (avaliacaoAPService.buscarPorAlunoEProfessor(professorBuscado.getMatricula(), matriculaAluno).getMatriculaProfessor() != 0){
 			FacesMessage msg = new FacesMessage("Já existe uma avaliação feita.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
 		}else{
-			
 			avaliacao.setMatriculaAluno(matriculaAluno);
 			
 			return "/professor.jsf";
