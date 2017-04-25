@@ -1,87 +1,86 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-	<h:head>
-        <title> AvAliado </title>
-        
-        <link rel="stylesheet" type="text/css" href="css/alunohome.css"/>
-    </h:head>
-    
-    <h:body>
-    	
-    	<h:form>
-            <h:commandLink action="#{usuarioMBean.logoff}">
-            	<div class="logout-button search-button">
-    				<p>Log out</p>
-    			</div>
-            </h:commandLink>
-        </h:form>
-    	
-        <div class="user-information-container outter-container">
-	        <table>
-	        	<tr>
-	        		<td class="user-information-inner-container flexbox-row">
-	        		
-	        			<div id="name-container">
-	        				<p id="user-name"> #{usuarioMBean.aluno.nome} </p>
-	        			</div>
-	        			
-	        			<div id="info-container">
-	        				<p id="user-course"> Student's course </p>
-	        				<p id="user-period"> Período: #{usuarioMBean.aluno.periodo} </p>
-	        			</div>
-	        		</td>
-	        	</tr>
-	        	
-	        </table>
-        </div>
+<h:head>
+	<title>AvAliado</title>
+
+	<link rel="stylesheet" type="text/css" href="css/alunohome.css" />
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<h:commandLink action="#{usuarioMBean.logoff}">
+			<div class="logout-button search-button">
+				<p>Log out</p>
+			</div>
+		</h:commandLink>
+	</h:form>
+
+	<div class="user-information-container outter-container">
+		<table>
+			<tr>
+				<td class="user-information-inner-container flexbox-row">
+
+					<div id="name-container">
+						<p id="user-name">#{usuarioMBean.aluno.nome}</p>
+					</div>
+
+					<div id="info-container">
+						<p id="user-course">Student's course</p>
+						<p id="user-period">Período: #{usuarioMBean.aluno.periodo}</p>
+					</div>
+				</td>
+			</tr>
+
+		</table>
+	</div>
 
 	<div class="search-box-container outter-container flexbox-row">
-		<h:messages/>
-        
-        <h:form class="search-form flexbox-row">
-            <h:inputText class="search-box" value="#{avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor}" />
-            <h:commandLink action="#{avaliacaoAlunoProfessorMBean.paginaAvaliar}">
-            	<f:param name="matriculaAluno" value="#{usuarioMBean.aluno.matricula}"/>
-            	<div class="search-button">
-            	Buscar
-            	</div>
-            </h:commandLink>
-        </h:form>
-		
+		<h:form class="search-form flexbox-row">
+			<h:inputText class="search-box"
+				value="#{avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor}" />
+			<h:commandLink action="#{avaliacaoAlunoProfessorMBean.paginaAvaliar}">
+				<f:param name="matriculaAluno"
+					value="#{usuarioMBean.aluno.matricula}" />
+				<div class="search-button">Buscar</div>
+			</h:commandLink>
+		</h:form>
 	</div>
 
 	<div class="past-evaluations-container outter-container">
-        	<table>
-	        <ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
-	        <ui:repeat var="professor" value="#{professorMBean.buscar(avaliacao.matriculaProfessor)}">
-	        			<div class="comment-outter-container flexbox-row">
-	        				<div class="comment-inner-container flexbox-row">
-	        					<div class="comment-text-container">
-	        						<p class="about-comment"> Avaliação sobre #{avaliacao.matriculaProfessor} - #{professor.nome}</p>
-	        						<p class="comment"> #{avaliacao.comentario} </p>
-	        					</div>
-	        					
-	        					<div class="comment-likes-container flexbox-column">
-	        						<span>
-	        						<h:outputText value="Personalidade" styleClass="#{avaliacao.personalidade ? 'evaluation like' : 'evaluation dislike'}" /> 
-	        						</span>
-	        						<span>
-	        						<h:outputText value="Provas" styleClass="#{avaliacao.provas ? 'evaluation like' : 'evaluation dislike'}" /> 
-	        						</span>
-	        						<span>
-	        						<h:outputText value="Didática" styleClass="#{avaliacao.didatica ? 'evaluation like' : 'evaluation dislike'}" /> 
-	        						</span>
-	        					</div>
-	        				</div>
-	        			</div>
-	        </ui:repeat>
-	        </ui:repeat>
-	        </table>
-        </div>
-        
-    </h:body>
+	
+		<h:messages class="error-message" />
+	
+		<table>
+			<ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
+				<ui:repeat var="professor" value="#{professorMBean.buscar(avaliacao.matriculaProfessor)}">
+					<div class="comment-outter-container flexbox-row">
+						<div class="comment-inner-container flexbox-row">
+							<div class="comment-text-container">
+								<p class="about-comment">Avaliação sobre
+									#{avaliacao.matriculaProfessor} - #{professor.nome}</p>
+								<p class="comment">#{avaliacao.comentario}</p>
+							</div>
+
+							<div class="comment-likes-container flexbox-column">
+								<span> <h:outputText value="Personalidade"
+										styleClass="#{avaliacao.personalidade ? 'evaluation like' : 'evaluation dislike'}" />
+								</span> <span> <h:outputText value="Provas"
+										styleClass="#{avaliacao.provas ? 'evaluation like' : 'evaluation dislike'}" />
+								</span> <span> <h:outputText value="Didática"
+										styleClass="#{avaliacao.didatica ? 'evaluation like' : 'evaluation dislike'}" />
+								</span>
+							</div>
+						</div>
+					</div>
+				</ui:repeat>
+			</ui:repeat>
+		</table>
+	</div>
+
+</h:body>
 </html>

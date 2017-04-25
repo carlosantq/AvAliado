@@ -69,21 +69,21 @@ public class AvaliacaoAlunoProfessorMBean {
 		Professor professorBuscado = professorService.buscar(avaliacao.getMatriculaProfessor());
 		
 		if (professorBuscado.getMatricula() == 0){
-			FacesMessage msg = new FacesMessage("Professor n√£o existe.");
+			FacesMessage msg = new FacesMessage("Este professor n„o existe.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
-		}else if (disciplinaService.buscarVinculo(matriculaAluno, professorBuscado.getMatricula()) == false){
-			FacesMessage msg = new FacesMessage("Voc√™ n√£o esteve em nenhuma disciplina ministrada por este professor. A avalia√ß√£o n√£o poder√° ser feita.");
+		} else if (disciplinaService.buscarVinculo(matriculaAluno, professorBuscado.getMatricula()) == false){
+			FacesMessage msg = new FacesMessage("VocÍ n„o esteve em nenhuma disciplina ministrada por este professor. A avaliaÁ„o n„o poder· ser feita.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
-		}else if (avaliacaoAPService.buscarPorAlunoEProfessor(professorBuscado.getMatricula(), matriculaAluno).getMatriculaProfessor() != 0){
-			FacesMessage msg = new FacesMessage("J√° existe uma avalia√ß√£o feita.");
+		} else if (avaliacaoAPService.buscarPorAlunoEProfessor(professorBuscado.getMatricula(), matriculaAluno).getMatriculaProfessor() != 0){
+			FacesMessage msg = new FacesMessage("VocÍ j· avaliou este professor.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
-		}else{
+		} else {
 			avaliacao.setMatriculaAluno(matriculaAluno);
 			
 			return "/professor.jsf";
@@ -98,7 +98,7 @@ public class AvaliacaoAlunoProfessorMBean {
 		
 		avaliacaoAPService.inserir(avaliacao);
 		
-		FacesMessage msg = new FacesMessage("Avalia√ß√£o Registrada.");
+		FacesMessage msg = new FacesMessage("AvaliaÁ„o Registrada.");
 		msg.setSeverity(FacesMessage.SEVERITY_INFO);
 		FacesContext.getCurrentInstance().addMessage("", msg);
 		
