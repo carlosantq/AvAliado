@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
 	<title>AvAliado</title>
@@ -20,7 +20,51 @@
 		</h:commandLink>
 	</h:form>
 
-	<div id="header-container">
+	<div id="header-container" class="flexbox-row">
+		<p>Selecione o curso desejado</p>
+	</div>
+
+	<div id="professor-container" class="flexbox-row">
+		<ui:repeat value="#{cursoMBean.listaCursos}" var="curso">
+			<h:form>
+<!-- 				<h:commandLink action="#{professorMBean.exibirNotasPublic(prof)}"> -->
+					<div class="professor flexbox-column">
+						<div class="professor-text-container flexbox-column">
+							<p class="professor-name">#{curso.nome}</p>
+							<p class="professor-details">Código: #{curso.id}</p>
+							<p class="professor-details">Dificuldade: #{curso.notaDificuldade}%</p>
+							<p class="professor-details">Flexibilidade: #{curso.notaFlexibilidade}%</p>
+							<p class="professor-details">Mercado de Trabalho: #{curso.notaMercadoDeTrabalho}%</p>
+						</div>
+					</div>
+<!-- 				</h:commandLink> -->
+			</h:form>
+		</ui:repeat>
+	</div>
+
+	<div id="header-container" class="flexbox-row">
+		<p>Selecione a disciplina desejada</p>
+	</div>
+
+	<div id="professor-container" class="flexbox-row">
+		<ui:repeat value="#{disciplinaMBean.listaDisciplinas}" var="disciplina">
+			<h:form>
+<!-- 				<h:commandLink action="#{professorMBean.exibirNotasPublic(prof)}"> -->
+					<div class="professor flexbox-column">
+						<div class="professor-text-container flexbox-column">
+							<p class="professor-name">#{disciplina.nome}</p>
+							<p class="professor-details">Código: #{disciplina.id}</p>
+							<p class="professor-details">Dificuldade: #{disciplina.notaDificuldade}%</p>
+							<p class="professor-details">Relevância: #{disciplina.notaRelevancia}%</p>
+							<p class="professor-details">Recomendação: #{disciplina.notaRecomendacao}%</p>
+						</div>
+					</div>
+<!-- 				</h:commandLink> -->
+			</h:form>
+		</ui:repeat>
+	</div>
+	
+	<div id="header-container" class="flexbox-row">
 		<p>Selecione o Professor desejado</p>
 	</div>
 

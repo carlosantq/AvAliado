@@ -8,6 +8,9 @@ public class Curso {
 	private int notaFlexibilidade;
 	private int notaMercadoDeTrabalho;
 	
+	public Curso() {
+	}
+	
 	public String getNome() {
 		return nome;
 	}

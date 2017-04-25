@@ -18,8 +18,7 @@ public class DisciplinaService implements IServico<Disciplina>{
 
 	@Override
 	public List<Disciplina> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		return disciplinaDao.buscarTodos();
 	}
 
 	@Override

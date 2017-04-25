@@ -20,12 +20,12 @@ public class DisciplinaMBean {
 
 	private Disciplina disciplina;
 	private List<Disciplina> listaDisciplinas;
-//	private DisciplinaService disciplinaService;
+    private DisciplinaService disciplinaService;
 	
 	public DisciplinaMBean() {
 		this.disciplina = new Disciplina();;
 		this.listaDisciplinas = new ArrayList<Disciplina>();
-//		this.disciplinaService = new DisciplinaService();
+		this.disciplinaService = new DisciplinaService();
 	}
 
 	public Disciplina getDisciplina() {
@@ -37,6 +37,7 @@ public class DisciplinaMBean {
 	}
 
 	public List<Disciplina> getListaDisciplinas() {
+		listaDisciplinas = disciplinaService.buscarTodos();
 		return listaDisciplinas;
 	}
 
