@@ -55,7 +55,7 @@ public class AvaliacaoUniversidadeDao implements IDAO<AvaliacaoUniversidade>{
             ps.setString(7, novo.getComentario());
             ps.executeUpdate();
             
-            CallableStatement cs = con.prepareCall("{atualizar_notas_universidade(?)}");
+            CallableStatement cs = con.prepareCall("{call atualizar_notas_universidade(?)}");
             cs.setInt(1, novo.getUniversidadeId());
             cs.executeQuery();
         } catch (SQLException e) {

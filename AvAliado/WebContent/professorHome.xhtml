@@ -56,31 +56,93 @@
 			<!-- uirepeat -->
 			<tr>
 				<td class="comments-column-container">
+				
+					<h:messages/>
 
 					<div class="comments-column-header-container">
 						<p class="comments-column-header">Comentários realizados</p>
-					</div> <!-- TO DO 
-	        			<div class="comment-outter-container flexbox-row">
-	        				<div class="comment-inner-container flexbox-row">
-	        					<div class="comment-text-container">
-	        						<p class="about-comment"> Comentário sobre XXXXXXXXX </p>
-	        						<p class="comment"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec nisl quis nulla consectetur imperdiet. Vivamus efficitur orci sed eleifend aliquet. Suspendisse et aliquam nulla. Sed pretium feugiat ligula ut volutpat. Ut condimentum feugiat porttitor. Duis ullamcorper nulla risus, in cursus elit aliquet vel. Mauris efficitur ligula sodales faucibus eleifend. Nullam nec consequat lacus. Proin eget risus at nisl suscipit aliquet ut non enim. Nullam iaculis maximus massa. Mauris imperdiet posuere tortor id hendrerit. </p>
-	        					</div>
-	        					
-	        					<div class="comment-likes-container flexbox-column">
-	        						<div class="evaluation like">
-	        							<p> Estrutura </p>
-	        						</div>
-	        						<div class="evaluation like">
-	        							<p> Vida Cultural </p>
-	        						</div>
-	        						<div class="evaluation dislike">
-	        							<p> Auxílios </p>
-	        						</div>
-	        					</div>
-	        				</div>
-	        			</div>
-	        			-->
+					</div>
+					
+					<h:form class="search-form flexbox-row">
+						<h:inputText class="search-box"
+							value="#{avaliacaoUniversidadeMBean.avaliacao.universidadeId}" />
+						<h:commandLink action="#{avaliacaoUniversidadeMBean.paginaAvaliar}">
+							<f:param name="matricula"
+								value="#{usuarioMBean.professor.matricula}" />
+							<div class="search-button">Buscar</div>
+						</h:commandLink>
+					</h:form>
+					
+					<div id="name-container">
+						<p id="user-name">Universidades</p>
+					</div>
+					
+					<table>
+						<ui:repeat var="avaliacaoUni" value="#{avaliacaoUniversidadeMBean.buscarPorMatricula(usuarioMBean.professor.matricula)}">
+							<ui:repeat var="universidade" value="#{universidadeMBean.buscar(avaliacaoUni.universidadeId)}">
+								<div class="comment-outter-container flexbox-row">
+									<div class="comment-inner-container flexbox-row">
+										<div class="comment-text-container">
+											<p class="about-comment">Avaliação sobre
+												#{avaliacaoUni.universidadeId} - #{universidade.sigla}</p>
+											<p class="comment">#{avaliacaoUni.comentario}</p>
+										</div>
+			
+										<div class="comment-likes-container flexbox-column">
+											<span> <h:outputText value="Estrutura"
+													styleClass="#{avaliacaoUni.estrutura ? 'evaluation like' : 'evaluation dislike'}" />
+											</span> <span> <h:outputText value="Vida Cultural"
+													styleClass="#{avaliacaoUni.vidaCultural ? 'evaluation like' : 'evaluation dislike'}" />
+											</span> <span> <h:outputText value="Auxílios"
+													styleClass="#{avaliacaoUni.auxilios ? 'evaluation like' : 'evaluation dislike'}" />
+											</span>
+										</div>
+									</div>
+								</div>
+							</ui:repeat>
+						</ui:repeat>
+					</table>
+					
+					<h:form class="search-form flexbox-row">
+						<h:inputText class="search-box"
+							value="#{avaliacaoCursoMBean.avaliacao.cursoId}" />
+						<h:commandLink action="#{avaliacaoCursoMBean.paginaAvaliar}">
+							<f:param name="matricula"
+								value="#{usuarioMBean.professor.matricula}" />
+							<div class="search-button">Buscar</div>
+						</h:commandLink>
+					</h:form>
+					
+					<div id="name-container">
+						<p id="user-name">Cursos</p>
+					</div>
+					
+					<table>
+						<ui:repeat var="avaliacaoCurso" value="#{avaliacaoCursoMBean.buscarPorMatricula(usuarioMBean.professor.matricula)}">
+							<ui:repeat var="curso" value="#{cursoMBean.buscar(avaliacaoCurso.cursoId)}">
+								<div class="comment-outter-container flexbox-row">
+									<div class="comment-inner-container flexbox-row">
+										<div class="comment-text-container">
+											<p class="about-comment">Avaliação sobre
+												#{avaliacaoCurso.cursoId} - #{curso.nome}</p>
+											<p class="comment">#{avaliacaoCurso.comentario}</p>
+										</div>
+			
+										<div class="comment-likes-container flexbox-column">
+											<span> <h:outputText value="Dificuldade"
+													styleClass="#{avaliacaoCurso.dificuldade ? 'evaluation like' : 'evaluation dislike'}" />
+											</span> <span> <h:outputText value="Flexibilidade"
+													styleClass="#{avaliacaoCurso.flexibilidade ? 'evaluation like' : 'evaluation dislike'}" />
+											</span> <span> <h:outputText value="Mercado de Trabalho"
+													styleClass="#{avaliacaoCurso.mercadoDeTrabalho ? 'evaluation like' : 'evaluation dislike'}" />
+											</span>
+										</div>
+									</div>
+								</div>
+							</ui:repeat>
+						</ui:repeat>
+					</table>
+					
 				</td>
 
 

@@ -55,7 +55,7 @@ public class AvaliacaoCursoDao implements IDAO<AvaliacaoCurso>{
             ps.setString(7, novo.getComentario());
             ps.executeUpdate();
             
-            CallableStatement cs = con.prepareCall("{atualizar_notas_curso(?)}");
+            CallableStatement cs = con.prepareCall("{call atualizar_notas_curso(?)}");
             cs.setInt(1, novo.getCursoId());
             cs.executeQuery();
         } catch (SQLException e) {

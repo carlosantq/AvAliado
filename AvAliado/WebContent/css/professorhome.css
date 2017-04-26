@@ -102,16 +102,19 @@ html, body {
 }
 .search-button {
 	background: #d9d9d9;
-	height: 2.5em;
 	font-size: 1.1em;
 	color: #404040;
 	border: none;
 	border-radius: 100em;
-	padding: 0 1.5em;
+	padding: 1em 1.5em;
 }
 .search-button:hover {
 	background: #e6e6e6;
 	cursor: pointer;
+}
+
+a{
+	text-decoration: none;
 }
 
 

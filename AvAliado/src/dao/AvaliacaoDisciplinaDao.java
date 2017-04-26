@@ -62,7 +62,7 @@ public class AvaliacaoDisciplinaDao implements IDAO<AvaliacaoDisciplina>{
             ps.setDate(10, new java.sql.Date(System.currentTimeMillis()));
             ps.setString(11, novo.getComentario());
             ps.executeUpdate();
-            CallableStatement cs = con.prepareCall("{atualizar_notas_disciplina(?,?,?,?)}");
+            CallableStatement cs = con.prepareCall("{call atualizar_notas_disciplina(?,?,?,?)}");
             cs.setString(1, novo.getDisciplinaId());
             cs.setInt(2, novo.getProfessorId());
             cs.setInt(3, novo.getAno());

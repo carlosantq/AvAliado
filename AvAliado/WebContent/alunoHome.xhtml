@@ -12,14 +12,6 @@
 
 <h:body>
 
-	<h:form>
-		<h:commandLink action="#{usuarioMBean.logoff}">
-			<div class="logout-button search-button">
-				<p>Log out</p>
-			</div>
-		</h:commandLink>
-	</h:form>
-
 	<div class="user-information-container outter-container">
 		<table>
 			<tr>
@@ -33,6 +25,14 @@
 						<p id="user-course">Student's course</p>
 						<p id="user-period">Período: #{usuarioMBean.aluno.periodo}</p>
 					</div>
+					
+					<h:form>
+						<h:commandLink action="#{usuarioMBean.logoff}">
+							<div class="logout-button search-button">
+								<p>Log out</p>
+							</div>
+						</h:commandLink>
+					</h:form>
 				</td>
 			</tr>
 

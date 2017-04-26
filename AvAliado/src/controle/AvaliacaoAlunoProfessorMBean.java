@@ -65,7 +65,7 @@ public class AvaliacaoAlunoProfessorMBean {
 	public String paginaAvaliar(){
 		
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-		int matricula = Integer.parseInt(ec.getRequestParameterMap().get("matriculaAluno"));
+		int matricula = Integer.parseInt(ec.getRequestParameterMap().get("matricula"));
 		
 		Professor professorBuscado = professorService.buscar(avaliacao.getMatriculaProfessor());
 		
