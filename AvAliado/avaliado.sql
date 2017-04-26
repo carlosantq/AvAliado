@@ -219,9 +219,11 @@ INSERT INTO Aluno VALUES(2015044005, 5);
 
 -- Inserir Universidade
 INSERT INTO Universidade VALUES(NULL, "Universidade Federal do Rio Grande do Norte", "UFRN", "Campus Universitário Lagoa Nova, CEP 59078-970, Natal/RN - Brasil", "8433422238", NULL, NULL, NULL);
+INSERT INTO Universidade VALUES(NULL, "Universidade Federal de Campina Grande", "UFCG", "R. Aprígio Veloso, 882 - Universitário, Campina Grande - PB, 58429-900", "8321011000", NULL, NULL, NULL);
 
 -- Inserir Curso
 INSERT INTO Curso VALUES(NULL, "Tecnologia da Informação", 1, NULL, NULL, NULL);
+INSERT INTO Curso VALUES(NULL, "Biologia", 1, NULL, NULL, NULL);
 
 -- Inserir Disciplina
 INSERT INTO Disciplina VALUES("DIM0506", "Projeto Detalhado de Software", 1);
@@ -258,24 +260,20 @@ INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0507", 1111111112, 2017, 1, 
 INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0507", 1111111112, 2017, 1, 2013019596);
 INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0507", 1111111112, 2017, 1, 2015044005);
 
--- Inserir notas dos alunos para o professor 111111111
-INSERT INTO AvaliacaoAlunoProfessor VALUES (2014044145, 1111111111, true, false, false, NOW(), NULL);
-INSERT INTO AvaliacaoAlunoProfessor VALUES (2013019596, 1111111111, true, false, true, NOW(), NULL);
-INSERT INTO AvaliacaoAlunoProfessor VALUES (2015044005, 1111111111, true, true, true, NOW(), NULL);
-
 -- Inserir notas dos alunos para o professor 111111112
-INSERT INTO AvaliacaoAlunoProfessor VALUES (2014044145, 1111111112, true, true, true, NOW(), NULL);
+INSERT INTO AvaliacaoAlunoProfessor VALUES (2014044145, 1111111112, true, false, false, NOW(), "Boa!");
+INSERT INTO AvaliacaoAlunoProfessor VALUES (2013019596, 1111111112, true, false, true, NOW(), "Legal.");
 
 -- Inserir notas para a universidade 1
-INSERT INTO AvaliacaoUniversidade VALUES (2014044145, 1, true, true, true, NOW(), NULL);
-INSERT INTO AvaliacaoUniversidade VALUES (1111111111, 1, false, false, false, NOW(), NULL);
+INSERT INTO AvaliacaoUniversidade VALUES (2014044145, 1, true, true, false, NOW(), "Boa universidade.");
+INSERT INTO AvaliacaoUniversidade VALUES (1111111111, 1, true, true, true, NOW(), "Gosto de lecionar aqui");
 
 -- Inserir notas para o curso 1
-INSERT INTO AvaliacaoCurso VALUES (2014044145, 1, true, true, true, NOW(), NULL);
-INSERT INTO AvaliacaoCurso VALUES (1111111111, 1, false, false, false, NOW(), NULL);
+INSERT INTO AvaliacaoCurso VALUES (2014044145, 1, true, true, true, NOW(), "Bom curso.");
+INSERT INTO AvaliacaoCurso VALUES (1111111111, 1, false, false, false, NOW(), "Precisa melhorar...");
 
 -- Inserir notas para a disciplina teste de software
-INSERT INTO AvaliacaoAlunoDisciplinaOferta VALUES (2014044145, "DIM0507", 1111111112, 2017, 1, true, true, true, true, NOW(), NULL);
+INSERT INTO AvaliacaoAlunoDisciplinaOferta VALUES (2014044145, "DIM0507", 1111111112, 2017, 1, true, true, true, true, NOW(), "Ótima disciplina! A professora também leciona bem.");
 
 -- Exibir todos os alunos
 SELECT * FROM Pessoa JOIN Aluno USING(matricula);
