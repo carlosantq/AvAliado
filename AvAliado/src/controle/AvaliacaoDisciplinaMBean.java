@@ -61,13 +61,13 @@ public class AvaliacaoDisciplinaMBean {
 		int matricula = Integer.parseInt(ec.getRequestParameterMap().get("matricula"));
 		
 		Disciplina disciplinaBuscado = disciplinaService.buscar(avaliacao.getDisciplinaId());
-		
-		if (disciplinaBuscado.getId().equals(null)){
+				
+		if (disciplinaBuscado.getId() == null){
 			FacesMessage msg = new FacesMessage("Este disciplina não existe.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
-		} else if (disciplinaService.buscarVinculo1(matricula, disciplinaBuscado.getId()) == false){
+		} else if (disciplinaBuscado != null && disciplinaService.buscarVinculo1(matricula, disciplinaBuscado.getId()) == false){
 			FacesMessage msg = new FacesMessage("Você não tem vínculo com a disciplina informada.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);

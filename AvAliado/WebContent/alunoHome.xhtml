@@ -39,11 +39,13 @@
 		</table>
 	</div>
 
+	<h:messages/>
+
 	<div class="search-box-container outter-container flexbox-row">
 		<h:form class="search-form flexbox-row">
 			<h:inputText class="search-box"
-				value="#{avaliacaoDisciplinaMBean.avaliacao.disciplinaId}" />
-			<h:commandLink action="#{avaliacaoDisciplinaMBean.paginaAvaliar}">
+				value="#{avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor}" />
+			<h:commandLink action="#{avaliacaoAlunoProfessorMBean.paginaAvaliar}">
 				<f:param name="matricula"
 					value="#{usuarioMBean.aluno.matricula}" />
 				<div class="search-button">Buscar</div>
@@ -53,7 +55,7 @@
 
 	<div class="past-evaluations-container outter-container">
 	
-		<h:messages class="error-message" />
+		<!-- <h:messages class="error-message" /> -->
 	
 		<div id="name-container">
 			<p id="user-name">Professores</p>
@@ -85,6 +87,16 @@
 			</ui:repeat>
 		</table>
 		
+		<h:form class="search-form flexbox-row">
+			<h:inputText class="search-box"
+				value="#{avaliacaoUniversidadeMBean.avaliacao.universidadeId}" />
+			<h:commandLink action="#{avaliacaoUniversidadeMBean.paginaAvaliar}">
+				<f:param name="matricula"
+					value="#{usuarioMBean.aluno.matricula}" />
+				<div class="search-button">Buscar</div>
+			</h:commandLink>
+		</h:form>
+		
 		<div id="name-container">
 			<p id="user-name">Universidades</p>
 		</div>
@@ -115,6 +127,16 @@
 			</ui:repeat>
 		</table>
 		
+		<h:form class="search-form flexbox-row">
+			<h:inputText class="search-box"
+				value="#{avaliacaoCursoMBean.avaliacao.cursoId}" />
+			<h:commandLink action="#{avaliacaoCursoMBean.paginaAvaliar}">
+				<f:param name="matricula"
+					value="#{usuarioMBean.aluno.matricula}" />
+				<div class="search-button">Buscar</div>
+			</h:commandLink>
+		</h:form>
+		
 		<div id="name-container">
 			<p id="user-name">Cursos</p>
 		</div>
@@ -144,6 +166,16 @@
 				</ui:repeat>
 			</ui:repeat>
 		</table>
+		
+		<h:form class="search-form flexbox-row">
+			<h:inputText class="search-box"
+				value="#{avaliacaoDisciplinaMBean.avaliacao.disciplinaId}" />
+			<h:commandLink action="#{avaliacaoDisciplinaMBean.paginaAvaliar}">
+				<f:param name="matricula"
+					value="#{usuarioMBean.aluno.matricula}" />
+				<div class="search-button">Buscar</div>
+			</h:commandLink>
+		</h:form>
 		
 		<div id="name-container">
 			<p id="user-name">Disciplinas</p>
