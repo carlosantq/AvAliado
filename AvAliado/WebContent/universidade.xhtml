@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head>
+        <title> AvAliado </title>
+        
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script src="javascript.js"></script>
+    </h:head>
+    
+    <h:body>       
+        <div id="header-prof">
+            
+            <div id="information-container">
+                <div id="photo-prof">  </div>
+            
+                <div id="text-container-prof">
+                	<table><tr><td>
+                    <p id="name-prof"> #{avaliacaoUniversidadeMBean.avaliacao.universidadeId} - #{universidadeMBean.buscar(avaliacaoUniversidadeMBean.avaliacao.universidadeId).sigla}</p>
+                    </td></tr></table>
+
+	
+                    <div id="description-container-prof">
+                        <p id="description-prof"> #{universidadeMBean.buscar(avaliacaoUniversidadeMBean.avaliacao.universidadeId).nome}, #{universidadeMBean.buscar(avaliacaoUniversidadeMBean.avaliacao.universidadeId).endereco}. </p>
+                    </div>
+                </div>
+            </div>
+
+			<h:form>
+            <div id="evaluation-container">
+                <div id="objective-evaluation-container">
+                    <div id="objective-evaluation1" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Estrutura </p>                            
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                        	
+                        	<h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoUniversidadeMBean.avaliacao.estrutura}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
+							</h:selectOneMenu>
+                        </div>
+                    </div>
+                    
+                    <div id="objective-evaluation2" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Vida Cultural </p>
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                            <h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoUniversidadeMBean.avaliacao.vidaCultural}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
+							</h:selectOneMenu>
+                        </div>
+                    </div>
+                    
+                    <div id="objective-evaluation3" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Auxílios </p>
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                            <h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoUniversidadeMBean.avaliacao.auxilios}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
+							</h:selectOneMenu>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            	<div id="subjective-evaluation-container">
+            		<h:inputTextarea id="input-text" value="#{avaliacaoUniversidadeMBean.avaliacao.comentario}"/>
+        		</div>
+            
+            	<h:commandLink action="#{avaliacaoUniversidadeMBean.avaliar}">
+                	<button> Enviar avaliação </button>
+                </h:commandLink>
+        	</h:form>
+            
+        </div>
+        
+        
+    </h:body>
+</html>

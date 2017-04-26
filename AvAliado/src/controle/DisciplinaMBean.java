@@ -3,13 +3,8 @@ package controle;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 
 import dominio.*;
 import servico.*;
@@ -45,11 +40,23 @@ public class DisciplinaMBean {
 		this.listaDisciplinas = listaDisciplinas;
 	}
 	
-//	public DisciplinaService getDisciplinaService() {
-//		return disciplinaService;
-//	}
-//
-//	public void setDisciplinaService(DisciplinaService disciplinaService) {
-//		this.disciplinaService = disciplinaService;
-//	}
+	public String voltarPublic(){
+		return "/selection.jsf";
+	}
+	
+	public String exibirNotasPublic(Disciplina disciplina){
+		
+		this.disciplina = disciplina;
+		
+		return "/verTodasDisciplinaPublic.jsf";
+	}
+	
+	public Disciplina buscarNotas(String id){
+		return disciplinaService.buscarNotas(id);
+	}
+	
+	public Disciplina buscar(String id){
+		return disciplinaService.buscar(id);
+	}
+	
 }

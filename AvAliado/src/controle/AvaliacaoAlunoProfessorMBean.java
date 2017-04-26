@@ -46,7 +46,8 @@ public class AvaliacaoAlunoProfessorMBean {
 	}
 	
 	public List<AvaliacaoAlunoProfessor> getAvaliacoes(){
-		return avaliacaoAPService.buscarTodos();
+		avaliacoes = avaliacaoAPService.buscarTodos();
+		return avaliacoes;
 	}
 	
 	public void setAvaliacoes(List<AvaliacaoAlunoProfessor> avaliacoes){
@@ -64,27 +65,27 @@ public class AvaliacaoAlunoProfessorMBean {
 	public String paginaAvaliar(){
 		
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-		int matriculaAluno = Integer.parseInt(ec.getRequestParameterMap().get("matriculaAluno"));
+		int matricula = Integer.parseInt(ec.getRequestParameterMap().get("matriculaAluno"));
 		
 		Professor professorBuscado = professorService.buscar(avaliacao.getMatriculaProfessor());
 		
 		if (professorBuscado.getMatricula() == 0){
-			FacesMessage msg = new FacesMessage("Este professor não existe.");
+			FacesMessage msg = new FacesMessage("Este professor nï¿½o existe.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
-		} else if (disciplinaService.buscarVinculo(matriculaAluno, professorBuscado.getMatricula()) == false){
-			FacesMessage msg = new FacesMessage("Você não esteve em nenhuma disciplina ministrada por este professor. A avaliação não poderá ser feita.");
+		} else if (disciplinaService.buscarVinculo(matricula, professorBuscado.getMatricula()) == false){
+			FacesMessage msg = new FacesMessage("Vocï¿½ nï¿½o esteve em nenhuma disciplina ministrada por este professor. A avaliaï¿½ï¿½o nï¿½o poderï¿½ ser feita.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
-		} else if (avaliacaoAPService.buscarPorAlunoEProfessor(professorBuscado.getMatricula(), matriculaAluno).getMatriculaProfessor() != 0){
-			FacesMessage msg = new FacesMessage("Você já avaliou este professor.");
+		} else if (avaliacaoAPService.buscarPorAlunoEProfessor(professorBuscado.getMatricula(), matricula).getMatriculaProfessor() != 0){
+			FacesMessage msg = new FacesMessage("Vocï¿½ jï¿½ avaliou este professor.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
 		} else {
-			avaliacao.setMatriculaAluno(matriculaAluno);
+			avaliacao.setMatriculaAluno(matricula);
 			
 			return "/professor.jsf";
 		}
@@ -98,7 +99,7 @@ public class AvaliacaoAlunoProfessorMBean {
 		
 		avaliacaoAPService.inserir(avaliacao);
 		
-		FacesMessage msg = new FacesMessage("Avaliação Registrada.");
+		FacesMessage msg = new FacesMessage("Avaliaï¿½ï¿½o Registrada.");
 		msg.setSeverity(FacesMessage.SEVERITY_INFO);
 		FacesContext.getCurrentInstance().addMessage("", msg);
 		

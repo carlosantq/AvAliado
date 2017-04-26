@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head>
+        <title> AvAliado </title>
+        
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script src="javascript.js"></script>
+    </h:head>
+    
+    <h:body>       
+        <div id="header-prof">
+            
+            <div id="information-container">
+                <div id="photo-prof">  </div>
+            
+                <div id="text-container-prof">
+                	<table><tr><td>
+                    <p id="name-prof"> #{avaliacaoDisciplinaMBean.avaliacao.disciplinaId} - #{disciplinaMBean.buscar(avaliacaoDisciplinaMBean.avaliacao.disciplinaId).nome}</p>
+                    </td></tr></table>
+
+					<!-- TODO: Tratar caso de mais de um professor ofertando um mesmo código de disciplina -->
+                    <div id="description-container-prof">
+                        <p id="description-prof"> Ministrada pelo(a) Professor(a) #{disciplinaMBean.buscar(avaliacaoDisciplinaMBean.avaliacao.disciplinaId).professorId}</p>
+                    </div>
+                </div>
+            </div>
+
+			<h:form>
+            <div id="evaluation-container">
+                <div id="objective-evaluation-container">
+                    <div id="objective-evaluation1" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Relevância </p>                            
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                        	
+                        	<h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoDisciplinaMBean.avaliacao.relevancia}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
+							</h:selectOneMenu>
+                        </div>
+                    </div>
+                    
+                    <div id="objective-evaluation2" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Dificuldade </p>
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                            <h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoDisciplinaMBean.avaliacao.dificuldade}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
+							</h:selectOneMenu>
+                        </div>
+                    </div>
+                    
+                    <div id="objective-evaluation3" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Recomendação </p>
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                            <h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoDisciplinaMBean.avaliacao.recomendacao}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
+							</h:selectOneMenu>
+                        </div>
+                    </div>
+                    
+                    <div id="objective-evaluation3" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Cobrança </p>
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                            <h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoDisciplinaMBean.avaliacao.cobranca}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
+							</h:selectOneMenu>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            	<div id="subjective-evaluation-container">
+            		<h:inputTextarea id="input-text" value="#{avaliacaoDisciplinaMBean.avaliacao.comentario}"/>
+        		</div>
+            
+            	<h:commandLink action="#{avaliacaoDisciplinaMBean.avaliar}">
+                	<button> Enviar avaliação </button>
+                </h:commandLink>
+        	</h:form>
+            
+        </div>
+        
+        
+    </h:body>
+</html>

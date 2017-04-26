@@ -5,7 +5,7 @@ import java.util.Date;
 public class AvaliacaoCurso {
 
 	private int matriculaPessoa;
-	private int idCurso;
+	private int cursoId;
 	private boolean dificuldade;
 	private boolean flexibilidade;
 	private boolean mercadoDeTrabalho;
@@ -19,42 +19,55 @@ public class AvaliacaoCurso {
 	public int getMatriculaPessoa() {
 		return matriculaPessoa;
 	}
+	
 	public void setMatriculaPessoa(int matriculaPessoa) {
 		this.matriculaPessoa = matriculaPessoa;
 	}
-	public int getIdCurso() {
-		return idCurso;
+	
+	public int getCursoId() {
+		return cursoId;
 	}
-	public void setIdCurso(int idCurso) {
-		this.idCurso = idCurso;
+	
+	public void setCursoId(int cursoId) {
+		this.cursoId = cursoId;
 	}
-	public boolean isDificuldade() {
+	
+	public boolean getDificuldade() {
 		return dificuldade;
 	}
+	
 	public void setDificuldade(boolean dificuldade) {
 		this.dificuldade = dificuldade;
 	}
-	public boolean isFlexibilidade() {
+	
+	public boolean getFlexibilidade() {
 		return flexibilidade;
 	}
+	
 	public void setFlexibilidade(boolean flexibilidade) {
 		this.flexibilidade = flexibilidade;
 	}
-	public boolean isMercadoDeTrabalho() {
+	
+	public boolean getMercadoDeTrabalho() {
 		return mercadoDeTrabalho;
 	}
+	
 	public void setMercadoDeTrabalho(boolean mercadoDeTrabalho) {
 		this.mercadoDeTrabalho = mercadoDeTrabalho;
 	}
+	
 	public Date getData() {
 		return data;
 	}
+	
 	public void setData(Date data) {
 		this.data = data;
 	}
+	
 	public String getComentario() {
 		return comentario;
 	}
+	
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}

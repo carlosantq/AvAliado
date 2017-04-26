@@ -90,36 +90,20 @@ CREATE TABLE DisciplinaOferta(
 	FOREIGN KEY(professorID) REFERENCES Professor(matricula)
 );
 
-CREATE TABLE vinculoAlunoUniversidade(
+CREATE TABLE vinculoUniversidade(
 	universidadeID INT NOT NULL,
-	alunoID INT NOT NULL,
-	PRIMARY KEY(universidadeID, alunoID),
+	pessoaID INT NOT NULL,
+	PRIMARY KEY(universidadeID, pessoaID),
 	FOREIGN KEY(universidadeID) REFERENCES Universidade(id),
-	FOREIGN KEY(alunoID) REFERENCES Aluno(matricula)
+	FOREIGN KEY(pessoaID) REFERENCES Pessoa(matricula)
 );
 
-CREATE TABLE vinculoProfessorUniversidade(
-	universidadeID INT NOT NULL,
-	professorID INT NOT NULL,
-	PRIMARY KEY(universidadeID, professorID),
-	FOREIGN KEY(universidadeID) REFERENCES Universidade(id),
-	FOREIGN KEY(professorID) REFERENCES Professor(matricula)
-);
-
-CREATE TABLE vinculoAlunoCurso(
+CREATE TABLE vinculoCurso(
 	cursoID INT NOT NULL,
-	alunoID INT NOT NULL,
-	PRIMARY KEY(cursoID, alunoID),
+	pessoaID INT NOT NULL,
+	PRIMARY KEY(cursoID, pessoaID),
 	FOREIGN KEY(cursoID) REFERENCES Curso(id),
-	FOREIGN KEY(alunoID) REFERENCES Aluno(matricula)
-);
-
-CREATE TABLE vinculoProfessorCurso(
-	cursoID INT NOT NULL,
-	professorID INT NOT NULL,
-	PRIMARY KEY(cursoID, professorID),
-	FOREIGN KEY(cursoID) REFERENCES Curso(id),
-	FOREIGN KEY(professorID) REFERENCES Professor(matricula)
+	FOREIGN KEY(pessoaID) REFERENCES Pessoa(matricula)
 );
 
 CREATE TABLE vinculoAlunoDisciplinaOferta(
@@ -147,55 +131,29 @@ CREATE TABLE AvaliacaoAlunoProfessor(
 	FOREIGN KEY(matriculaProfessor) REFERENCES Professor(matricula)
 );
 
-CREATE TABLE AvaliacaoAlunoUniversidade(
-	matriculaAluno INT NOT NULL,
+CREATE TABLE AvaliacaoUniversidade(
+	matriculaPessoa INT NOT NULL,
 	universidadeID INT NOT NULL,
 	estrutura BOOLEAN,
 	vidaCultural BOOLEAN,
 	auxilios BOOLEAN,
 	data DATE NOT NULL,
 	comentario TEXT,
-	PRIMARY KEY(matriculaAluno, universidadeID),
-	FOREIGN KEY(matriculaAluno) REFERENCES Aluno(matricula),
+	PRIMARY KEY(matriculaPessoa, universidadeID),
+	FOREIGN KEY(matriculaPessoa) REFERENCES Pessoa(matricula),
 	FOREIGN KEY(universidadeID) REFERENCES Universidade(id)
 );
 
-CREATE TABLE AvaliacaoProfessorUniversidade(
-	matriculaProfessor INT NOT NULL,
-	universidadeID INT NOT NULL,
-	estrutura BOOLEAN,
-	vidaCultural BOOLEAN,
-	auxilios BOOLEAN,
-	data DATE NOT NULL,
-	comentario TEXT,
-	PRIMARY KEY(matriculaProfessor, universidadeID),
-	FOREIGN KEY(matriculaProfessor) REFERENCES Professor(matricula),
-	FOREIGN KEY(universidadeID) REFERENCES Universidade(id)
-);
-
-CREATE TABLE AvaliacaoAlunoCurso(
-	matriculaAluno INT NOT NULL,
+CREATE TABLE AvaliacaoCurso(
+	matriculaPessoa INT NOT NULL,
 	cursoID INT NOT NULL,
 	dificuldade BOOLEAN,
 	flexibilidade BOOLEAN,
 	mercadoDeTrabalho BOOLEAN,
 	data DATE NOT NULL,
 	comentario TEXT,
-	PRIMARY KEY(matriculaAluno, cursoID),
-	FOREIGN KEY(matriculaAluno) REFERENCES Aluno(matricula),
-	FOREIGN KEY(cursoID) REFERENCES Curso(id)
-);
-
-CREATE TABLE AvaliacaoProfessorCurso(
-	matriculaProfessor INT NOT NULL,
-	cursoID INT NOT NULL,
-	dificuldade BOOLEAN,
-	flexibilidade BOOLEAN,
-	mercadoDeTrabalho BOOLEAN,
-	data DATE NOT NULL,
-	comentario TEXT,
-	PRIMARY KEY(matriculaProfessor, cursoID),
-	FOREIGN KEY(matriculaProfessor) REFERENCES Professor(matricula),
+	PRIMARY KEY(matriculaPessoa, cursoID),
+	FOREIGN KEY(matriculaPessoa) REFERENCES Pessoa(matricula),
 	FOREIGN KEY(cursoID) REFERENCES Curso(id)
 );
 
@@ -276,24 +234,24 @@ INSERT INTO DisciplinaOferta VALUES ("DIM0507", 1111111112, 2017, 1, NULL, NULL,
 INSERT INTO DisciplinaOferta VALUES ("DIM0501", 1111111113, 2017, 1, NULL, NULL, NULL, NULL);
 
 -- Inserir Alunos em Universidade
-INSERT INTO vinculoAlunoUniversidade VALUES (1, 2014044145);
-INSERT INTO vinculoAlunoUniversidade VALUES (1, 2013019596);
-INSERT INTO vinculoAlunoUniversidade VALUES (1, 2015044005);
+INSERT INTO vinculoUniversidade VALUES (1, 2014044145);
+INSERT INTO vinculoUniversidade VALUES (1, 2013019596);
+INSERT INTO vinculoUniversidade VALUES (1, 2015044005);
 
 -- Inserir Professores em Universidade
-INSERT INTO vinculoProfessorUniversidade VALUES (1, 1111111111);
-INSERT INTO vinculoProfessorUniversidade VALUES (1, 1111111112);
-INSERT INTO vinculoProfessorUniversidade VALUES (1, 1111111113);
+INSERT INTO vinculoUniversidade VALUES (1, 1111111111);
+INSERT INTO vinculoUniversidade VALUES (1, 1111111112);
+INSERT INTO vinculoUniversidade VALUES (1, 1111111113);
 
 -- Inserir Alunos em Curso
-INSERT INTO vinculoAlunoCurso VALUES(1, 2014044145);
-INSERT INTO vinculoAlunoCurso VALUES(1, 2013019596);
-INSERT INTO vinculoAlunoCurso VALUES(1, 2015044005);
+INSERT INTO vinculoCurso VALUES(1, 2014044145);
+INSERT INTO vinculoCurso VALUES(1, 2013019596);
+INSERT INTO vinculoCurso VALUES(1, 2015044005);
 
 -- Inserir Professores em Curso
-INSERT INTO vinculoProfessorCurso VALUES (1, 1111111111);
-INSERT INTO vinculoProfessorCurso VALUES (1, 1111111112);
-INSERT INTO vinculoProfessorCurso VALUES (1, 1111111113);
+INSERT INTO vinculoCurso VALUES (1, 1111111111);
+INSERT INTO vinculoCurso VALUES (1, 1111111112);
+INSERT INTO vinculoCurso VALUES (1, 1111111113);
 
 -- Inserir Aluno em Disciplina
 INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0507", 1111111112, 2017, 1, 2014044145);
@@ -309,12 +267,12 @@ INSERT INTO AvaliacaoAlunoProfessor VALUES (2015044005, 1111111111, true, true, 
 INSERT INTO AvaliacaoAlunoProfessor VALUES (2014044145, 1111111112, true, true, true, NOW(), NULL);
 
 -- Inserir notas para a universidade 1
-INSERT INTO AvaliacaoAlunoUniversidade VALUES (2014044145, 1, true, true, true, NOW(), NULL);
-INSERT INTO AvaliacaoProfessorUniversidade VALUES (1111111111, 1, false, false, false, NOW(), NULL);
+INSERT INTO AvaliacaoUniversidade VALUES (2014044145, 1, true, true, true, NOW(), NULL);
+INSERT INTO AvaliacaoUniversidade VALUES (1111111111, 1, false, false, false, NOW(), NULL);
 
 -- Inserir notas para o curso 1
-INSERT INTO AvaliacaoAlunoCurso VALUES (2014044145, 1, true, true, true, NOW(), NULL);
-INSERT INTO AvaliacaoProfessorCurso VALUES (1111111111, 1, false, false, false, NOW(), NULL);
+INSERT INTO AvaliacaoCurso VALUES (2014044145, 1, true, true, true, NOW(), NULL);
+INSERT INTO AvaliacaoCurso VALUES (1111111111, 1, false, false, false, NOW(), NULL);
 
 -- Inserir notas para a disciplina teste de software
 INSERT INTO AvaliacaoAlunoDisciplinaOferta VALUES (2014044145, "DIM0507", 1111111112, 2017, 1, true, true, true, true, NOW(), NULL);
@@ -346,9 +304,9 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS atualizar_notas_universidade $$
 CREATE PROCEDURE atualizar_notas_universidade(IN i INT)
 	BEGIN
-		UPDATE Universidade SET notaEstrutura = ((SELECT COUNT(*) FROM AvaliacaoAlunoUniversidade WHERE (estrutura=true OR estrutura=false) AND id=i) + (SELECT COUNT(*) FROM AvaliacaoProfessorUniversidade WHERE (estrutura=true OR estrutura=false) AND id=i)) WHERE id=i;
-		UPDATE Universidade SET notaVidaCultural = ((SELECT COUNT(*) FROM AvaliacaoAlunoUniversidade WHERE (vidaCultural=true OR vidaCultural=false) AND id=i) + (SELECT COUNT(*) FROM AvaliacaoProfessorUniversidade WHERE (vidaCultural=true OR vidaCultural=false) AND id=i)) WHERE id=i;
-		UPDATE Universidade SET notaAuxilios = ((SELECT COUNT(*) FROM AvaliacaoAlunoUniversidade WHERE (auxilios=true OR auxilios=false) AND id=i) + (SELECT COUNT(*) FROM AvaliacaoProfessorUniversidade WHERE (auxilios=true OR auxilios=false) AND id=i)) WHERE id=i;
+		UPDATE Universidade SET notaEstrutura = (SELECT COUNT(*) FROM AvaliacaoUniversidade WHERE (estrutura=true OR estrutura=false) AND id=i);
+		UPDATE Universidade SET notaVidaCultural = (SELECT COUNT(*) FROM AvaliacaoUniversidade WHERE (vidaCultural=true OR vidaCultural=false) AND id=i);
+		UPDATE Universidade SET notaAuxilios = (SELECT COUNT(*) FROM AvaliacaoUniversidade WHERE (auxilios=true OR auxilios=false) AND id=i);
 		END $$
 DELIMITER ;
 
@@ -360,9 +318,9 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS atualizar_notas_curso $$
 CREATE PROCEDURE atualizar_notas_curso(IN i INT)
 	BEGIN
-		UPDATE Curso SET notaDificuldade = ((SELECT COUNT(*) FROM AvaliacaoAlunoCurso WHERE (dificuldade=true OR dificuldade=false) AND id=i) + (SELECT COUNT(*) FROM AvaliacaoProfessorCurso WHERE (dificuldade=true OR dificuldade=false) AND id=i)) WHERE id=i;
-		UPDATE Curso SET notaFlexibilidade = ((SELECT COUNT(*) FROM AvaliacaoAlunoCurso WHERE (flexibilidade=true OR flexibilidade=false) AND id=i) + (SELECT COUNT(*) FROM AvaliacaoProfessorCurso WHERE (flexibilidade=true OR flexibilidade=false) AND id=i)) WHERE id=i;
-		UPDATE Curso SET notaMercadoDeTrabalho = ((SELECT COUNT(*) FROM AvaliacaoAlunoCurso WHERE (mercadoDeTrabalho=true OR mercadoDeTrabalho=false) AND id=i) + (SELECT COUNT(*) FROM AvaliacaoProfessorCurso WHERE (mercadoDeTrabalho=true OR mercadoDeTrabalho=false) AND id=i)) WHERE id=i;
+		UPDATE Curso SET notaDificuldade = (SELECT COUNT(*) FROM AvaliacaoCurso WHERE (dificuldade=true OR dificuldade=false) AND id=i);
+		UPDATE Curso SET notaFlexibilidade = (SELECT COUNT(*) FROM AvaliacaoCurso WHERE (flexibilidade=true OR flexibilidade=false) AND id=i);
+		UPDATE Curso SET notaMercadoDeTrabalho = (SELECT COUNT(*) FROM AvaliacaoCurso WHERE (mercadoDeTrabalho=true OR mercadoDeTrabalho=false) AND id=i);
 		END $$
 DELIMITER ;
 

@@ -42,9 +42,9 @@
 	<div class="search-box-container outter-container flexbox-row">
 		<h:form class="search-form flexbox-row">
 			<h:inputText class="search-box"
-				value="#{avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor}" />
-			<h:commandLink action="#{avaliacaoAlunoProfessorMBean.paginaAvaliar}">
-				<f:param name="matriculaAluno"
+				value="#{avaliacaoDisciplinaMBean.avaliacao.disciplinaId}" />
+			<h:commandLink action="#{avaliacaoDisciplinaMBean.paginaAvaliar}">
+				<f:param name="matricula"
 					value="#{usuarioMBean.aluno.matricula}" />
 				<div class="search-button">Buscar</div>
 			</h:commandLink>
@@ -54,6 +54,10 @@
 	<div class="past-evaluations-container outter-container">
 	
 		<h:messages class="error-message" />
+	
+		<div id="name-container">
+			<p id="user-name">Professores</p>
+		</div>
 	
 		<table>
 			<ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
@@ -80,6 +84,99 @@
 				</ui:repeat>
 			</ui:repeat>
 		</table>
+		
+		<div id="name-container">
+			<p id="user-name">Universidades</p>
+		</div>
+		
+		<table>
+			<ui:repeat var="avaliacaoUni" value="#{avaliacaoUniversidadeMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
+				<ui:repeat var="universidade" value="#{universidadeMBean.buscar(avaliacaoUni.universidadeId)}">
+					<div class="comment-outter-container flexbox-row">
+						<div class="comment-inner-container flexbox-row">
+							<div class="comment-text-container">
+								<p class="about-comment">Avaliação sobre
+									#{avaliacaoUni.universidadeId} - #{universidade.sigla}</p>
+								<p class="comment">#{avaliacaoUni.comentario}</p>
+							</div>
+
+							<div class="comment-likes-container flexbox-column">
+								<span> <h:outputText value="Estrutura"
+										styleClass="#{avaliacaoUni.estrutura ? 'evaluation like' : 'evaluation dislike'}" />
+								</span> <span> <h:outputText value="Vida Cultural"
+										styleClass="#{avaliacaoUni.vidaCultural ? 'evaluation like' : 'evaluation dislike'}" />
+								</span> <span> <h:outputText value="Auxílios"
+										styleClass="#{avaliacaoUni.auxilios ? 'evaluation like' : 'evaluation dislike'}" />
+								</span>
+							</div>
+						</div>
+					</div>
+				</ui:repeat>
+			</ui:repeat>
+		</table>
+		
+		<div id="name-container">
+			<p id="user-name">Cursos</p>
+		</div>
+		
+		<table>
+			<ui:repeat var="avaliacaoCurso" value="#{avaliacaoCursoMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
+				<ui:repeat var="curso" value="#{cursoMBean.buscar(avaliacaoCurso.cursoId)}">
+					<div class="comment-outter-container flexbox-row">
+						<div class="comment-inner-container flexbox-row">
+							<div class="comment-text-container">
+								<p class="about-comment">Avaliação sobre
+									#{avaliacaoCurso.cursoId} - #{curso.nome}</p>
+								<p class="comment">#{avaliacaoCurso.comentario}</p>
+							</div>
+
+							<div class="comment-likes-container flexbox-column">
+								<span> <h:outputText value="Dificuldade"
+										styleClass="#{avaliacaoCurso.dificuldade ? 'evaluation like' : 'evaluation dislike'}" />
+								</span> <span> <h:outputText value="Flexibilidade"
+										styleClass="#{avaliacaoCurso.flexibilidade ? 'evaluation like' : 'evaluation dislike'}" />
+								</span> <span> <h:outputText value="Mercado de Trabalho"
+										styleClass="#{avaliacaoCurso.mercadoDeTrabalho ? 'evaluation like' : 'evaluation dislike'}" />
+								</span>
+							</div>
+						</div>
+					</div>
+				</ui:repeat>
+			</ui:repeat>
+		</table>
+		
+		<div id="name-container">
+			<p id="user-name">Disciplinas</p>
+		</div>
+		
+		<table>
+			<ui:repeat var="avaliacaoDisciplina" value="#{avaliacaoDisciplinaMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
+				<ui:repeat var="disciplina" value="#{disciplinaMBean.buscar(avaliacaoDisciplina.disciplinaId)}">
+					<div class="comment-outter-container flexbox-row">
+						<div class="comment-inner-container flexbox-row">
+							<div class="comment-text-container">
+								<p class="about-comment">Avaliação sobre
+									#{avaliacaoDisciplina.disciplinaId} - #{disciplina.nome}</p>
+								<p class="comment">#{avaliacaoDisciplina.comentario}</p>
+							</div>
+
+							<div class="comment-likes-container flexbox-column">
+								<span> <h:outputText value="Relevancia"
+										styleClass="#{avaliacaoDisciplina.relevancia ? 'evaluation like' : 'evaluation dislike'}" />
+								</span> <span> <h:outputText value="Dificuldade"
+										styleClass="#{avaliacaoDisciplina.dificuldade ? 'evaluation like' : 'evaluation dislike'}" />
+								</span> <span> <h:outputText value="Recomendação"
+										styleClass="#{avaliacaoDisciplina.recomendacao ? 'evaluation like' : 'evaluation dislike'}" />
+								</span> <span> <h:outputText value="Cobrança"
+										styleClass="#{avaliacaoDisciplina.cobranca ? 'evaluation like' : 'evaluation dislike'}" />		
+								</span>
+							</div>
+						</div>
+					</div>
+				</ui:repeat>
+			</ui:repeat>
+		</table>
+		
 	</div>
 
 </h:body>

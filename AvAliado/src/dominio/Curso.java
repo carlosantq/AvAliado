@@ -4,6 +4,7 @@ public class Curso {
 
 	private int id;
 	private String nome;
+	private int universidadeId;
 	private int notaDificuldade;
 	private int notaFlexibilidade;
 	private int notaMercadoDeTrabalho;
@@ -40,5 +41,13 @@ public class Curso {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public int getUniversidadeId(){
+		return universidadeId;
+	}
+	
+	public void setUniversidadeId(int universidadeId){
+		this.universidadeId = universidadeId;
 	}
 }

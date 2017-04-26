@@ -45,8 +45,24 @@ public class DisciplinaService implements IServico<Disciplina>{
 		
 	}
 	
+	public Disciplina buscarNotas(String id){
+		return disciplinaDao.buscarNotas(id);
+	}
+	
+	public Disciplina buscar(String id){
+		return disciplinaDao.buscar(id);
+	}
+	
 	public boolean buscarVinculo(int matriculaAluno, int idProfessor){
 		return disciplinaDao.buscarVinculo(matriculaAluno, idProfessor);
+	}
+	
+	public boolean buscarVinculo1(int matriculaAluno, String disciplinaId){
+		return disciplinaDao.buscarVinculo1(matriculaAluno, disciplinaId);
+	}
+	
+	public boolean buscarVinculo2(int matriculaAluno, int idProfessor, int ano, int semestre, String disciplinaId){
+		return disciplinaDao.buscarVinculo2(matriculaAluno, idProfessor, ano, semestre, disciplinaId);
 	}
 
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head>
+        <title> AvAliado </title>
+        
+        <link rel="stylesheet" type="text/css" href="css/verTodosProfessor.css"/>
+    </h:head>
+    
+    <h:body>
+        
+        <div class="user-information-container outter-container">
+	        <table>
+	        	<tr>
+	        		<td class="user-information-inner-container flexbox-row">
+	        		
+	        			<div id="name-container">
+	        				<p id="user-name"> Todas as avaliações feitas sobre #{universidadeMBean.universidade.sigla} </p>
+	        			</div>
+                    	
+	        			<div id="back-button-container">
+	        			<h:form>
+	        				<h:commandLink action="#{universidadeMBean.voltarPublic}">
+                    			<button class="search-button back-button"> Voltar </button>	
+                    		</h:commandLink>
+                    	</h:form>
+	        			</div>
+	        		
+	        		</td>
+	        	</tr>
+	        </table>
+        </div>
+
+	<div class="past-evaluations-container outter-container">
+
+		<ui:repeat var="avaliacao" value="#{avaliacaoUniversidadeMBean.buscarPorId(universidadeMBean.universidade.id)}">
+			<div class="comment-outter-container flexbox-row">
+				<div class="comment-inner-container flexbox-row">
+					<div class="comment-text-container">
+						<p class="about-comment"> Avaliação feita por #{avaliacao.matriculaPessoa} </p>
+						<p class="comment"> #{avaliacao.comentario} </p>	
+					</div>
+					
+					<div class="comment-likes-container flexbox-column">
+						<span>
+						<h:outputText value="Estrutura" styleClass="#{avaliacao.estrutura ? 'evaluation like' : 'evaluation dislike'}" /> 
+						</span>
+						<span>
+						<h:outputText value="Vida Cultural" styleClass="#{avaliacao.vidaCultural ? 'evaluation like' : 'evaluation dislike'}" /> 
+						</span>
+						<span>
+						<h:outputText value="Auxílios" styleClass="#{avaliacao.auxilios ? 'evaluation like' : 'evaluation dislike'}" /> 
+						</span>
+					</div>
+				</div>
+			</div>
+		</ui:repeat> 
+	</div>
+        
+    </h:body>
+</html>

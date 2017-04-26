@@ -43,7 +43,18 @@ public class CursoService implements IServico<Curso> {
 	@Override
 	public void remover(Curso elemento) {
 		// TODO Auto-generated method stub
-		
+	}
+	
+	public Curso buscarNotas(int id){
+		return cursoDao.buscarNotas(id);
+	}
+	
+	public Curso buscar(int id){
+		return cursoDao.buscar(id);
+	}
+	
+	public boolean buscarVinculo(int matricula, int cursoId){
+		return cursoDao.buscarVinculo(matricula, cursoId);
 	}
 
 }

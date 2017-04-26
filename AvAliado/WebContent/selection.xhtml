@@ -19,47 +19,72 @@
 			</div>
 		</h:commandLink>
 	</h:form>
-
+	
 	<div id="header-container" class="flexbox-row">
-		<p>Selecione o curso desejado</p>
+		<p>Selecione a Universidade desejada</p>
 	</div>
 
 	<div id="professor-container" class="flexbox-row">
-		<ui:repeat value="#{cursoMBean.listaCursos}" var="curso">
+		<ui:repeat value="#{universidadeMBean.listaUniversidades}" var="uni">
 			<h:form>
-<!-- 				<h:commandLink action="#{professorMBean.exibirNotasPublic(prof)}"> -->
+				<h:commandLink action="#{universidadeMBean.exibirNotasPublic(uni)}">
 					<div class="professor flexbox-column">
 						<div class="professor-text-container flexbox-column">
-							<p class="professor-name">#{curso.nome}</p>
-							<p class="professor-details">Código: #{curso.id}</p>
-							<p class="professor-details">Dificuldade: #{curso.notaDificuldade}%</p>
-							<p class="professor-details">Flexibilidade: #{curso.notaFlexibilidade}%</p>
-							<p class="professor-details">Mercado de Trabalho: #{curso.notaMercadoDeTrabalho}%</p>
+							<p class="professor-name">#{uni.nome}</p>
+							<p class="professor-details">Sigla: #{uni.sigla}</p>
+							<p class="professor-details">Endereço: #{uni.endereco}</p>
+							<p class="professor-details">Telefone: #{uni.telefone}</p>
+							<p class="professor-details">Estrutura: #{universidadeMBean.buscarNotas(uni.id).notaEstrutura}%</p>
+							<p class="professor-details">Vida Cultural: #{universidadeMBean.buscarNotas(uni.id).notaVidaCultural}%</p>
+							<p class="professor-details">Auxílios: #{universidadeMBean.buscarNotas(uni.id).notaAuxilios}%</p>
 						</div>
 					</div>
-<!-- 				</h:commandLink> -->
+				</h:commandLink>
 			</h:form>
 		</ui:repeat>
 	</div>
 
 	<div id="header-container" class="flexbox-row">
-		<p>Selecione a disciplina desejada</p>
+		<p>Selecione o Curso desejado</p>
+	</div>
+
+	<div id="professor-container" class="flexbox-row">
+		<ui:repeat value="#{cursoMBean.listaCursos}" var="curso">
+			<h:form>
+				<h:commandLink action="#{cursoMBean.exibirNotasPublic(curso)}">
+					<div class="professor flexbox-column">
+						<div class="professor-text-container flexbox-column">
+							<p class="professor-name">#{curso.nome}</p>
+							<p class="professor-details">Código: #{curso.id}</p>
+							<p class="professor-details">Dificuldade: #{cursoMBean.buscarNotas(curso.id).notaDificuldade}%</p>
+							<p class="professor-details">Flexibilidade: #{cursoMBean.buscarNotas(curso.id).notaFlexibilidade}%</p>
+							<p class="professor-details">Mercado de Trabalho: #{cursoMBean.buscarNotas(curso.id).notaMercadoDeTrabalho}%</p>
+						</div>
+					</div>
+				</h:commandLink>
+			</h:form>
+		</ui:repeat>
+	</div>
+
+	<div id="header-container" class="flexbox-row">
+		<p>Selecione a Disciplina desejada</p>
 	</div>
 
 	<div id="professor-container" class="flexbox-row">
 		<ui:repeat value="#{disciplinaMBean.listaDisciplinas}" var="disciplina">
 			<h:form>
-<!-- 				<h:commandLink action="#{professorMBean.exibirNotasPublic(prof)}"> -->
+				<h:commandLink action="#{disciplinaMBean.exibirNotasPublic(disciplina)}">
 					<div class="professor flexbox-column">
 						<div class="professor-text-container flexbox-column">
 							<p class="professor-name">#{disciplina.nome}</p>
 							<p class="professor-details">Código: #{disciplina.id}</p>
-							<p class="professor-details">Dificuldade: #{disciplina.notaDificuldade}%</p>
-							<p class="professor-details">Relevância: #{disciplina.notaRelevancia}%</p>
-							<p class="professor-details">Recomendação: #{disciplina.notaRecomendacao}%</p>
+							<p class="professor-details">Relevância: #{disciplinaMBean.buscarNotas(disciplina.id).notaRelevancia}%</p>
+							<p class="professor-details">Dificuldade: #{disciplinaMBean.buscarNotas(disciplina.id).notaDificuldade}%</p>
+							<p class="professor-details">Recomendação: #{disciplinaMBean.buscarNotas(disciplina.id).notaRecomendacao}%</p>
+							<p class="professor-details">Cobrança: #{disciplinaMBean.buscarNotas(disciplina.id).notaCobranca}%</p>
 						</div>
 					</div>
-<!-- 				</h:commandLink> -->
+			</h:commandLink>
 			</h:form>
 		</ui:repeat>
 	</div>

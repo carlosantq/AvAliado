@@ -1,107 +1,87 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head>
-	<title>AvAliado</title>
+	<h:head>
+        <title> AvAliado </title>
+        
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script src="javascript.js"></script>
+    </h:head>
+    
+    <h:body>       
+        <div id="header-prof">
+            
+            <div id="information-container">
+                <div id="photo-prof">  </div>
+            
+                <div id="text-container-prof">
+                	<table><tr><td>
+                    <p id="name-prof"> #{avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor} - #{professorMBean.buscar(avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor).nome}</p>
+                    </td></tr></table>
 
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<script src="javascript.js"></script>
-</h:head>
+	
+                    <div id="description-container-prof">
+                        <p id="description-prof"> A brief description of the professor containing data such as the university where he/she curently works, the places where he/she has taught before, the disciplines he/she has previously taught and the ones he/she is currently teaching. </p>
+                    </div>
+                </div>
+            </div>
 
-<h:body class="flexbox-column">
-	<div id="header-prof" class="flexbox-column">
-
-		<div id="information-container" class="flexbox-row">
-			<div class="professor-photo-container flexbox-row">
-				<h:graphicImage class="professor-photo" value="img/avatar.png" />
-			</div>
-
-			<div id="text-container-prof">
-				<table>
-					<tr>
-						<td>
-							<p id="name-prof">
-								#{avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor} -
-								#{professorMBean.buscar(avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor).nome}</p>
-						</td>
-					</tr>
-				</table>
-
-				<div id="description-container-prof">
-					<p id="description-prof">A brief description of the professor
-						containing data such as the university where he/she curently
-						works, the places where he/she has taught before, the disciplines
-						he/she has previously taught and the ones he/she is currently
-						teaching.</p>
-				</div>
-			</div>
-		</div>
-
-		<h:form>
-			<div id="evaluation-container" class="flexbox-row">
-				<div id="objective-evaluation-container" class="flexbox-column">
-					<div id="objective-evaluation1" class="objective-evaluation flexbox-column">
-					
-						<div class="objective-evaluation-text-container flexbox-column">
-							<p>Didática</p>
-						</div>
-						
-						<div class="objective-evaluation-dropdown-menu-container">
-							<h:selectOneMenu class="objective-evaluation-dropdown-menu" value="#{avaliacaoAlunoProfessorMBean.avaliacao.didatica}">
-								<f:selectItem itemValue="true" itemLabel="Like" />
-								<f:selectItem itemValue="false" itemLabel="Dislike" />
+			<h:form>
+            <div id="evaluation-container">
+                <div id="objective-evaluation-container">
+                    <div id="objective-evaluation1" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Didatica </p>                            
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                        	
+                        	<h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoAlunoProfessorMBean.avaliacao.didatica}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
 							</h:selectOneMenu>
-						</div>
-					</div>
-
-					<div id="objective-evaluation2" class="objective-evaluation flexbox-column">
-					
-						<div class="objective-evaluation-text-container flexbox-column">
-							<p>Provas</p>
-						</div>
-						
-						<div class="objective-evaluation-dropdown-menu-container">
-							<h:selectOneMenu class="objective-evaluation-dropdown-menu" value="#{avaliacaoAlunoProfessorMBean.avaliacao.provas}">
-								<f:selectItem itemValue="true" itemLabel="Like" />
-								<f:selectItem itemValue="false" itemLabel="Dislike" />
+                        </div>
+                    </div>
+                    
+                    <div id="objective-evaluation2" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Provas </p>
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                            <h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoAlunoProfessorMBean.avaliacao.provas}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
 							</h:selectOneMenu>
-						</div>
-					</div>
-
-					<div id="objective-evaluation3" class="objective-evaluation flexbox-column">
-					
-						<div class="objective-evaluation-text-container flexbox-column">
-							<p>Personalidade</p>
-						</div>
-						
-						<div class="objective-evaluation-dropdown-menu-container">
-							<h:selectOneMenu class="objective-evaluation-dropdown-menu" value="#{avaliacaoAlunoProfessorMBean.avaliacao.personalidade}">
-								<f:selectItem itemValue="true" itemLabel="Like" />
-								<f:selectItem itemValue="false" itemLabel="Dislike" />
+                        </div>
+                    </div>
+                    
+                    <div id="objective-evaluation3" class="objective-evaluation">
+                        <div class="objective-evaluation-text-container">
+                            <p> Personalidade </p>
+                        </div>
+                        <div class="objective-evaluation-button-container">
+                            <h:selectOneMenu class="objective-evaluation-button-container" value="#{avaliacaoAlunoProfessorMBean.avaliacao.personalidade}" >
+						    	<f:selectItem itemValue="true" itemLabel="Like" />
+						      	<f:selectItem itemValue="false" itemLabel="Dislike" />
 							</h:selectOneMenu>
-						</div>
-					</div>
-				</div>
-				
-				<div id="subjective-evaluation-container" class="flexbox-row">
-					<h:inputTextarea value="#{avaliacaoAlunoProfessorMBean.avaliacao.comentario}" />
-				</div>
-				
-				<div class="buttons-container flexbox-column">
-					<h:commandLink action="#{avaliacaoAlunoProfessorMBean.avaliar}">
-						<button class="send-button">Enviar avaliação</button>
-					</h:commandLink>
-					<h:commandLink action="#{avaliacaoAlunoProfessorMBean.voltar}">
-						<button class="send-button">Voltar</button>
-					</h:commandLink>
-				</div>
-				
-			</div>
-		</h:form>
-
-	</div>
-</h:body>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            	<div id="subjective-evaluation-container">
+            		<h:inputTextarea id="input-text" value="#{avaliacaoAlunoProfessorMBean.avaliacao.comentario}"/>
+        		</div>
+            
+            	<h:commandLink action="#{avaliacaoAlunoProfessorMBean.avaliar}">
+                	<button> Enviar avaliação </button>
+                </h:commandLink>
+        	</h:form>
+            
+        </div>
+        
+        
+    </h:body>
 </html>
