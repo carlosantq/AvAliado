@@ -95,5 +95,8 @@ public class Disciplina {
 		this.notaCobranca = notaCobranca;
 	}
 	
-	
+	@Override
+	public String toString(){
+		return id + " - " + nome + " - " + ano + "/" + semestre;
+	}
 }

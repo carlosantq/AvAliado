@@ -12,5 +12,5 @@ Dentre as principais funcionalidades, destacam-se:
 
 > Projeto Detalhado de Software 
 > - Carlos (@carlosant)
-> - Francleide (@francleide)
+> - Pedro Henrique (@pedrohcavalcante)
 > - Jonathan (@jonathanrocha00)

@@ -31,5 +31,10 @@ public class Professor extends Pessoa{
 	public void setNotaPersonalidade (int notaPersonalidade){
 		this.notaPersonalidade = notaPersonalidade;
 	}
+	
+	@Override
+	public String toString(){
+		return this.getNome() + " - " + this.getMatricula();
+	}
 }
 

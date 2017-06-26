@@ -50,4 +50,9 @@ public class Curso {
 	public void setUniversidadeId(int universidadeId){
 		this.universidadeId = universidadeId;
 	}
+	
+	@Override
+	public String toString(){
+		return nome + " - Universidade: " + universidadeId;
+	}
 }

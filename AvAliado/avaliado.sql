@@ -157,18 +157,6 @@ CREATE TABLE AvaliacaoCurso(
 	FOREIGN KEY(cursoID) REFERENCES Curso(id)
 );
 
--- CREATE TABLE AvaliacaoAlunoDisciplina(
--- 	matriculaAluno INT NOT NULL,
--- 	disciplinaID VARCHAR(20) NOT NULL,
--- 	relevancia BOOLEAN,
--- 	dificuldade BOOLEAN,
--- 	ofertaBibliografia BOOLEAN,
--- 	data DATE NOT NULL,
--- 	PRIMARY KEY(matriculaAluno, disciplinaID),
--- 	FOREIGN KEY(matriculaAluno) REFERENCES Aluno(matricula),
--- 	FOREIGN KEY(disciplinaID) REFERENCES Disciplina(id)
--- );
-
 CREATE TABLE AvaliacaoAlunoDisciplinaOferta(
 	matriculaAluno INT NOT NULL,
 	disciplinaID VARCHAR(20) NOT NULL,
@@ -209,13 +197,13 @@ INSERT INTO Pessoa VALUES(2014044145, 1, "Carlos Antonio", "84999436881", "carlo
 INSERT INTO Usuario VALUES (2014044145, "123", 1);
 INSERT INTO Aluno VALUES(2014044145, 5);
 
-INSERT INTO Pessoa VALUES(2013019596, 1, "Francleide Peixoto", "84981538006", "francleidepsimao@gmail.com");
-INSERT INTO Usuario VALUES (2013019596, "123", 1);
-INSERT INTO Aluno VALUES(2013019596, 8);
-
 INSERT INTO Pessoa VALUES(2015044005, 1, "Jonathan Rocha", "84996222783", "jonathan.rocha@msn.com");
 INSERT INTO Usuario VALUES (2015044005, "123", 1);
 INSERT INTO Aluno VALUES(2015044005, 5);
+
+INSERT INTO Pessoa VALUES(2014028473, 1, "Pedro Henrique", "84123456789", "pedrohbcavalcante@outlook.com");
+INSERT INTO Usuario VALUES (2014028473, "123", 1);
+INSERT INTO Aluno VALUES(2014028473, 5);
 
 -- Inserir Universidade
 INSERT INTO Universidade VALUES(NULL, "Universidade Federal do Rio Grande do Norte", "UFRN", "Campus Universitário Lagoa Nova, CEP 59078-970, Natal/RN - Brasil", "8433422238", NULL, NULL, NULL);
@@ -237,7 +225,7 @@ INSERT INTO DisciplinaOferta VALUES ("DIM0501", 1111111113, 2017, 1, NULL, NULL,
 
 -- Inserir Alunos em Universidade
 INSERT INTO vinculoUniversidade VALUES (1, 2014044145);
-INSERT INTO vinculoUniversidade VALUES (1, 2013019596);
+INSERT INTO vinculoUniversidade VALUES (1, 2014028473);
 INSERT INTO vinculoUniversidade VALUES (1, 2015044005);
 
 -- Inserir Professores em Universidade
@@ -247,7 +235,7 @@ INSERT INTO vinculoUniversidade VALUES (1, 1111111113);
 
 -- Inserir Alunos em Curso
 INSERT INTO vinculoCurso VALUES(1, 2014044145);
-INSERT INTO vinculoCurso VALUES(1, 2013019596);
+INSERT INTO vinculoCurso VALUES(1, 2014028473);
 INSERT INTO vinculoCurso VALUES(1, 2015044005);
 
 -- Inserir Professores em Curso
@@ -257,12 +245,13 @@ INSERT INTO vinculoCurso VALUES (1, 1111111113);
 
 -- Inserir Aluno em Disciplina
 INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0507", 1111111112, 2017, 1, 2014044145);
-INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0507", 1111111112, 2017, 1, 2013019596);
+INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0507", 1111111112, 2017, 1, 2014028473);
+INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0501", 1111111113, 2017, 1, 2014028473);
 INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0507", 1111111112, 2017, 1, 2015044005);
 
 -- Inserir notas dos alunos para o professor 111111112
 INSERT INTO AvaliacaoAlunoProfessor VALUES (2014044145, 1111111112, true, false, false, NOW(), "Boa!");
-INSERT INTO AvaliacaoAlunoProfessor VALUES (2013019596, 1111111112, true, false, true, NOW(), "Legal.");
+INSERT INTO AvaliacaoAlunoProfessor VALUES (2014028473, 1111111112, true, false, true, NOW(), "Legal.");
 
 -- Inserir notas para a universidade 1
 INSERT INTO AvaliacaoUniversidade VALUES (2014044145, 1, true, true, false, NOW(), "Boa universidade.");

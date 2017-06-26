@@ -5,11 +5,12 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import dominio.Aluno;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class AlunoMBean {
 	private Aluno aluno;
 	private List<Aluno> listaAlunos;
