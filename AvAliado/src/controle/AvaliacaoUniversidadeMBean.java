@@ -96,4 +96,7 @@ public class AvaliacaoUniversidadeMBean {
 		return "/alunoHome.jsf";
 	}
 	
+	public String voltar(){
+		return "/alunoHome.jsf";
+	}
 }

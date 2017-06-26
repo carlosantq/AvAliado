@@ -96,4 +96,8 @@ public class AvaliacaoCursoMBean {
 		return "/alunoHome.jsf";
 	}
 	
+	public String voltar(){
+		return "/alunoHome.jsf";
+	}
+	
 }

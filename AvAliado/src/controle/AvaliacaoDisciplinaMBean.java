@@ -85,6 +85,9 @@ public class AvaliacaoDisciplinaMBean {
 		}
 	}
 	
+	public String voltar(){
+		return "/alunoHome.jsf";
+	}
 	
 	public String avaliar(){
 		
