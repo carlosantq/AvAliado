@@ -9,24 +9,6 @@ $sql_query = $mysqli->query($sql_code) or die ($mysqli->error);
 $row = $sql_query->fetch_assoc();
 $sql_select_universidade = "SELECT * FROM curso";
 $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->error);
-/*
-$sql_code_new = "SELECT * FROM noticias.noticias WHERE id_admin = '$_SESSION[admin]'";
-$sql_code_new_query = $mysqli->query($sql_code_new) or die ($mysqli->error);
-
-
-
-if(array_key_exists("id", $_GET)){
-    $sql_update = "UPDATE noticias.noticias SET publica = false WHERE id_noticias = '$_GET[id]'";
-    $sql_query_update = $mysqli->query($sql_update) or die ($msqli->error);
-    echo "<script>location.href = 'opainel.php';</script>";
-}
-
-if(array_key_exists("id_update", $_GET)){
-    $sql_update = "UPDATE noticias.noticias SET publica = true WHERE id_noticias = '$_GET[id_update]'";
-    $sql_query_update = $mysqli->query($sql_update) or die ($msqli->error);
-    echo "<script>location.href = 'opainel.php';</script>";
-}
-*/
 
 ?>
 
