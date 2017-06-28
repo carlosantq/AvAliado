@@ -43,8 +43,10 @@
 
 	<div class="search-box-container outter-container flexbox-row">
 		<h:form class="search-form flexbox-row">
-			<h:inputText class="search-box"
-				value="#{avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor}" />
+			<h:selectOneMenu class="search-box" value="#{avaliacaoAlunoProfessorMBean.avaliacao.matriculaProfessor}">
+			    <f:selectItems value="#{professorMBean.listaProfessores}" var="prof"
+			        itemValue="#{prof.matricula}" itemLabel="#{prof}" />
+			</h:selectOneMenu>
 			<h:commandLink action="#{avaliacaoAlunoProfessorMBean.paginaAvaliar}">
 				<f:param name="matricula"
 					value="#{usuarioMBean.aluno.matricula}" />
@@ -88,8 +90,10 @@
 		</table>
 		
 		<h:form class="search-form flexbox-row">
-			<h:inputText class="search-box"
-				value="#{avaliacaoUniversidadeMBean.avaliacao.universidadeId}" />
+			<h:selectOneMenu class="search-box" value="#{avaliacaoUniversidadeMBean.avaliacao.universidadeId}">
+			    <f:selectItems value="#{universidadeMBean.listaUniversidades}" var="uni"
+			        itemValue="#{uni.id}" itemLabel="#{uni}" />
+			</h:selectOneMenu>
 			<h:commandLink action="#{avaliacaoUniversidadeMBean.paginaAvaliar}">
 				<f:param name="matricula"
 					value="#{usuarioMBean.aluno.matricula}" />
@@ -128,8 +132,10 @@
 		</table>
 		
 		<h:form class="search-form flexbox-row">
-			<h:inputText class="search-box"
-				value="#{avaliacaoCursoMBean.avaliacao.cursoId}" />
+			<h:selectOneMenu class="search-box" value="#{avaliacaoCursoMBean.avaliacao.cursoId}">
+			    <f:selectItems value="#{cursoMBean.listaCursos}" var="curso"
+			        itemValue="#{curso.id}" itemLabel="#{curso}" />
+			</h:selectOneMenu>
 			<h:commandLink action="#{avaliacaoCursoMBean.paginaAvaliar}">
 				<f:param name="matricula"
 					value="#{usuarioMBean.aluno.matricula}" />
@@ -168,8 +174,10 @@
 		</table>
 		
 		<h:form class="search-form flexbox-row">
-			<h:inputText class="search-box"
-				value="#{avaliacaoDisciplinaMBean.avaliacao.disciplinaId}" />
+			<h:selectOneMenu class="search-box" value="#{avaliacaoDisciplinaMBean.avaliacao.disciplinaId}">
+			    <f:selectItems value="#{disciplinaMBean.listaDisciplinas}" var="disc"
+			        itemValue="#{disc.id}" itemLabel="#{disc}" />
+			</h:selectOneMenu>
 			<h:commandLink action="#{avaliacaoDisciplinaMBean.paginaAvaliar}">
 				<f:param name="matricula"
 					value="#{usuarioMBean.aluno.matricula}" />
