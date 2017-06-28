@@ -19,7 +19,7 @@ CREATE TABLE Pessoa(
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(tipoid) REFERENCES TipoPessoa(id)
 );
-SELECT * from Professor;
+SELECT * from pessoa;
 CREATE TABLE Usuario(
 	matricula INT NOT NULL,
 	senha VARCHAR(50) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE Universidade(
 	notaAuxilios INT DEFAULT 0,
 	PRIMARY KEY(id)
 );
-SELECT * from Universidade;
+SELECT * from Curso;
 CREATE TABLE Curso(
 	id INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(50),
@@ -67,7 +67,8 @@ CREATE TABLE Curso(
 	PRIMARY KEY(id),
 	FOREIGN KEY(universidadeID) REFERENCES Universidade(id)
 );
-SELECT * from CURSO;
+SELECT * from DISCIPLINA;
+DROP TABLE IF EXISTS Disciplina;
 CREATE TABLE Disciplina(
 	id VARCHAR(20) NOT NULL,
 	nome VARCHAR(50),
@@ -226,7 +227,7 @@ INSERT INTO Disciplina VALUES("DIM0507", "Teste de Software I", 1);
 -- Inserir Oferta de Disciplina
 INSERT INTO DisciplinaOferta VALUES ("DIM0507", 1111111112, 2017, 1, NULL, NULL, NULL, NULL);
 INSERT INTO DisciplinaOferta VALUES ("DIM0501", 1111111113, 2017, 1, NULL, NULL, NULL, NULL);
-
+SELECT * FROM pessoa WHERE pessoa.matricula NOT IN (SELECT pessoaID FROM vinculoUniversidade);
 -- Inserir Alunos em Universidade
 INSERT INTO vinculoUniversidade VALUES (1, 2014044145);
 INSERT INTO vinculoUniversidade VALUES (1, 2014028473);
