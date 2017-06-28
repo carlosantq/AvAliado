@@ -10,7 +10,7 @@ Dentre as principais funcionalidades, destacam-se:
 
 ---------------------------------------
 
-> Projeto Detalhado de Software 
+> Projeto Detalhado de Software / Banco de Dados 
 > - Carlos (@carlosant)
 > - Pedro Henrique (@pedrohcavalcante)
 > - Jonathan (@jonathanrocha00)
