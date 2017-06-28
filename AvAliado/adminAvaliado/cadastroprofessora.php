@@ -42,7 +42,7 @@ $row = $sql_query->fetch_assoc();
                 <li class="collection-item"><a href="cadastrocurso.php">Cadastrar Curso</a></li>
                 <li class="collection-item"><a href="cadastroOfertaDisciplina.php">Cadastrar Oferta de Disciplina</a></li>
                 <li class="collection-item"><a href="cadastroVinculo.php">Cadastrar Vinculo de Aluno/Professor com Universidade</a></li>
-                <!--<li class="collection-item"><a href="">Sobre</a></li>-->
+                <li class="collection-item"><a href="cadastroDisciplinaOferta.php">Cadastrar Oferta de Disciplina</a></li>
             </ul>
         </div>
         <div class="col s9">

@@ -9,11 +9,12 @@ $sql_query = $mysqli->query($sql_code) or die ($mysqli->error);
 $row = $sql_query->fetch_assoc();
 
 
-$sql_select_pessoa = "SELECT * FROM pessoa WHERE pessoa.matricula NOT IN (SELECT pessoaID FROM vinculoUniversidade)";
-$sql_query_pessoa = $mysqli->query($sql_select_pessoa) or die ($mysqli->error);
 
-$sql_select_universidade = "SELECT * FROM Universidade";
-$sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->error);
+$sql_select_disciplina = "SELECT * FROM disciplina";
+$sql_exec_consulta = $mysqli->query($sql_select_disciplina) or die ($mysqli->error);
+
+$sql_select_professor = "SELECT * FROM pessoa WHERE tipoid = 0";
+$sql_exec_professor = $mysqli->query($sql_select_professor) or die ($mysqli->error);
 
 ?>
 
@@ -56,32 +57,18 @@ $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->e
                 <li class="collection-item"><a href="cadastrouniversidade.php">Cadastrar Universidade</a></li>
                 <li class="collection-item"><a href="cadastrocurso.php">Cadastrar Curso</a></li>
                 <li class="collection-item"><a href="cadastroOfertaDisciplina.php">Cadastrar Oferta de Disciplina</a></li>
-                <li class="collection-item active"><a href="cadastroVinculo.php">Cadastrar Vinculo de Aluno/Professor com Universidade</a></li>
-                <li class="collection-item"><a href="cadastroDisciplinaOferta.php">Cadastrar Oferta de Disciplina</a></li>
+                <li class="collection-item"><a href="cadastroVinculo.php">Cadastrar Vinculo de Aluno/Professor com Universidade</a></li>
+                <li class="collection-item active"><a href="cadastroDisciplinaOferta.php">Cadastrar Oferta de Disciplina</a></li>
+                <!--<li class="collection-item"><a href="">Sobre</a></li>-->
             </ul>
         </div>
         <br>
         <div class="col s9">
             <div class="row">
-                <form class="col s12" name="formCadastroCont" action="insertDisciplina.php" method="POST">
-                <div class="input-field col s12">
-                    <select name = "idCurso" id = "idCurso" required>
-                        <option value="" disabled selected>Escolha a Pessoa</option>
-
-                        <?php
-                        while($exec_pessoa = $sql_query_pessoa->fetch_assoc()){
-                            echo ("
-                            <option value=".$exec_pessoa['id'].">".$exec_pessoa['nome']."</option>
-                            ");
-                        }
-                        ?>
-                    </select>
-                    <label>Selecionar Pessoa</label>
-                </div>
-                
-                <div class="input-field col s12">
-                    <select name = "idCurso" id = "idCurso" required>
-                        <option value="" disabled selected>Escolha a Universidade</option>
+                <form class="col s12" name="formCadastroCont" action="insertDisciplinaOferta.php" method="POST">
+               <div class="input-field col s12">
+                    <select name = "idDisciplina" id="idDisciplina" required>
+                        <option value="" disabled selected>Escolha a Disciplina</option>
 
                         <?php
                         while($exec_curso = $sql_exec_consulta->fetch_assoc()){
@@ -91,7 +78,38 @@ $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->e
                         }
                         ?>
                     </select>
-                    <label>Selecionar Universidade</label>
+                    <label>Selecionar a Disciplina</label>
+                </div>
+                <div class="input-field col s12">
+                    <select name="professor" id="professor" required>
+                        <option value="" disabled selected>Escolha o Professor</option>
+
+                        <?php
+                        while($exec_prof = $sql_exec_professor->fetch_assoc()){
+                            echo ("
+                            <option value=".$exec_prof['matricula'].">".$exec_prof['nome']."</option>
+                            ");
+                        }
+                        ?>
+                    </select>
+                    <label>Selecionar o Professor</label>
+                </div>
+                <div class="row">
+                    <div class="input-field col s2">
+                    <input  id="ano" name="ano" type="text" class="validate" required>
+                    <label for="ano">Ano</label>
+                    </div>
+                    <div class="input-field col s2">
+                    <select name="semestre" id="semestre" required>
+                        <option value="" disabled selected>Escolha o Semestre   </option>
+
+                        
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            
+                    </select>
+                    <label>Selecionar o Professor</label>
+                </div>
                 </div>
                 <button type='submit' class='waves-effect waves-light btn right' value='Login'>Cadastrar</button>
                 </form>
