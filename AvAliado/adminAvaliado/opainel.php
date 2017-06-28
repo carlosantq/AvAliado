@@ -7,6 +7,8 @@ include ('conexao.php');
 $sql_code = "SELECT * FROM usuario WHERE matricula = '$_SESSION[admin]'";
 $sql_query = $mysqli->query($sql_code) or die ($mysqli->error);
 $row = $sql_query->fetch_assoc();
+$sql_select_universidade = "SELECT * FROM curso";
+$sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->error);
 /*
 $sql_code_new = "SELECT * FROM noticias.noticias WHERE id_admin = '$_SESSION[admin]'";
 $sql_code_new_query = $mysqli->query($sql_code_new) or die ($mysqli->error);
@@ -29,6 +31,7 @@ if(array_key_exists("id_update", $_GET)){
 ?>
 
 <html>
+ <meta charset="UTF-8">
     <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Compiled and minified CSS -->
@@ -38,6 +41,11 @@ if(array_key_exists("id_update", $_GET)){
         <link rel="stylesheet" href="admincss/admincss.css">
          <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+        </script>
     </head>
     <body class="test">
     <div class="navbar-fixed">
@@ -65,36 +73,36 @@ if(array_key_exists("id_update", $_GET)){
             </ul>
         </div>
         <div class="col s9">
-            <?php 
-            echo("<table class='highlightresponsive-table'><thead>
-          <tr>
-              <th>Título</th>
-              <th class='center2'>Noticia</th>
-              <th>Ações</th>
-          </tr>
-        </thead>");
-            echo("<tbody>");
-                while ($noticias = $sql_code_new_query->fetch_assoc()){
-                    echo (' <tr>
-                                <td>'.$noticias['titulo'].'</td>
-                                <td>'.$noticias['noticias'].'</td>');
+            <div class="row">
+                <form class="col s12" name="formCadastroCont" action="insertDisciplina.php" method="POST">
+                <div class="row">
+                    <div class="input-field col s6">
+                    <input  id="nomeDisciplina" name="nomeDisciplina" type="text" class="validate" required>
+                    <label for="nomeDisciplina">Nome da Disciplina</label>
+                    </div>
+                    <div class="input-field col s6">
+                    <input  id="sigla" name="sigla" type="text" class="validate" required>
+                    <label for="sigla">Sigla</label>
+                    </div>
+                </div>
+                <div class="input-field col s12">
+                    <select name = "idCurso" id = "idCurso" required>
+                        <option value="" disabled selected>Escolha o Curso</option>
 
-                                if ($noticias['publica']){
-                                    echo("<td><div id='imagem'><a href='opainel.php?id=".$noticias['id_noticias']."'><i class='small material-icons'>thumb_up</i></a></div></td>");
-                                }else{
-                                    echo("<td><div id='imagem'><a href='opainel.php?id_update=".$noticias['id_noticias']."'><i class='small material-icons'>thumb_down</i></a></div></td>");
-                                }
-                                
-                            echo("</tr>");
-
-                            
-                }
-            echo ('</tbody></table>');
-             ?>
-             <div class='center2'><i class='small material-icons' >thumb_up</i>: Matéria Publicada
-            <i class='small material-icons'>thumb_down</i>: Matéria Escondida</div>
+                        <?php
+                        while($exec_curso = $sql_exec_consulta->fetch_assoc()){
+                            echo ("
+                            <option value=".$exec_curso['id'].">".$exec_curso['nome']."</option>
+                            ");
+                        }
+                        ?>
+                    </select>
+                    <label>Selecionar Curso</label>
+                </div>
+                <button type='submit' class='waves-effect waves-light btn right' value='Login'>Cadastrar</button>
+                </form>
+            </div>
         </div>
-    </div>
     
     </body>
 </html>
