@@ -28,7 +28,7 @@ CREATE TABLE Usuario(
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula),
 	FOREIGN KEY(tipoid) REFERENCES TipoPessoa(id)
 );
-
+SELECT nome, matricula FROM pessoa WHERE matricula IN (SELECT matricula FROM PROFESSOR);
 CREATE TABLE Professor(
 	matricula INT NOT NULL,
 	notaDidatica INT DEFAULT 0,
@@ -89,9 +89,8 @@ CREATE TABLE DisciplinaOferta(
 	FOREIGN KEY(id) REFERENCES Disciplina(id),
 	FOREIGN KEY(professorID) REFERENCES Professor(matricula)
 );
-
+SELECT * FROM vinculouniversidade WHERE pessoaID=2014028473 and universidadeID = (SELECT distinct(universidadeid) FROM Disciplinaoferta JOIN Disciplina JOIN Curso where DisciplinaOferta.id = Disciplina.id AND Disciplina.cursoID = curso.id AND DisciplinaOferta.id = "código_da_disciplina");
 SELECT nome FROM Disciplina WHERE id IN (Select id FROM DisciplinaOferta);
-
 CREATE TABLE vinculoUniversidade(
 	universidadeID INT NOT NULL,
 	pessoaID INT NOT NULL,

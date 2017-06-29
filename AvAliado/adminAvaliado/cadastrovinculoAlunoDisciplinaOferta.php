@@ -62,7 +62,7 @@ $sql_exec_select_alunos = $mysqli->query($sql_select_alunos) or die ($mysqli->er
                         <?php
                         while($exec_disciplina = $sql_exec_select_disciplinas_oferta->fetch_assoc()){
                             echo ("
-                            <option value=".$exec_disciplina['id'].">".$exec_disciplina['nome']."</option>
+                            <option value=".$exec_disciplina['id'].">".$exec_disciplina['id']. ' - ' . $exec_disciplina['nome']."</option>
                             ");
                         }
                         ?>
