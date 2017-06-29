@@ -43,7 +43,10 @@ $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->e
         </div>   
     
     <div class="row ">
-        <div class="col s3 leftRow">
+    <?php
+        include ('leftMenu.php');
+        ?>
+        <!--<div class="col s3 leftRow">
             <ul class="collection">
                 <li class="collection-item active"><a href="opainel.php">Cadastrar Disciplina</a></li>
                 <li class="collection-item"><a href="cadastroaluno.php">Cadastrar Aluno</a></li>
@@ -54,9 +57,8 @@ $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->e
                 <li class="collection-item"><a href="cadastroVinculo.php">Cadastrar Vinculo de Aluno/Professor com Universidade</a></li>
                 <li class="collection-item"><a href="cadastroDisciplinaOferta.php">Cadastrar Oferta de Disciplina</a></li>
                 <li class="collection-item active"><a href="cadastroVinculoCurso.php">Cadastrar Vínculo com Cursos</a></li>
-                <!--<li class="collection-item"><a href="">Sobre</a></li>-->
             </ul>
-        </div>
+        </div>-->
         <div class="col s9">
             <div class="row">
                 <form class="col s12" name="formCadastroCont" action="insertDisciplina.php" method="POST">

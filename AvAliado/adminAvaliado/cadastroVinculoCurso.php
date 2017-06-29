@@ -9,10 +9,10 @@ $sql_query = $mysqli->query($sql_code) or die ($mysqli->error);
 $row = $sql_query->fetch_assoc();
 
 
-$sql_select_pessoa = "SELECT * FROM pessoa WHERE pessoa.matricula NOT IN (SELECT pessoaID FROM vinculoUniversidade)";
+$sql_select_pessoa = "SELECT * FROM pessoa";
 $sql_query_pessoa = $mysqli->query($sql_select_pessoa) or die ($mysqli->error);
 
-$sql_select_universidade = "SELECT * FROM Universidade";
+$sql_select_universidade = "SELECT * FROM Curso";
 $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->error);
 
 ?>
@@ -48,7 +48,10 @@ $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->e
         </div>   
     
     <div class="row ">
-        <div class="col s3 leftRow">
+    <?php
+        include ('leftMenu.php');
+        ?>
+        <!--<div class="col s3 leftRow">
             <ul class="collection">
                 <li class="collection-item"><a href="opainel.php">Cadastrar Disciplina</a></li>
                 <li class="collection-item"><a href="cadastroaluno.php">Cadastrar Aluno</a></li>
@@ -58,20 +61,21 @@ $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->e
                 <li class="collection-item"><a href="cadastroOfertaDisciplina.php">Cadastrar Oferta de Disciplina</a></li>
                 <li class="collection-item active"><a href="cadastroVinculo.php">Cadastrar Vinculo de Aluno/Professor com Universidade</a></li>
                 <li class="collection-item"><a href="cadastroDisciplinaOferta.php">Cadastrar Oferta de Disciplina</a></li>
+                <li class="collection-item active"><a href="cadastroVinculoCurso.php">Cadastrar Vínculo com Cursos</a></li>
             </ul>
-        </div>
+        </div>-->
         <br>
         <div class="col s9">
             <div class="row">
-                <form class="col s12" name="formCadastroCont" action="insertDisciplina.php" method="POST">
+                <form class="col s12" name="formCadastroCont" action="insertVinculoCurso.php" method="POST">
                 <div class="input-field col s12">
-                    <select name = "idCurso" id = "idCurso" required>
+                    <select name = "idPessoa" id = "idPessoa" required>
                         <option value="" disabled selected>Escolha a Pessoa</option>
 
                         <?php
                         while($exec_pessoa = $sql_query_pessoa->fetch_assoc()){
                             echo ("
-                            <option value=".$exec_pessoa['id'].">".$exec_pessoa['nome']."</option>
+                            <option value=".$exec_pessoa['matricula'].">".$exec_pessoa['nome']."</option>
                             ");
                         }
                         ?>
@@ -81,7 +85,7 @@ $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->e
                 
                 <div class="input-field col s12">
                     <select name = "idCurso" id = "idCurso" required>
-                        <option value="" disabled selected>Escolha a Universidade</option>
+                        <option value="" disabled selected>Escolha O Curso</option>
 
                         <?php
                         while($exec_curso = $sql_exec_consulta->fetch_assoc()){
@@ -91,7 +95,7 @@ $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->e
                         }
                         ?>
                     </select>
-                    <label>Selecionar Universidade</label>
+                    <label>Selecionar Curso</label>
                 </div>
                 <button type='submit' class='waves-effect waves-light btn right' value='Login'>Cadastrar</button>
                 </form>

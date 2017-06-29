@@ -49,7 +49,10 @@ $sql_exec_professor = $mysqli->query($sql_select_professor) or die ($mysqli->err
         </div>   
     
     <div class="row ">
-        <div class="col s3 leftRow">
+    <?php
+        include ('leftMenu.php');
+        ?>
+        <!--<div class="col s3 leftRow">
             <ul class="collection">
                 <li class="collection-item"><a href="opainel.php">Cadastrar Disciplina</a></li>
                 <li class="collection-item"><a href="cadastroaluno.php">Cadastrar Aluno</a></li>
@@ -59,9 +62,9 @@ $sql_exec_professor = $mysqli->query($sql_select_professor) or die ($mysqli->err
                 <li class="collection-item"><a href="cadastroOfertaDisciplina.php">Cadastrar Oferta de Disciplina</a></li>
                 <li class="collection-item"><a href="cadastroVinculo.php">Cadastrar Vinculo de Aluno/Professor com Universidade</a></li>
                 <li class="collection-item active"><a href="cadastroDisciplinaOferta.php">Cadastrar Oferta de Disciplina</a></li>
-                <!--<li class="collection-item"><a href="">Sobre</a></li>-->
+                <li class="collection-item active"><a href="cadastroVinculoCurso.php">Cadastrar Vínculo com Cursos</a></li> 
             </ul>
-        </div>
+        </div>-->
         <br>
         <div class="col s9">
             <div class="row">
