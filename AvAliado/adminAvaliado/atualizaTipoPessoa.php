@@ -38,6 +38,7 @@ $row_pessoa = $sql_exec_select_pessoa->fetch_assoc();
                 <form class="col s12" name="formCadastroCont" action="updateTipoPessoa.php" method="POST">
                      <div class="input-field col s12">
                         <input  id="matricula" name="matricula" type="text" class="validate" disabled required value="<?php echo ($row_pessoa['matricula']); ?>" >
+                        <input type="hidden" id="matricula" name="matricula" type="text" class="validate" value="<?php echo ($row_pessoa['matricula']); ?>" >   
                         <label for="matricula">Matricula</label>
                     </div>
                     <div class="input-field col s6">
@@ -106,6 +107,7 @@ $row_pessoa = $sql_exec_select_pessoa->fetch_assoc();
                     </div>
                     <button type='submit' class='waves-effect waves-light btn right' value='Login'>Atualizar</button>
                 </form>
+                <a href="selectTipoPessoa.php" class="waves-effect waves-light btn">Voltar</a>
             </div>
         </div>
     </div>
