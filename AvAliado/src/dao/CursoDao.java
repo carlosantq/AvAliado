@@ -158,5 +158,23 @@ public class CursoDao implements IDAO<Curso> {
 		
 		return returnInformation;
 	}
+	
+	public String buscarNomeCurso(int matricula){
+		String resultado = null;
+		
+		Connection con = GerenciarConexao.getConexao();
+		String sql = "SELECT nome FROM VinculoCurso JOIN Curso WHERE VinculoCurso.cursoID = Curso.id AND pessoaID="+matricula;
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				resultado = rs.getString("nome");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultado;
+	}
 
 }

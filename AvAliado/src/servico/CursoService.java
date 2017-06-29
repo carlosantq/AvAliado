@@ -56,5 +56,9 @@ public class CursoService implements IServico<Curso> {
 	public boolean buscarVinculo(int matricula, int cursoId){
 		return cursoDao.buscarVinculo(matricula, cursoId);
 	}
+	
+	public String buscarNomeCurso(int matricula){
+		return cursoDao.buscarNomeCurso(matricula);
+	}
 
 }

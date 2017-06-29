@@ -11,10 +11,12 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import dominio.Aluno;
+import dominio.Curso;
 import dominio.Professor;
 import dominio.TipoPessoa;
 import dominio.Usuario;
 import servico.AlunoService;
+import servico.CursoService;
 import servico.ProfessorService;
 import servico.UsuarioService;
 
@@ -28,11 +30,13 @@ public class UsuarioMBean {
 	private Usuario usuarioLogado;
 	private Aluno aluno;
 	private Professor professor;
+	private String curso = null;
 	@Inject
 	private AlunoService alunoService;
 	@Inject
 	private ProfessorService professorService;
-	
+	@Inject
+	private CursoService cursoService;
 	
 	public UsuarioMBean(){
 		usuario = new Usuario();
@@ -80,6 +84,14 @@ public class UsuarioMBean {
 		this.usuarioLogado = usuarioLogado;
 	}
 	
+	public String getCurso(){
+		return curso;
+	}
+	
+	public void setCurso(String curso){
+		this.curso = curso;
+	}
+	
 	public String login(){
 		
 		Usuario usuarioBd = new Usuario();
@@ -98,6 +110,8 @@ public class UsuarioMBean {
 					
 					alunoService = new AlunoService();
 					aluno = alunoService.buscar(usuarioLogado.getMatricula());
+					cursoService = new CursoService();
+					curso = cursoService.buscarNomeCurso(usuarioLogado.getMatricula());
 					
 					return "/alunoHome.jsf";
 				}else{
@@ -114,7 +128,7 @@ public class UsuarioMBean {
 				return null;
 			}
 		}else{
-			FacesMessage msg = new FacesMessage("Usuário não existe");
+			FacesMessage msg = new FacesMessage("Usuï¿½rio nï¿½o existe");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
