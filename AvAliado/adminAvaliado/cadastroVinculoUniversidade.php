@@ -69,13 +69,13 @@ $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->e
             <div class="row">
                 <form class="col s12" name="formCadastroCont" action="insertVinculoUniversidade.php" method="POST">
                 <div class="input-field col s12">
-                    <select name = "idCurso" id = "idCurso" required>
+                    <select name = "idPessoa" id = "idPessoa" required>
                         <option value="" disabled selected>Escolha a Pessoa</option>
 
                         <?php
                         while($exec_pessoa = $sql_query_pessoa->fetch_assoc()){
                             echo ("
-                            <option value=".$exec_pessoa['id'].">".$exec_pessoa['nome']."</option>
+                            <option value=".$exec_pessoa['matricula'].">".$exec_pessoa['nome']."</option>
                             ");
                         }
                         ?>
@@ -84,7 +84,7 @@ $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->e
                 </div>
                 
                 <div class="input-field col s12">
-                    <select name = "idCurso" id = "idCurso" required>
+                    <select name = "idUniversidade" id = "idUniversidade" required>
                         <option value="" disabled selected>Escolha a Universidade</option>
 
                         <?php
