@@ -14,21 +14,9 @@ $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->e
 ?>
 <!DOCTYPE>
 <html>
-    <head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- Compiled and minified CSS -->
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <!--<script type="text/javascript" src="materialize/js/materialize.min.js"></script>-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-        <link rel="stylesheet" href="admincss/admincss.css">
-         <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('select').material_select();
-            });
-        </script>
-    </head>
+    <?php
+        include('head.php');
+    ?>
     <div class="navbar-fixed">
             <nav>
                 <div class="nav-wrapper">
@@ -45,19 +33,6 @@ $sql_exec_consulta = $mysqli->query($sql_select_universidade) or die ($mysqli->e
     <?php
         include ('leftMenu.php');
         ?>
-        <!--<div class="col s3 leftRow">
-            <ul class="collection">
-                <li class="collection-item"><a href="opainel.php">Cadastrar Disciplina</a></li>
-                <li class="collection-item"><a href="cadastroaluno.php">Cadastrar Aluno</a></li>
-                <li class="collection-item"><a href="cadastroprofessora.php">Cadastrar Professor</a></li>
-                <li class="collection-item"><a href="cadastrouniversidade.php">Cadastrar Universidade</a></li>
-                <li class="collection-item active"><a href="cadastrocurso.php">Cadastrar Curso</a></li>
-                <li class="collection-item"><a href="cadastroOfertaDisciplina.php">Cadastrar Oferta de Disciplina</a></li>
-                <li class="collection-item"><a href="cadastroVinculo.php">Cadastrar Vinculo de Aluno/Professor com Universidade</a></li>
-                <li class="collection-item"><a href="cadastroDisciplinaOferta.php">Cadastrar Oferta de Disciplina</a></li>
-                <li class="collection-item active"><a href="cadastroVinculoCurso.php">Cadastrar Vínculo com Cursos</a></li>
-            </ul>
-        </div>-->
         <div class="col s9">
             <div class="row">
                 <form class="col s12" name="formCadastroCont" action="insertCurso.php" method="POST">

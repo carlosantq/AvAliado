@@ -91,6 +91,7 @@ CREATE TABLE DisciplinaOferta(
 );
 SELECT * FROM vinculouniversidade WHERE pessoaID=2014028473 and universidadeID = (SELECT distinct(universidadeid) FROM Disciplinaoferta JOIN Disciplina JOIN Curso where DisciplinaOferta.id = Disciplina.id AND Disciplina.cursoID = curso.id AND DisciplinaOferta.id = "código_da_disciplina");
 SELECT nome FROM Disciplina WHERE id IN (Select id FROM DisciplinaOferta);
+Select * from vinculouniversidade;
 CREATE TABLE vinculoUniversidade(
 	universidadeID INT NOT NULL,
 	pessoaID INT NOT NULL,

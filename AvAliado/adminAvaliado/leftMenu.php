@@ -9,5 +9,7 @@
         <li class="collection-item"><a href="cadastroDisciplinaOferta.php">Cadastrar Oferta de Disciplina</a></li>
         <li class="collection-item"><a href="cadastroVinculoCurso.php">Cadastrar Vínculo com Cursos</a></li>
         <li class="collection-item"><a href="cadastrovinculoAlunoDisciplinaOferta.php">Cadastrar Vínculo de Aluno com Disciplinas Ofertadas</a></li>
+        <li class="collection-item"><a href="selectTipoPessoa.php">Atualizar Pessoa</a></li>
+        <li class="collection-item"><a href="selectAluno.php">Atualizar Aluno</a></li>
     </ul>
 </div>
