@@ -14,19 +14,25 @@ $sql_teste_tem_vinculo = "SELECT * FROM vinculouniversidade WHERE pessoaID='$idA
 if($mysqli->query($sql_teste_tem_vinculo)){
     $exec = $mysqli->query($sql_teste_tem_vinculo);
     $num = $exec->num_rows;
+    //Teste de vínculo de Universidade
     if ($num > 0){
-        echo "maior que zero";
+        $sql_insert_vinculo = "INSERT INTO vinculoAlunoDisciplinaOferta VALUES ('$idDisciplina', '$idProfessor', '$ano', '$semestre', '$idAluno')";
+        $sql_exec_insert_vinculo = $mysqli->query($sql_insert_vinculo);
+
+        echo("
+            <script>
+                location.href='cadastrovinculoAlunoDisciplinaOferta.php';
+            </script>
+        ");
+
     }else{
-        echo ($num);
-        echo "oi";
+        echo("
+            <script>
+            alert('O usuário ".$idAluno." não possui vínculo com a universidade selecionada.');
+                location.href='cadastrovinculoAlunoDisciplinaOferta.php';
+            </script>
+        ");
     }
-    //$sql_insert_vinculo = "INSERT INTO vinculoAlunoDisciplinaOferta VALUES ('$idDisciplina', '$idProfessor', '$ano', '$semestre', '$idAluno')";
-    //$sql_exec_insert_vinculo = $mysqli->query($sql_insert_vinculo);
-    /*echo("
-        <script>
-            location.href='cadastrovinculoAlunoDisciplinaOferta.php';
-        </script>
-    ");*/
 }else{
     echo("
         <script>
