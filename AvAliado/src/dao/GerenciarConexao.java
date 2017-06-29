@@ -9,8 +9,8 @@ public class GerenciarConexao {
   public static Connection getConexao() {
 	  if (conexao == null) {  	
 		  String username = "root";
-		  String password = "imd@2017";
-		  String url = "jdbc:mysql://localhost:3306/AvAliado";
+		  String password = "sip12e12";
+		  String url = "jdbc:mysql://localhost:3307/AvAliado";
 		  try {
 			  Class.forName("com.mysql.jdbc.Driver");
 			  conexao = DriverManager.getConnection(url, username, password);

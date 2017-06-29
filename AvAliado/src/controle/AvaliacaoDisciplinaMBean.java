@@ -80,6 +80,8 @@ public class AvaliacaoDisciplinaMBean {
 		} else {
 			avaliacao.setMatriculaAluno(matricula);
 			avaliacao.setProfessorId(disciplinaBuscado.getProfessorId());
+			avaliacao.setAno(disciplinaBuscado.getAno());
+			avaliacao.setSemestre(disciplinaBuscado.getSemestre());
 			
 			return "/disciplina.jsf";
 		}
