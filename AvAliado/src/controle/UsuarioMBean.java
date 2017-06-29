@@ -128,7 +128,7 @@ public class UsuarioMBean {
 				return null;
 			}
 		}else{
-			FacesMessage msg = new FacesMessage("Usu�rio n�o existe");
+			FacesMessage msg = new FacesMessage("Usuário não existe");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;

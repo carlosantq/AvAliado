@@ -70,17 +70,17 @@ public class AvaliacaoAlunoProfessorMBean {
 		Professor professorBuscado = professorService.buscar(avaliacao.getMatriculaProfessor());
 		
 		if (professorBuscado.getMatricula() == 0){
-			FacesMessage msg = new FacesMessage("Este professor n�o existe.");
+			FacesMessage msg = new FacesMessage("Este professor não existe.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
 		} else if (disciplinaService.buscarVinculo(matricula, professorBuscado.getMatricula()) == false){
-			FacesMessage msg = new FacesMessage("Voc� n�o esteve em nenhuma disciplina ministrada por este professor. A avalia��o n�o poder� ser feita.");
+			FacesMessage msg = new FacesMessage("Você não esteve em nenhuma disciplina ministrada por este professor. A avaliação não poderá ser feita.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
 		} else if (avaliacaoAPService.buscarPorAlunoEProfessor(professorBuscado.getMatricula(), matricula).getMatriculaProfessor() != 0){
-			FacesMessage msg = new FacesMessage("Voc� j� avaliou este professor.");
+			FacesMessage msg = new FacesMessage("Você já avaliou este professor.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;
@@ -99,7 +99,7 @@ public class AvaliacaoAlunoProfessorMBean {
 		
 		avaliacaoAPService.inserir(avaliacao);
 		
-		FacesMessage msg = new FacesMessage("Avalia��o Registrada.");
+		FacesMessage msg = new FacesMessage("Avaliação Registrada.");
 		msg.setSeverity(FacesMessage.SEVERITY_INFO);
 		FacesContext.getCurrentInstance().addMessage("", msg);
 		
