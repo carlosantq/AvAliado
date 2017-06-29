@@ -8,11 +8,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 import dominio.AvaliacaoCurso;
 import dominio.Curso;
+import dominio.TipoPessoa;
+import dominio.Usuario;
 import servico.AvaliacaoCursoService;
 import servico.CursoService;
+import servico.UsuarioService;
 
 @ManagedBean
 @SessionScoped
@@ -22,6 +26,8 @@ public class AvaliacaoCursoMBean {
 	private List<AvaliacaoCurso> avaliacoes;
 	private AvaliacaoCursoService avaliacaoService;
 	private CursoService cursoService;
+	@Inject
+	private UsuarioService usuarioService;
 	
 	public AvaliacaoCursoMBean(){
 		avaliacao = new AvaliacaoCurso();
@@ -89,15 +95,30 @@ public class AvaliacaoCursoMBean {
 		
 		avaliacaoService.inserir(avaliacao);
 		
+		usuarioService = new UsuarioService();
+		Usuario usuario = usuarioService.buscar(avaliacao.getMatriculaPessoa());
+		
 		FacesMessage msg = new FacesMessage("Avaliação Registrada.");
 		msg.setSeverity(FacesMessage.SEVERITY_INFO);
 		FacesContext.getCurrentInstance().addMessage("", msg);
 		
-		return "/alunoHome.jsf";
+		if (usuario.getTipoid() == TipoPessoa.aluno){
+			return "/alunoHome.jsf";
+		}else{
+			return "/professorHome.jsf";
+		}
 	}
 	
 	public String voltar(){
-		return "/alunoHome.jsf";
+		
+		usuarioService = new UsuarioService();
+		Usuario usuario = usuarioService.buscar(avaliacao.getMatriculaPessoa());
+		
+		if (usuario.getTipoid() == TipoPessoa.aluno){
+			return "/alunoHome.jsf";
+		}else{
+			return "/professorHome.jsf";
+		}
 	}
 	
 }

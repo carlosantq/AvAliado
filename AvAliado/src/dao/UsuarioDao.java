@@ -54,6 +54,25 @@ public class UsuarioDao implements IDAO<Usuario>{
 
 		return resultado;
 	}
+	
+	public Usuario buscar(int matricula) {
+		Usuario resultado = new Usuario();
+		Connection con = GerenciarConexao.getConexao();
+		String sql = "SELECT * FROM Usuario WHERE matricula='"+matricula+"';";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				resultado.setMatricula(rs.getInt("matricula"));
+				resultado.setSenha(rs.getString("senha"));
+				resultado.setTipoid(TipoPessoa.fromInteger(rs.getInt("tipoId")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return resultado;
+	}
 
 	@Override
 	public void inserir(Usuario novo) {

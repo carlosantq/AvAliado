@@ -25,6 +25,10 @@ public class UsuarioService implements IServico<Usuario>{
 	public Usuario buscar(Usuario elemento) {
 		return usuarioDao.buscar(elemento);
 	}
+	
+	public Usuario buscar(int matricula){
+		return usuarioDao.buscar(matricula);
+	}
 
 	@Override
 	public void inserir(Usuario novo) {
