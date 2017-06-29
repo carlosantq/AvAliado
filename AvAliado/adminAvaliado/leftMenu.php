@@ -8,5 +8,6 @@
         <li class="collection-item"><a href="cadastroVinculoUniversidade.php">Cadastrar Vinculo de Aluno/Professor com Universidade</a></li>
         <li class="collection-item"><a href="cadastroDisciplinaOferta.php">Cadastrar Oferta de Disciplina</a></li>
         <li class="collection-item"><a href="cadastroVinculoCurso.php">Cadastrar Vínculo com Cursos</a></li>
+        <li class="collection-item"><a href="cadastrovinculoAlunoDisciplinaOferta.php">Cadastrar Vínculo de Aluno com Disciplinas Ofertadas</a></li>
     </ul>
 </div>

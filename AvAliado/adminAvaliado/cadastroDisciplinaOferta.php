@@ -111,7 +111,7 @@ $sql_exec_professor = $mysqli->query($sql_select_professor) or die ($mysqli->err
                             <option value="2">2</option>
                             
                     </select>
-                    <label>Selecionar o Professor</label>
+                    <label>Selecionar o Semestre</label>
                 </div>
                 </div>
                 <button type='submit' class='waves-effect waves-light btn right' value='Login'>Cadastrar</button>

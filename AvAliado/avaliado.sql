@@ -90,6 +90,8 @@ CREATE TABLE DisciplinaOferta(
 	FOREIGN KEY(professorID) REFERENCES Professor(matricula)
 );
 
+SELECT nome FROM Disciplina WHERE id IN (Select id FROM DisciplinaOferta);
+
 CREATE TABLE vinculoUniversidade(
 	universidadeID INT NOT NULL,
 	pessoaID INT NOT NULL,
@@ -179,6 +181,10 @@ CREATE TABLE AvaliacaoAlunoDisciplinaOferta(
 INSERT INTO TipoPessoa VALUES (0, "Professor");
 INSERT INTO TipoPessoa VALUES (1, "Aluno");
 INSERT INTO TIpoPessoa VALUES (3, "Administrador");
+
+-- Inserir administrador
+INSERT INTO Pessoa VALUES (201011, 3, "Pedro Admin", NULL, "pedro@email.com");
+INSERT INTO Usuario VALUES (201011, "123", 3);
 
 -- Inserir professor
 INSERT INTO Pessoa VALUES(1111111111, 0, "Joao", NULL, "joao@email.com");
