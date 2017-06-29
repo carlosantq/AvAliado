@@ -26,7 +26,7 @@ if ($mysqli->query($sql_cadastro)){
 }else{
     echo("
         <script>
-        alert('O usuário ".$idPessoa." já está cadastrado');
+        alert('O usuário ".$matricula_aluno." já está cadastrado');
             location.href='cadastroaluno.php';
         </script>
 
