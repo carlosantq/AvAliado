@@ -12,11 +12,20 @@ $semestre = $_POST['semestre'];
 $sql_cadastro = "INSERT INTO DisciplinaOferta(id, professorID, ano, semestre) VALUES 
 ('$disciplina', '$professor', '$ano', '$semestre')";
 
-$sql_execute = $mysqli->query($sql_cadastro) or die($mysqli->error);
+//$sql_execute = $mysqli->query($sql_cadastro) or die($mysqli->error);
 
-echo("
+if($mysqli->query($sql_cadastro)){
+    echo("
         <script>
             location.href='cadastroDisciplinaOferta.php';
         </script>
-    ")
+    ");
+}else{
+    echo ("<script>
+    alert('Essa disciplina já está sendo ofertada para o período selecionado');
+            location.href='cadastroDisciplinaOferta.php';
+        </script>
+        ");
+}
+
 ?>

@@ -12,12 +12,24 @@ $telefone = $_POST['telefone'];
 $sql_cadastro = "INSERT INTO pessoa(matricula, tipoid, nome, telefone, email) VALUES ('$matricula_professor', 0, '$nome_professor', '$telefone', '$email')";
 $sql_usuario = "INSERT INTO usuario(matricula, senha, tipoid) VALUES ('$matricula_professor', 123, 0)";
 $sql_professor = "INSERT INTO professor(matricula, notaDidatica, notaProvas, notaPersonalidade) VALUES ('$matricula_professor', NULL, NULL, NULL)";
-$sql_execute = $mysqli->query($sql_cadastro) or die($mysqli->error);
-$sql_execute = $mysqli->query($sql_usuario) or die($mysqli->error);
-$sql_execute = $mysqli->query($sql_professor) or die($mysqli->error);
-echo("
+//$sql_execute = $mysqli->query($sql_cadastro) or die($mysqli->error);
+
+if($mysqli->query($sql_cadastro)){
+    $sql_execute = $mysqli->query($sql_usuario) or die($mysqli->error);
+    $sql_execute = $mysqli->query($sql_professor) or die($mysqli->error);
+    echo("
+            <script>
+                location.href='cadastroprofessora.php';
+            </script>
+        ");
+}else{
+    echo("
         <script>
+        alert('O usuário ".$matricula_professor." já está cadastrado');
             location.href='cadastroprofessora.php';
         </script>
-    ")
+
+    ");
+}
+
 ?>

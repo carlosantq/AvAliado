@@ -39,7 +39,7 @@ $sql_exec_professor = $mysqli->query($sql_select_professor) or die ($mysqli->err
     <div class="navbar-fixed">
             <nav>
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo right">Admin</a>
+                    <a href="#" class="brand-logo right">Cadastro de Oferta de Disciplina</a>
                     <!--<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
                     <div id="nav-mobile" class="left hide-on-med-and-down">
                         <div class="active"><a href="#"><img class="circle responsive-img" src="img/avatar1.png" alt="avatar"><?php echo ("Bem Vindo, ".$row['matricula']."!"); ?></a>      <a href='logout.php'>Sair</a></div>

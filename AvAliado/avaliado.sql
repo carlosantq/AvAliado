@@ -44,7 +44,7 @@ CREATE TABLE Aluno(
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula)
 );
-
+SELECT * FROM UNIVERSIDADE;
 CREATE TABLE Universidade(
 	id INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100),
