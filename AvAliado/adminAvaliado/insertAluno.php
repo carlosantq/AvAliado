@@ -23,6 +23,14 @@ if ($mysqli->query($sql_cadastro)){
             location.href='cadastroaluno.php';
         </script>
     ");
+}else if (!is_numeric($periodo) || !is_numeric($matricula_aluno)){
+    echo("
+        <script>
+        alert('Os dados informados não são validos');
+            location.href='cadastroaluno.php';
+        </script>
+
+    ");
 }else{
     echo("
         <script>
