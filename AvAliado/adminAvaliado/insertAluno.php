@@ -10,8 +10,8 @@ $telefone = $_POST['telefone'];
 $periodo = $_POST['periodo'];
 
 
-$sql_cadastro = "INSERT INTO pessoa(matricula, tipoid, nome, telefone, email) VALUES ('$matricula_aluno', 0, '$nome_aluno', '$telefone', '$email')";
-$sql_usuario = "INSERT INTO usuario(matricula, senha, tipoid) VALUES ('$matricula_aluno', 123, 0)";
+$sql_cadastro = "INSERT INTO pessoa(matricula, tipoid, nome, telefone, email) VALUES ('$matricula_aluno', 1, '$nome_aluno', '$telefone', '$email')";
+$sql_usuario = "INSERT INTO usuario(matricula, senha, tipoid) VALUES ('$matricula_aluno', 123, 1)";
 $sql_aluno = "INSERT INTO aluno VALUES ('$matricula_aluno', '$periodo')";
 
 $sql_execute = $mysqli->query($sql_cadastro) or die($mysqli->error);
