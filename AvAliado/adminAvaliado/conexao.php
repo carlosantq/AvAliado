@@ -2,7 +2,7 @@
 
 $host = 'localhost';
 $username = 'root';
-$password = '';
+$password = 'teste';
 $banco = 'avaliado';
 //https://www.youtube.com/watch?v=Zjz4hy6iG1o
 $mysqli = new mysqli($host, $username, $password, $banco);

@@ -178,6 +178,7 @@ CREATE TABLE AvaliacaoAlunoDisciplinaOferta(
 -- Inserir subtipos de pessoas no sistema
 INSERT INTO TipoPessoa VALUES (0, "Professor");
 INSERT INTO TipoPessoa VALUES (1, "Aluno");
+INSERT INTO TIpoPessoa VALUES (3, "Administrador");
 
 -- Inserir professor
 INSERT INTO Pessoa VALUES(1111111111, 0, "Joao", NULL, "joao@email.com");
@@ -297,7 +298,7 @@ CREATE PROCEDURE atualizar_notas_universidade(IN i INT)
 		END $$
 DELIMITER ;
 
-CALL atualizar_notas_universidade(1);
+-- CALL atualizar_notas_universidade(1);
 
 -- Atualizar notas de cursos
 DELIMITER $$
@@ -311,7 +312,7 @@ CREATE PROCEDURE atualizar_notas_curso(IN i INT)
 		END $$
 DELIMITER ;
 
-CALL atualizar_notas_curso(1);
+-- CALL atualizar_notas_curso(1);
 
 -- Atualizar notas de disciplinas
 DELIMITER $$
