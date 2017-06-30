@@ -64,7 +64,7 @@ public class AvaliacaoUniversidadeDao implements IDAO<AvaliacaoUniversidade>{
 	}
 
 	@Override
-	public void atualizar() {
+	public void atualizar(AvaliacaoUniversidade elemento) {
 		// TODO Auto-generated method stub
 		
 	}

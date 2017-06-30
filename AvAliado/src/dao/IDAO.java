@@ -6,6 +6,6 @@ public interface IDAO <T>{
 	public List<T> buscarTodos();
 	public T buscar(T elemento);
 	public void inserir(T novo);
-	public void atualizar();
+	public void atualizar(T elemento);
 	public void remover(T elemento);
 }

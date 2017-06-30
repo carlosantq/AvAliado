@@ -78,7 +78,7 @@ public class PessoaDao implements IDAO<Pessoa>{
 	}
 
 	@Override
-	public void atualizar() {
+	public void atualizar(Pessoa elemento) {
 		// TODO Auto-generated method stub
 		
 	}

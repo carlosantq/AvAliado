@@ -23,8 +23,7 @@ public class AvaliacaoAlunoProfessorService implements IServico<AvaliacaoAlunoPr
 
 	@Override
 	public AvaliacaoAlunoProfessor buscar(AvaliacaoAlunoProfessor elemento) {
-		// TODO Auto-generated method stub
-		return null;
+		return avaliacaoAPDao.buscar(elemento);
 	}
 	
 	public AvaliacaoAlunoProfessor buscarPorAlunoEProfessor(int matriculaProfessor, int matriculaAluno){
@@ -46,13 +45,12 @@ public class AvaliacaoAlunoProfessorService implements IServico<AvaliacaoAlunoPr
 
 	@Override
 	public void atualizar(AvaliacaoAlunoProfessor elemento) {
-		// TODO Auto-generated method stub
-		
+		avaliacaoAPDao.atualizar(elemento);
 	}
 
 	@Override
 	public void remover(AvaliacaoAlunoProfessor elemento) {
-		// TODO Auto-generated method stub
+		avaliacaoAPDao.remover(elemento);
 	}
 	
 }

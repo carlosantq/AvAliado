@@ -90,7 +90,7 @@ public class UsuarioDao implements IDAO<Usuario>{
 	}
 
 	@Override
-	public void atualizar() {
+	public void atualizar(Usuario elemento) {
 		// TODO Auto-generated method stub
 		
 	}

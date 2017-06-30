@@ -118,7 +118,7 @@ public class DisciplinaDao implements IDAO<Disciplina>{
 	}
 
 	@Override
-	public void atualizar() {
+	public void atualizar(Disciplina elemento) {
 		// TODO Auto-generated method stub
 		
 	}
