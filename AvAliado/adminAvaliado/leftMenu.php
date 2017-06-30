@@ -11,5 +11,7 @@
         <li class="collection-item"><a href="cadastrovinculoAlunoDisciplinaOferta.php">Cadastrar Vínculo de Aluno com Disciplinas Ofertadas</a></li>
         <li class="collection-item"><a href="selectTipoPessoa.php">Atualizar Pessoa</a></li>
         <li class="collection-item"><a href="selectAluno.php">Atualizar Aluno</a></li>
+        <li class="collection-item"><a href="selectUniversidade.php">Atualizar Universidade</a></li>
+        
     </ul>
 </div>
