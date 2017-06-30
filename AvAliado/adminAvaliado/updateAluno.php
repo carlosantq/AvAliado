@@ -19,14 +19,15 @@ if ($sql_exec){
         </script>
 
     ");
-}else{
-    echo ("
-        <script>
-            alert('Erro de execução');
-            location.href='selectAluno.php';
-        </script>
+    }else{
+        echo ("
+            <script>
+                alert('Erro de execução');
+                location.href='selectAluno.php';
+            </script>
 
-    ");
+        ");
+    }
 }
 
 ?>

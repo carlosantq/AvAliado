@@ -42,7 +42,7 @@ $row_pessoa = $sql_exec_select_pessoa->fetch_assoc();
                         <label for="matricula">Matricula</label>
                     </div>
                     <div class="input-field col s6">
-                        <input  id="periodo" name="email" type="text" class="validate" required value="<?php echo ($row_pessoa['periodo']); ?>" >
+                        <input  id="periodo" name="periodo" type="text" class="validate" required value="<?php echo ($row_pessoa['periodo']); ?>" >
                     <label for="periodo">Período</label>
                     </div>
                     <button type='submit' class='waves-effect waves-light btn right' value='Login'>Atualizar</button>
