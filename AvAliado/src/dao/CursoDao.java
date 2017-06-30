@@ -106,7 +106,7 @@ public class CursoDao implements IDAO<Curso> {
 	}
 
 	@Override
-	public void atualizar() {
+	public void atualizar(Curso elemento) {
 		// TODO Auto-generated method stub
 		
 	}

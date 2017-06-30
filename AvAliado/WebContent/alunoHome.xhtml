@@ -67,6 +67,10 @@
 			<ui:repeat var="avaliacao" value="#{avaliacaoAlunoProfessorMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
 				<ui:repeat var="professor" value="#{professorMBean.buscar(avaliacao.matriculaProfessor)}">
 					<div class="comment-outter-container flexbox-row">
+						<h:form>
+							<h:commandLink action="#{avaliacaoAlunoProfessorMBean.atualizar(avaliacao)}"><img src="img/edit.png"/></h:commandLink>
+							<h:commandLink action="#{avaliacaoAlunoProfessorMBean.remover(avaliacao)}" onclick="return confirm('Tem certeza de que deseja remover essa avaliação?')"><img src="img/remove.png"/></h:commandLink>
+						</h:form>
 						<div class="comment-inner-container flexbox-row">
 							<div class="comment-text-container">
 								<p class="about-comment">Avaliação sobre

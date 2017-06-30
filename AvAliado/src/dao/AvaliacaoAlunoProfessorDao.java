@@ -36,8 +36,26 @@ public class AvaliacaoAlunoProfessorDao implements IDAO<AvaliacaoAlunoProfessor>
 
 	@Override
 	public AvaliacaoAlunoProfessor buscar(AvaliacaoAlunoProfessor elemento) {
-		// TODO Auto-generated method stub
-		return null;
+		AvaliacaoAlunoProfessor resultado = new AvaliacaoAlunoProfessor();
+		Connection con = GerenciarConexao.getConexao();
+        String sql = "SELECT * FROM AvaliacaoAlunoProfessor WHERE matriculaProfessor='"+elemento.getMatriculaProfessor()+"' AND matriculaAluno='"+elemento.getMatriculaAluno()+"'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                resultado.setMatriculaAluno(rs.getInt("matriculaAluno"));
+                resultado.setMatriculaProfessor(rs.getInt("matriculaProfessor"));
+                resultado.setDidatica(rs.getBoolean("didatica"));
+                resultado.setProvas(rs.getBoolean("provas"));
+                resultado.setPersonalidade(rs.getBoolean("personalidade"));
+                resultado.setData(rs.getDate("data"));
+				resultado.setComentario((rs.getString("comentario") == null || rs.getString("comentario") == "") ? "Não há comentário para esta avaliação." : rs.getString("comentario"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		
+		return resultado;
 	}
 	
 	public AvaliacaoAlunoProfessor buscarPorAlunoEProfessor(int matriculaProfessor, int matriculaAluno){
@@ -139,15 +157,33 @@ public class AvaliacaoAlunoProfessorDao implements IDAO<AvaliacaoAlunoProfessor>
 	}
 
 	@Override
-	public void atualizar() {
-		// TODO Auto-generated method stub
-		
+	public void atualizar(AvaliacaoAlunoProfessor elemento) {
+		Connection con = GerenciarConexao.getConexao();
+        String sql = "UPDATE AvaliacaoAlunoProfessor SET didatica="+elemento.getDidatica()+", provas="+elemento.getProvas()+", personalidade="+elemento.getPersonalidade()+", data='"+ new java.sql.Date(System.currentTimeMillis()) +"', comentario='"+elemento.getComentario()+"' WHERE matriculaAluno="+elemento.getMatriculaAluno()+" AND matriculaProfessor="+elemento.getMatriculaProfessor();
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+            CallableStatement cs = con.prepareCall("{call atualizar_notas(?)}");
+            cs.setInt(1, elemento.getMatriculaProfessor());
+            cs.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 	}
 
 	@Override
 	public void remover(AvaliacaoAlunoProfessor elemento) {
-		// TODO Auto-generated method stub
-		
+		Connection con = GerenciarConexao.getConexao();
+        String sql = "DELETE FROM AvaliacaoAlunoProfessor WHERE matriculaAluno="+elemento.getMatriculaAluno()+" AND matriculaProfessor="+elemento.getMatriculaProfessor();
+        try {
+        	PreparedStatement ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            CallableStatement cs = con.prepareCall("{call atualizar_notas(?)}");
+            cs.setInt(1, elemento.getMatriculaProfessor());
+            cs.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 	}
 	
 	

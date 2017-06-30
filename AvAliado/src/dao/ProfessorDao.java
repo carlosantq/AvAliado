@@ -136,7 +136,7 @@ public class ProfessorDao implements IDAO<Professor> {
 	}
 	
 	@Override
-	public void atualizar() {
+	public void atualizar(Professor elemento) {
 		// TODO Auto-generated method stub
 
 	}

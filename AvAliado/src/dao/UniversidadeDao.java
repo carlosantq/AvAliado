@@ -111,7 +111,7 @@ public class UniversidadeDao implements IDAO<Universidade>{
 	}
 
 	@Override
-	public void atualizar() {
+	public void atualizar(Universidade elemento) {
 		// TODO Auto-generated method stub
 		
 	}

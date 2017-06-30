@@ -97,13 +97,33 @@ public class AvaliacaoAlunoProfessorMBean {
 	
 	public String avaliar(){
 		
-		avaliacaoAPService.inserir(avaliacao);
+		if (avaliacaoAPService.buscar(avaliacao).getMatriculaProfessor() != 0){
+			avaliacaoAPService.atualizar(avaliacao);
+		}else{
+			avaliacaoAPService.inserir(avaliacao);
+		}
 		
 		FacesMessage msg = new FacesMessage("Avaliação Registrada.");
 		msg.setSeverity(FacesMessage.SEVERITY_INFO);
 		FacesContext.getCurrentInstance().addMessage("", msg);
 		
 		return "/alunoHome.jsf";
+	}
+	
+	public String remover(AvaliacaoAlunoProfessor avaliacao){
+		avaliacaoAPService.remover(avaliacao);
+		
+		FacesMessage msg = new FacesMessage("Avaliação Removida.");
+		msg.setSeverity(FacesMessage.SEVERITY_INFO);
+		FacesContext.getCurrentInstance().addMessage("", msg);
+		
+		return "/alunoHome.jsf";
+		
+	}
+	
+	public String atualizar(AvaliacaoAlunoProfessor avaliacao){
+		this.avaliacao = avaliacao;
+		return "/professor.jsf";
 	}
 	
 }

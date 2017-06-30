@@ -103,7 +103,7 @@ public class AlunoDao implements IDAO<Aluno>{
 	}
 
 	@Override
-	public void atualizar() {
+	public void atualizar(Aluno elemento) {
 		// TODO Auto-generated method stub
 		
 	}
