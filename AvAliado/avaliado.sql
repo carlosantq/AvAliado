@@ -3,8 +3,6 @@ CREATE DATABASE avaliado;
 USE avaliado;
 
 -- Criação das tabelas
-SELECT * FROM PESSOA;
-SELECT * FROM tipopessoa;
 CREATE TABLE TipoPessoa(
 	id INT(1) NOT NULL,
 	tipo VARCHAR(20) NOT NULL,
@@ -20,7 +18,7 @@ CREATE TABLE Pessoa(
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(tipoid) REFERENCES TipoPessoa(id)
 );
-SELECT * FROM USUARIO;
+
 CREATE TABLE Usuario(
 	matricula INT NOT NULL,
 	senha VARCHAR(50) NOT NULL,
@@ -29,8 +27,7 @@ CREATE TABLE Usuario(
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula),
 	FOREIGN KEY(tipoid) REFERENCES TipoPessoa(id)
 );
-SELECT * FROM PESSOA WHERE matricula IN (SELECT matricula FROM ALUNO);
-SELECT nome, matricula FROM pessoa WHERE matricula IN (SELECT matricula FROM PROFESSOR);
+
 CREATE TABLE Professor(
 	matricula INT NOT NULL,
 	notaDidatica INT DEFAULT 0,
@@ -39,14 +36,14 @@ CREATE TABLE Professor(
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula)
 );
-select * from aluno;
+
 CREATE TABLE Aluno(
 	matricula INT NOT NULL,
 	periodo INT NOT NULL,
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula)
 );
-SELECT * FROM CURSO;
+
 CREATE TABLE Universidade(
 	id INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100),
@@ -58,7 +55,7 @@ CREATE TABLE Universidade(
 	notaAuxilios INT DEFAULT 0,
 	PRIMARY KEY(id)
 );
-SELECT nome FROM curso WHERE id IN (SELECT cursoID FROM disciplina);
+
 CREATE TABLE Curso(
 	id INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(50),
@@ -69,7 +66,7 @@ CREATE TABLE Curso(
 	PRIMARY KEY(id),
 	FOREIGN KEY(universidadeID) REFERENCES Universidade(id)
 );
-select * from disciplina;
+
 CREATE TABLE Disciplina(
 	id VARCHAR(20) NOT NULL,
 	nome VARCHAR(50),
@@ -91,9 +88,7 @@ CREATE TABLE DisciplinaOferta(
 	FOREIGN KEY(id) REFERENCES Disciplina(id),
 	FOREIGN KEY(professorID) REFERENCES Professor(matricula)
 );
-SELECT * FROM vinculouniversidade WHERE pessoaID=2014028473 and universidadeID = (SELECT distinct(universidadeid) FROM Disciplinaoferta JOIN Disciplina JOIN Curso where DisciplinaOferta.id = Disciplina.id AND Disciplina.cursoID = curso.id AND DisciplinaOferta.id = "código_da_disciplina");
-SELECT nome FROM Disciplina WHERE id IN (Select id FROM DisciplinaOferta);
-Select * from vinculouniversidade;
+
 CREATE TABLE vinculoUniversidade(
 	universidadeID INT NOT NULL,
 	pessoaID INT NOT NULL,
@@ -182,11 +177,11 @@ CREATE TABLE AvaliacaoAlunoDisciplinaOferta(
 -- Inserir subtipos de pessoas no sistema
 INSERT INTO TipoPessoa VALUES (0, "Professor");
 INSERT INTO TipoPessoa VALUES (1, "Aluno");
-INSERT INTO TIpoPessoa VALUES (3, "Administrador");
+INSERT INTO TIpoPessoa VALUES (2, "Administrador");
 
 -- Inserir administrador
-INSERT INTO Pessoa VALUES (201011, 3, "Pedro Admin", NULL, "pedro@email.com");
-INSERT INTO Usuario VALUES (201011, "123", 3);
+INSERT INTO Pessoa VALUES (201011, 2, "Pedro Admin", NULL, "pedro@email.com");
+INSERT INTO Usuario VALUES (201011, "123", 2);
 
 -- Inserir professor
 INSERT INTO Pessoa VALUES(1111111111, 0, "Joao", NULL, "joao@email.com");
@@ -258,27 +253,6 @@ INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0507", 1111111112, 2017, 1, 
 INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0501", 1111111113, 2017, 1, 2014028473);
 INSERT INTO vinculoAlunoDisciplinaOferta VALUES("DIM0507", 1111111112, 2017, 1, 2015044005);
 
--- Inserir notas dos alunos para o professor 111111112
-INSERT INTO AvaliacaoAlunoProfessor VALUES (2014044145, 1111111112, true, false, false, NOW(), "Boa!");
-INSERT INTO AvaliacaoAlunoProfessor VALUES (2014028473, 1111111112, true, false, true, NOW(), "Legal.");
-
--- Inserir notas para a universidade 1
-INSERT INTO AvaliacaoUniversidade VALUES (2014044145, 1, true, true, false, NOW(), "Boa universidade.");
-INSERT INTO AvaliacaoUniversidade VALUES (1111111111, 1, true, true, true, NOW(), "Gosto de lecionar aqui");
-
--- Inserir notas para o curso 1
-INSERT INTO AvaliacaoCurso VALUES (2014044145, 1, true, true, true, NOW(), "Bom curso.");
-INSERT INTO AvaliacaoCurso VALUES (1111111111, 1, false, false, false, NOW(), "Precisa melhorar...");
-
--- Inserir notas para a disciplina teste de software
-INSERT INTO AvaliacaoAlunoDisciplinaOferta VALUES (2014044145, "DIM0507", 1111111112, 2017, 1, true, true, true, true, NOW(), "Ótima disciplina! A professora também leciona bem.");
-
--- Exibir todos os alunos
-SELECT * FROM Pessoa JOIN Aluno USING(matricula);
-
--- Exibir todos os professores antes de alterações
-SELECT * FROM Pessoa JOIN Professor USING(matricula);
-
 -- Atualizar notas de professores
 DELIMITER $$
 
@@ -290,9 +264,6 @@ CREATE PROCEDURE atualizar_notas(IN m INT)
 		UPDATE Professor SET notaPersonalidade = (SELECT COUNT(*) FROM AvaliacaoAlunoProfessor WHERE (personalidade=true OR personalidade=false) AND matriculaProfessor=m) WHERE matricula=m;
 		END $$
 DELIMITER ;
-
-CALL atualizar_notas(1111111111);
-CALL atualizar_notas(1111111112);
 
 -- Atualizar notas de universidades
 DELIMITER $$
@@ -306,8 +277,6 @@ CREATE PROCEDURE atualizar_notas_universidade(IN i INT)
 		END $$
 DELIMITER ;
 
--- CALL atualizar_notas_universidade(1);
-
 -- Atualizar notas de cursos
 DELIMITER $$
 
@@ -319,8 +288,6 @@ CREATE PROCEDURE atualizar_notas_curso(IN i INT)
 		UPDATE Curso SET notaMercadoDeTrabalho = (SELECT COUNT(*) FROM AvaliacaoCurso WHERE (mercadoDeTrabalho=true OR mercadoDeTrabalho=false) AND id=i);
 		END $$
 DELIMITER ;
-
--- CALL atualizar_notas_curso(1);
 
 -- Atualizar notas de disciplinas
 DELIMITER $$
@@ -334,23 +301,6 @@ CREATE PROCEDURE atualizar_notas_disciplina(IN i VARCHAR(20), IN p INT, IN a INT
 		UPDATE DisciplinaOferta SET notaCobranca = (SELECT COUNT(*) FROM AvaliacaoAlunoDisciplinaOferta WHERE (cobranca=true OR cobranca=false) AND disciplinaID=i AND professorID=p AND ano=a AND semestre=s) WHERE id=i AND professorID=p AND ano=a AND semestre=s;
 		END $$
 DELIMITER ;
-
-CALL atualizar_notas_disciplina("DIM0507", 1111111112, 2017, 1);
-
--- Exibir professores depois de alterações
-SELECT * FROM Pessoa JOIN Professor USING(matricula);
-
--- Exibir todos as universidades
-SELECT * FROM Universidade;
-
--- Exibir todos os cursos
-SELECT * FROM Curso;
-
--- Exibir todas as Disicplinas
-SELECT * FROM Disciplina;
-
--- Exibir todos as ofertas de disciplinas
-SELECT * FROM DisciplinaOferta;
 
 
 
