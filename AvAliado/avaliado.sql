@@ -3,7 +3,8 @@ CREATE DATABASE avaliado;
 USE avaliado;
 
 -- Criação das tabelas
-
+SELECT * FROM PESSOA;
+SELECT * FROM tipopessoa;
 CREATE TABLE TipoPessoa(
 	id INT(1) NOT NULL,
 	tipo VARCHAR(20) NOT NULL,
@@ -19,7 +20,7 @@ CREATE TABLE Pessoa(
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(tipoid) REFERENCES TipoPessoa(id)
 );
-
+SELECT * FROM USUARIO;
 CREATE TABLE Usuario(
 	matricula INT NOT NULL,
 	senha VARCHAR(50) NOT NULL,
@@ -28,6 +29,7 @@ CREATE TABLE Usuario(
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula),
 	FOREIGN KEY(tipoid) REFERENCES TipoPessoa(id)
 );
+SELECT * FROM PESSOA WHERE matricula IN (SELECT matricula FROM ALUNO);
 SELECT nome, matricula FROM pessoa WHERE matricula IN (SELECT matricula FROM PROFESSOR);
 CREATE TABLE Professor(
 	matricula INT NOT NULL,
