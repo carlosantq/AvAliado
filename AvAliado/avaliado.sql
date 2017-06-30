@@ -39,14 +39,14 @@ CREATE TABLE Professor(
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula)
 );
-
+select * from aluno;
 CREATE TABLE Aluno(
 	matricula INT NOT NULL,
 	periodo INT NOT NULL,
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula)
 );
-SELECT * FROM UNIVERSIDADE;
+SELECT * FROM CURSO LEFT JOIN (SELECT NOME FROM UNIVERSIDADE WHERE universidade.id = curso.universidadeID);
 CREATE TABLE Universidade(
 	id INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100),
