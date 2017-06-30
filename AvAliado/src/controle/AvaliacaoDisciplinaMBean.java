@@ -93,13 +93,36 @@ public class AvaliacaoDisciplinaMBean {
 	
 	public String avaliar(){
 		
-		avaliacaoService.inserir(avaliacao);
+		AvaliacaoDisciplina buscada = avaliacaoService.buscar(avaliacao);
 		
-		FacesMessage msg = new FacesMessage("Avaliação Registrada.");
-		msg.setSeverity(FacesMessage.SEVERITY_INFO);
-		FacesContext.getCurrentInstance().addMessage("", msg);
+		if (buscada.getProfessorId() != 0){
+			avaliacaoService.atualizar(avaliacao);
+			FacesMessage msg = new FacesMessage("Avaliação Atualizada.");
+			msg.setSeverity(FacesMessage.SEVERITY_INFO);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}else{
+			FacesMessage msg = new FacesMessage("Avaliação Registrada.");
+			msg.setSeverity(FacesMessage.SEVERITY_INFO);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+			avaliacaoService.inserir(avaliacao);
+		}
 		
 		return "/alunoHome.jsf";
 	}
 	
+	public String remover(AvaliacaoDisciplina avaliacao){
+		avaliacaoService.remover(avaliacao);
+		
+		FacesMessage msg = new FacesMessage("Avaliação Removida.");
+		msg.setSeverity(FacesMessage.SEVERITY_INFO);
+		FacesContext.getCurrentInstance().addMessage("", msg);
+		
+		return "/alunoHome.jsf";
+		
+	}
+	
+	public String atualizar(AvaliacaoDisciplina avaliacao){
+		this.avaliacao = avaliacao;
+		return "/disciplina.jsf";
+	}
 }
