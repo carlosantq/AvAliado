@@ -33,14 +33,12 @@ public class AvaliacaoCursoService implements IServico<AvaliacaoCurso>{
 
 	@Override
 	public void atualizar(AvaliacaoCurso elemento) {
-		// TODO Auto-generated method stub
-		
+		cursoDao.atualizar(elemento);
 	}
 
 	@Override
 	public void remover(AvaliacaoCurso elemento) {
-		// TODO Auto-generated method stub
-		
+		cursoDao.remover(elemento);
 	}
 	
 	public List<AvaliacaoCurso> buscarPorId(int id){

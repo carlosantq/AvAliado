@@ -115,6 +115,10 @@
 			<ui:repeat var="avaliacaoUni" value="#{avaliacaoUniversidadeMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
 				<ui:repeat var="universidade" value="#{universidadeMBean.buscar(avaliacaoUni.universidadeId)}">
 					<div class="comment-outter-container flexbox-row">
+						<h:form>
+							<h:commandLink action="#{avaliacaoUniversidadeMBean.atualizar(avaliacaoUni)}"><img src="img/edit.png"/></h:commandLink>
+							<h:commandLink action="#{avaliacaoUniversidadeMBean.remover(avaliacaoUni)}" onclick="return confirm('Tem certeza de que deseja remover essa avaliação?')"><img src="img/remove.png"/></h:commandLink>
+						</h:form>
 						<div class="comment-inner-container flexbox-row">
 							<div class="comment-text-container">
 								<p class="about-comment">Avaliação sobre
@@ -159,6 +163,10 @@
 			<ui:repeat var="avaliacaoCurso" value="#{avaliacaoCursoMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
 				<ui:repeat var="curso" value="#{cursoMBean.buscar(avaliacaoCurso.cursoId)}">
 					<div class="comment-outter-container flexbox-row">
+						<h:form>
+							<h:commandLink action="#{avaliacaoCursoMBean.atualizar(avaliacaoCurso)}"><img src="img/edit.png"/></h:commandLink>
+							<h:commandLink action="#{avaliacaoCursoMBean.remover(avaliacaoCurso)}" onclick="return confirm('Tem certeza de que deseja remover essa avaliação?')"><img src="img/remove.png"/></h:commandLink>
+						</h:form>
 						<div class="comment-inner-container flexbox-row">
 							<div class="comment-text-container">
 								<p class="about-comment">Avaliação sobre
@@ -203,6 +211,10 @@
 			<ui:repeat var="avaliacaoDisciplina" value="#{avaliacaoDisciplinaMBean.buscarPorMatricula(usuarioMBean.aluno.matricula)}">
 				<ui:repeat var="disciplina" value="#{disciplinaMBean.buscar(avaliacaoDisciplina.disciplinaId)}">
 					<div class="comment-outter-container flexbox-row">
+						<h:form>
+							<h:commandLink action="#{avaliacaoDisciplinaMBean.atualizar(avaliacaoDisciplina)}"><img src="img/edit.png"/></h:commandLink>
+							<h:commandLink action="#{avaliacaoDisciplinaMBean.remover(avaliacaoDisciplina)}" onclick="return confirm('Tem certeza de que deseja remover essa avaliação?')"><img src="img/remove.png"/></h:commandLink>
+						</h:form>
 						<div class="comment-inner-container flexbox-row">
 							<div class="comment-text-container">
 								<p class="about-comment">Avaliação sobre
