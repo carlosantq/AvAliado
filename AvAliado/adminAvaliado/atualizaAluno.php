@@ -45,6 +45,7 @@ $row_pessoa = $sql_exec_select_pessoa->fetch_assoc();
                         <input  id="periodo" name="periodo" type="text" class="validate" required value="<?php echo ($row_pessoa['periodo']); ?>" >
                     <label for="periodo">Período</label>
                     </div>
+                    </div>
                     <button type='submit' class='waves-effect waves-light btn right' value='Login'>Atualizar</button>
                 </form>
                 <a href="selectAluno.php" class="waves-effect waves-light btn">Voltar</a>
