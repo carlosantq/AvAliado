@@ -36,8 +36,26 @@ public class AvaliacaoCursoDao implements IDAO<AvaliacaoCurso>{
 
 	@Override
 	public AvaliacaoCurso buscar(AvaliacaoCurso elemento) {
-		// TODO Auto-generated method stub
-		return null;
+		AvaliacaoCurso resultado = new AvaliacaoCurso();
+		Connection con = GerenciarConexao.getConexao();
+        String sql = "SELECT * FROM AvaliacaoCurso WHERE matriculaPessoa='"+elemento.getMatriculaPessoa()+"' AND cursoID='"+elemento.getCursoId()+"'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				resultado.setMatriculaPessoa(rs.getInt("matriculaPessoa"));
+				resultado.setCursoId(rs.getInt("cursoID"));
+				resultado.setDificuldade(rs.getBoolean("dificuldade"));
+				resultado.setFlexibilidade(rs.getBoolean("flexibilidade"));
+				resultado.setMercadoDeTrabalho(rs.getBoolean("mercadoDeTrabalho"));
+				resultado.setData(rs.getDate("data"));
+				resultado.setComentario((rs.getString("comentario") == null || rs.getString("comentario") == "") ? "Não há comentário para esta avaliação." : rs.getString("comentario"));
+			}
+		}catch (SQLException e) {
+            e.printStackTrace();
+        }
+		
+		return resultado;
 	}
 
 	@Override
@@ -65,14 +83,32 @@ public class AvaliacaoCursoDao implements IDAO<AvaliacaoCurso>{
 
 	@Override
 	public void atualizar(AvaliacaoCurso elemento) {
-		// TODO Auto-generated method stub
-		
+		Connection con = GerenciarConexao.getConexao();
+        String sql = "UPDATE AvaliacaoCurso SET dificuldade="+elemento.getDificuldade()+", flexibilidade="+elemento.getFlexibilidade()+", mercadoDeTrabalho="+elemento.getMercadoDeTrabalho()+", data='"+ new java.sql.Date(System.currentTimeMillis()) +"', comentario='"+elemento.getComentario()+"' WHERE matriculaPessoa="+elemento.getMatriculaPessoa()+" AND cursoID="+elemento.getCursoId();
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+            CallableStatement cs = con.prepareCall("{call atualizar_notas_curso(?)}");
+            cs.setInt(1, elemento.getCursoId());
+            cs.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 	}
 
 	@Override
 	public void remover(AvaliacaoCurso elemento) {
-		// TODO Auto-generated method stub
-		
+		Connection con = GerenciarConexao.getConexao();
+        String sql = "DELETE FROM AvaliacaoCurso WHERE matriculaPessoa="+elemento.getMatriculaPessoa()+" AND cursoID="+elemento.getCursoId();
+        try {
+        	PreparedStatement ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            CallableStatement cs = con.prepareCall("{call atualizar_notas_curso(?)}");
+            cs.setInt(1, elemento.getCursoId());
+            cs.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 	}
 	
 	public List<AvaliacaoCurso> buscarPorId(int id){

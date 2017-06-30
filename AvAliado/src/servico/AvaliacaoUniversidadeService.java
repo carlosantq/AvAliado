@@ -10,49 +10,47 @@ import dominio.AvaliacaoUniversidade;
 public class AvaliacaoUniversidadeService implements IServico<AvaliacaoUniversidade>{
 
 	@Inject
-	private AvaliacaoUniversidadeDao avaliacaoDao;
+	private AvaliacaoUniversidadeDao universidadeDao;
 	
 	public AvaliacaoUniversidadeService(){
-		avaliacaoDao = new AvaliacaoUniversidadeDao();
+		universidadeDao = new AvaliacaoUniversidadeDao();
 	}
 	
 	@Override
 	public List<AvaliacaoUniversidade> buscarTodos() {
-		return avaliacaoDao.buscarTodos();
+		return universidadeDao.buscarTodos();
 	}
 
 	@Override
 	public AvaliacaoUniversidade buscar(AvaliacaoUniversidade elemento) {
-		return avaliacaoDao.buscar(elemento);
+		return universidadeDao.buscar(elemento);
 	}
 
 	@Override
 	public void inserir(AvaliacaoUniversidade novo) {
-		avaliacaoDao.inserir(novo);
+		universidadeDao.inserir(novo);
 	}
 
 	@Override
 	public void atualizar(AvaliacaoUniversidade elemento) {
-		// TODO Auto-generated method stub
-		
+		universidadeDao.atualizar(elemento);
 	}
 
 	@Override
 	public void remover(AvaliacaoUniversidade elemento) {
-		// TODO Auto-generated method stub
-		
+		universidadeDao.remover(elemento);
 	}
 	
 	public List<AvaliacaoUniversidade> buscarPorId(int id){
-		return avaliacaoDao.buscarPorId(id);
+		return universidadeDao.buscarPorId(id);
 	}
 	
 	public List<AvaliacaoUniversidade> buscarPorMatricula(int matricula){
-		return avaliacaoDao.buscarPorMatricula(matricula);
+		return universidadeDao.buscarPorMatricula(matricula);
 	}
 	
 	public AvaliacaoUniversidade buscarPorPessoaEUniversidade(int matricula, int universidadeId){
-		return avaliacaoDao.buscarPorPessoaEUniversidade(matricula, universidadeId);
+		return universidadeDao.buscarPorPessoaEUniversidade(matricula, universidadeId);
 	}
 
 }

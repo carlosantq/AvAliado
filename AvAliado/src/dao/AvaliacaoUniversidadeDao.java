@@ -36,8 +36,26 @@ public class AvaliacaoUniversidadeDao implements IDAO<AvaliacaoUniversidade>{
 
 	@Override
 	public AvaliacaoUniversidade buscar(AvaliacaoUniversidade elemento) {
-		// TODO Auto-generated method stub
-		return null;
+		AvaliacaoUniversidade resultado = new AvaliacaoUniversidade();
+		Connection con = GerenciarConexao.getConexao();
+        String sql = "SELECT * FROM AvaliacaoUniversidade WHERE matriculaPessoa='"+elemento.getMatriculaPessoa()+"' AND universidadeID='"+elemento.getUniversidadeId()+"'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				resultado.setMatriculaPessoa(rs.getInt("matriculaPessoa"));
+				resultado.setUniversidadeId(rs.getInt("universidadeID"));
+				resultado.setEstrutura(rs.getBoolean("estrutura"));
+				resultado.setVidaCultural(rs.getBoolean("vidaCultural"));
+				resultado.setAuxilios(rs.getBoolean("auxilios"));
+				resultado.setData(rs.getDate("data"));
+				resultado.setComentario((rs.getString("comentario") == null || rs.getString("comentario") == "") ? "Não há comentário para esta avaliação." : rs.getString("comentario"));
+			}
+		}catch (SQLException e) {
+            e.printStackTrace();
+        }
+		
+		return resultado;
 	}
 
 	@Override
@@ -65,14 +83,32 @@ public class AvaliacaoUniversidadeDao implements IDAO<AvaliacaoUniversidade>{
 
 	@Override
 	public void atualizar(AvaliacaoUniversidade elemento) {
-		// TODO Auto-generated method stub
-		
+		Connection con = GerenciarConexao.getConexao();
+        String sql = "UPDATE AvaliacaoUniversidade SET estrutura="+elemento.getEstrutura()+", vidaCultural="+elemento.getVidaCultural()+", auxilios="+elemento.getAuxilios()+", data='"+ new java.sql.Date(System.currentTimeMillis()) +"', comentario='"+elemento.getComentario()+"' WHERE matriculaPessoa="+elemento.getMatriculaPessoa()+" AND universidadeID="+elemento.getUniversidadeId();
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+            CallableStatement cs = con.prepareCall("{call atualizar_notas_universidade(?)}");
+            cs.setInt(1, elemento.getUniversidadeId());
+            cs.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 	}
 
 	@Override
 	public void remover(AvaliacaoUniversidade elemento) {
-		// TODO Auto-generated method stub
-		
+		Connection con = GerenciarConexao.getConexao();
+        String sql = "DELETE FROM AvaliacaoUniversidade WHERE matriculaPessoa="+elemento.getMatriculaPessoa()+" AND universidadeID="+elemento.getUniversidadeId();
+        try {
+        	PreparedStatement ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            CallableStatement cs = con.prepareCall("{call atualizar_notas_universidade(?)}");
+            cs.setInt(1, elemento.getUniversidadeId());
+            cs.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 	}
 	
 	public List<AvaliacaoUniversidade> buscarPorId(int id){

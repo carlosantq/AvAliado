@@ -93,14 +93,20 @@ public class AvaliacaoCursoMBean {
 	
 	public String avaliar(){
 		
-		avaliacaoService.inserir(avaliacao);
-		
 		usuarioService = new UsuarioService();
 		Usuario usuario = usuarioService.buscar(avaliacao.getMatriculaPessoa());
 		
-		FacesMessage msg = new FacesMessage("Avaliação Registrada.");
-		msg.setSeverity(FacesMessage.SEVERITY_INFO);
-		FacesContext.getCurrentInstance().addMessage("", msg);
+		if (avaliacaoService.buscar(avaliacao).getCursoId() != 0){
+			avaliacaoService.atualizar(avaliacao);
+			FacesMessage msg = new FacesMessage("Avaliação Atualizada.");
+			msg.setSeverity(FacesMessage.SEVERITY_INFO);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}else{
+			FacesMessage msg = new FacesMessage("Avaliação Registrada.");
+			msg.setSeverity(FacesMessage.SEVERITY_INFO);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+			avaliacaoService.inserir(avaliacao);
+		}
 		
 		if (usuario.getTipoid() == TipoPessoa.aluno){
 			return "/alunoHome.jsf";
@@ -119,6 +125,29 @@ public class AvaliacaoCursoMBean {
 		}else{
 			return "/professorHome.jsf";
 		}
+	}
+	
+	public String remover(AvaliacaoCurso avaliacao){
+		avaliacaoService.remover(avaliacao);
+		
+		usuarioService = new UsuarioService();
+		Usuario usuario = usuarioService.buscar(avaliacao.getMatriculaPessoa());
+		
+		FacesMessage msg = new FacesMessage("Avaliação Removida.");
+		msg.setSeverity(FacesMessage.SEVERITY_INFO);
+		FacesContext.getCurrentInstance().addMessage("", msg);
+		
+		if (usuario.getTipoid() == TipoPessoa.aluno){
+			return "/alunoHome.jsf";
+		}else{
+			return "/professorHome.jsf";
+		}
+		
+	}
+	
+	public String atualizar(AvaliacaoCurso avaliacao){
+		this.avaliacao = avaliacao;
+		return "/curso.jsf";
 	}
 	
 }
