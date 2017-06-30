@@ -18,8 +18,9 @@ echo($matricula);*/
 
 $sql_update = "UPDATE PESSOA SET tipoid = '$tipoID', nome = '$nome', telefone = '$telefone', email = '$email' WHERE matricula = '$matricula'";
 //$sql_exec_update = $mysqli->query($sql_update);
+$sql_update_usuario = "UPDATE USUARIO SET tipoid = '$tipoID' WHERE matricula = '$matricula'";
 
-if($mysqli->query($sql_update)){
+if($mysqli->query($sql_update) && $mysqli->query($sql_update_usuario)){
     echo ("
         <script>
             alert('Dados alterados com sucesso');
