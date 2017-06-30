@@ -12,6 +12,7 @@
         <li class="collection-item"><a href="selectTipoPessoa.php">Atualizar Pessoa</a></li>
         <li class="collection-item"><a href="selectAluno.php">Atualizar Aluno</a></li>
         <li class="collection-item"><a href="selectUniversidade.php">Atualizar Universidade</a></li>
+        <li class="collection-item"><a href="selectCurso.php">Atualizar Curso</a></li>
         
     </ul>
 </div>
