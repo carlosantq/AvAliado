@@ -13,6 +13,7 @@
         <li class="collection-item"><a href="selectAluno.php">Atualizar Aluno</a></li>
         <li class="collection-item"><a href="selectUniversidade.php">Atualizar Universidade</a></li>
         <li class="collection-item"><a href="selectCurso.php">Atualizar Curso</a></li>
+        <li class="collection-item"><a href="selectDisciplina.php">Atualizar Disciplina</a></li>
         
     </ul>
 </div>

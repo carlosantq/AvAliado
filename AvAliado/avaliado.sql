@@ -46,7 +46,7 @@ CREATE TABLE Aluno(
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula)
 );
-SELECT * FROM CURSO LEFT JOIN (SELECT NOME FROM UNIVERSIDADE WHERE universidade.id = curso.universidadeID);
+SELECT * FROM CURSO;
 CREATE TABLE Universidade(
 	id INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100),
