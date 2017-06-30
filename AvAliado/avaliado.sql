@@ -7,7 +7,7 @@ CREATE TABLE TipoPessoa(
 	id INT(1) NOT NULL,
 	tipo VARCHAR(20) NOT NULL,
 	PRIMARY KEY(id) 
-);
+)engine = InnoDB;
 
 CREATE TABLE Pessoa(
 	matricula INT NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE Pessoa(
 	email VARCHAR(50) NOT NULL,
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(tipoid) REFERENCES TipoPessoa(id)
-);
+)engine = InnoDB;
 
 CREATE TABLE Usuario(
 	matricula INT NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE Usuario(
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula),
 	FOREIGN KEY(tipoid) REFERENCES TipoPessoa(id)
-);
+)engine = InnoDB;
 
 CREATE TABLE Professor(
 	matricula INT NOT NULL,
@@ -35,14 +35,14 @@ CREATE TABLE Professor(
 	notaPersonalidade INT DEFAULT 0,
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula)
-);
+)engine = InnoDB;
 
 CREATE TABLE Aluno(
 	matricula INT NOT NULL,
 	periodo INT NOT NULL,
 	PRIMARY KEY(matricula),
 	FOREIGN KEY(matricula) REFERENCES Pessoa(matricula)
-);
+)engine = InnoDB;
 
 CREATE TABLE Universidade(
 	id INT NOT NULL AUTO_INCREMENT,
@@ -54,7 +54,7 @@ CREATE TABLE Universidade(
 	notaVidaCultural INT DEFAULT 0,
 	notaAuxilios INT DEFAULT 0,
 	PRIMARY KEY(id)
-);
+)engine = InnoDB;
 
 CREATE TABLE Curso(
 	id INT NOT NULL AUTO_INCREMENT,
@@ -65,7 +65,7 @@ CREATE TABLE Curso(
 	notaMercadoDeTrabalho INT DEFAULT 0,
 	PRIMARY KEY(id),
 	FOREIGN KEY(universidadeID) REFERENCES Universidade(id)
-);
+)engine = InnoDB;
 
 CREATE TABLE Disciplina(
 	id VARCHAR(20) NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE Disciplina(
 	cursoID INT NOT NULL,
 	PRIMARY KEY(id),
 	FOREIGN KEY(cursoID) REFERENCES Curso(id)
-);
+)engine = InnoDB;
 
 CREATE TABLE DisciplinaOferta(
 	id VARCHAR(20) NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE DisciplinaOferta(
 	PRIMARY KEY(id, professorID, ano, semestre),
 	FOREIGN KEY(id) REFERENCES Disciplina(id),
 	FOREIGN KEY(professorID) REFERENCES Professor(matricula)
-);
+)engine = InnoDB;
 
 CREATE TABLE vinculoUniversidade(
 	universidadeID INT NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE vinculoUniversidade(
 	PRIMARY KEY(universidadeID, pessoaID),
 	FOREIGN KEY(universidadeID) REFERENCES Universidade(id),
 	FOREIGN KEY(pessoaID) REFERENCES Pessoa(matricula)
-);
+)engine = InnoDB;
 
 CREATE TABLE vinculoCurso(
 	cursoID INT NOT NULL,
@@ -103,7 +103,7 @@ CREATE TABLE vinculoCurso(
 	PRIMARY KEY(cursoID, pessoaID),
 	FOREIGN KEY(cursoID) REFERENCES Curso(id),
 	FOREIGN KEY(pessoaID) REFERENCES Pessoa(matricula)
-);
+)engine = InnoDB;
 
 CREATE TABLE vinculoAlunoDisciplinaOferta(
 	disciplinaID VARCHAR(20) NOT NULL,
@@ -115,7 +115,7 @@ CREATE TABLE vinculoAlunoDisciplinaOferta(
 	FOREIGN KEY(disciplinaID) REFERENCES Disciplina(id),
 	FOREIGN KEY(professorID) REFERENCES Professor(matricula),
 	FOREIGN KEY(alunoID) REFERENCES Aluno(matricula)
-);
+)engine = InnoDB;
 
 CREATE TABLE AvaliacaoAlunoProfessor(
 	matriculaAluno INT NOT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE AvaliacaoAlunoProfessor(
 	PRIMARY KEY(matriculaAluno, matriculaProfessor),
 	FOREIGN KEY(matriculaAluno) REFERENCES Aluno(matricula),
 	FOREIGN KEY(matriculaProfessor) REFERENCES Professor(matricula)
-);
+)engine = InnoDB;
 
 CREATE TABLE AvaliacaoUniversidade(
 	matriculaPessoa INT NOT NULL,
@@ -141,7 +141,7 @@ CREATE TABLE AvaliacaoUniversidade(
 	PRIMARY KEY(matriculaPessoa, universidadeID),
 	FOREIGN KEY(matriculaPessoa) REFERENCES Pessoa(matricula),
 	FOREIGN KEY(universidadeID) REFERENCES Universidade(id)
-);
+)engine = InnoDB;
 
 CREATE TABLE AvaliacaoCurso(
 	matriculaPessoa INT NOT NULL,
@@ -154,7 +154,7 @@ CREATE TABLE AvaliacaoCurso(
 	PRIMARY KEY(matriculaPessoa, cursoID),
 	FOREIGN KEY(matriculaPessoa) REFERENCES Pessoa(matricula),
 	FOREIGN KEY(cursoID) REFERENCES Curso(id)
-);
+)engine = InnoDB;
 
 CREATE TABLE AvaliacaoAlunoDisciplinaOferta(
 	matriculaAluno INT NOT NULL,
@@ -172,7 +172,7 @@ CREATE TABLE AvaliacaoAlunoDisciplinaOferta(
 	FOREIGN KEY(matriculaAluno) REFERENCES Aluno(matricula),
 	FOREIGN KEY(disciplinaID) REFERENCES Disciplina(id),
 	FOREIGN KEY(professorID) REFERENCES Professor(matricula)
-);
+)engine = InnoDB;
 
 -- Inserir subtipos de pessoas no sistema
 INSERT INTO TipoPessoa VALUES (0, "Professor");
