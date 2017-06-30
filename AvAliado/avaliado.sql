@@ -58,7 +58,7 @@ CREATE TABLE Universidade(
 	notaAuxilios INT DEFAULT 0,
 	PRIMARY KEY(id)
 );
-
+SELECT nome FROM curso WHERE id IS (SELECT * FROM disciplina);
 CREATE TABLE Curso(
 	id INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(50),
