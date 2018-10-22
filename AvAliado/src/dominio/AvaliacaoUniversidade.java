@@ -2,6 +2,10 @@ package dominio;
 
 import java.util.Date;
 
+/**
+* Classe responsavel por descrever o dominio de uma avaliacao 
+**/
+
 public class AvaliacaoUniversidade {
 
 	private int matriculaPessoa;
